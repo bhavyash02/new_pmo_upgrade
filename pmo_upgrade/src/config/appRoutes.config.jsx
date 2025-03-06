@@ -1,13 +1,8 @@
 // import PrivateRoute from "../modules/PrivateRoute";
 import {
   HomePage,
-  // LoginPage,
-  //   PMODashboard,
-  //   Reports,
-  //   PlatformProject,
-  //   ValueBoard,
-  //   NewProject,
-    PageNotFound,
+  PortFolioStatus,
+  PageNotFound,
 } from "../pages";
 
 export const appRoutes = [
@@ -16,7 +11,11 @@ export const appRoutes = [
     element: <HomePage />,
   },
   {
+    path: "/portfolio-status",
+    element: <PortFolioStatus />,
+  },
+  {
     path: "*",
     element: <PageNotFound />,
-  },
+  }
 ];

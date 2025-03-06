@@ -14,7 +14,7 @@ const steps = [
     "Finance"
 ];
 
-export default function HorizontalLinearAlternativeLabelStepper() {
+export default function MultipleStepForm() {
     const [activeStep, setActiveStep] = useState(0);
 
     const handleNext = () => {
@@ -30,7 +30,14 @@ export default function HorizontalLinearAlternativeLabelStepper() {
     };
 
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box 
+            sx={{ 
+                width: "100%", 
+                minHeight: "80vh",  // Push content down
+                display: "flex", 
+                flexDirection: "column"
+            }}
+        >
             <Stepper activeStep={activeStep} alternativeLabel>
                 {steps.map((label, index) => (
                     <Step key={index}>
@@ -40,12 +47,19 @@ export default function HorizontalLinearAlternativeLabelStepper() {
             </Stepper>
 
             {/* Display content based on step */}
-            <Box sx={{ mt: 2, textAlign: "center" }}>
+            <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1 }}>
                 <h3>{steps[activeStep]}</h3>
             </Box>
 
-            {/* Navigation Buttons */}
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            {/* Navigation Buttons at the Bottom Right */}
+            <Box 
+                sx={{ 
+                    display: "flex", 
+                    justifyContent: "flex-end", 
+                    mt: "auto",  // Push to bottom
+                    p: 3 
+                }}
+            >
                 <Button disabled={activeStep === 0} onClick={handleBack}>
                     Back
                 </Button>
