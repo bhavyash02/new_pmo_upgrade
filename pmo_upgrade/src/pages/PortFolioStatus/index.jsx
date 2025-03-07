@@ -16,7 +16,7 @@ function PortFolioStatus() {
 
     return (
         <Box sx={{ margin: 5 }}>
-            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, marginBottom: 10 }}>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, marginBottom: 10, marginRight:150 }}>
                 Add Portfolio Status For March 2025
             </Typography>
 
@@ -28,7 +28,7 @@ function PortFolioStatus() {
                     { label: "Delivery Manager", state: deliveryManager, setState: setDeliveryManager, required: true },
                 ].map(({ label, state, setState, required }) => (
                     <Box key={label} sx={{ display: "flex", flexDirection: "column", minWidth: 200 }}>
-                        <Typography sx={{ fontWeight: 500, marginBottom: 1, textAlign: "center" }}>
+                        <Typography sx={{ fontWeight: 500, marginBottom: 1, textAlign: "center", marginRight:"auto" }}>
                             {label} {required && <span style={{ color: "red" }}>*</span>}
                         </Typography>
                         <Dropdown
