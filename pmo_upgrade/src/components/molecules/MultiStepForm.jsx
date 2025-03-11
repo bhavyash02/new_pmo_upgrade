@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 
 const steps = [
     "Portfolio Details",
@@ -33,7 +33,7 @@ export default function MultipleStepForm() {
         <Box 
             sx={{ 
                 width: "100%", 
-                minHeight: "80vh",  // Push content down
+                // minHeight: "80vh",  // Push content down
                 display: "flex", 
                 flexDirection: "column"
             }}
@@ -60,12 +60,12 @@ export default function MultipleStepForm() {
                     p: 3 
                 }}
             >
-                <Button disabled={activeStep === 0} onClick={handleBack}>
+                {/* <Button disabled={activeStep === 0} onClick={handleBack}>
                     Back
                 </Button>
                 <Button variant="contained" onClick={handleNext} sx={{ ml: 1 }}>
                     {activeStep === steps.length - 1 ? "Next" : "Next"}
-                </Button>
+                </Button> */}
             </Box>
         </Box>
     );

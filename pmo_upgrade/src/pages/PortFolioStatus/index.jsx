@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Dropdown from "../../components/molecules/Dropdown";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import { Box, Typography } from "@mui/material";
+import OneProtFolioDetails  from "./OneProtFolioDetails";
 
 function PortFolioStatus() {
     const [buHead, setBuHead] = useState("");
@@ -49,6 +50,7 @@ function PortFolioStatus() {
                 }}
             >
                 <MultipleStepForm />
+                <OneProtFolioDetails />
             </Box>
         </Box>
     );
