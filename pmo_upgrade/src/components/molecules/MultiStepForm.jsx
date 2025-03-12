@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -14,20 +14,19 @@ const steps = [
     "Finance"
 ];
 
-export default function MultipleStepForm() {
+export default function MultipleStepForm({handleSteps}) {
     const [activeStep, setActiveStep] = useState(0);
 
-    const handleNext = () => {
-        if (activeStep < steps.length - 1) {
+    useEffect(() => {
+        if (activeStep < steps.length - 1 && handleSteps.step === 'next') {
             setActiveStep((prevStep) => prevStep + 1);
         }
-    };
 
-    const handleBack = () => {
-        if (activeStep > 0) {
+        if (activeStep > 0 && handleSteps.step === 'prevOne') {
             setActiveStep((prevStep) => prevStep - 1);
         }
-    };
+    }, [handleSteps])
+    
 
     return (
         <Box 

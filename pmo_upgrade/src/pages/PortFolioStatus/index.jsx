@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "../../components/molecules/Dropdown";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import { Box, Typography } from "@mui/material";
@@ -9,7 +9,18 @@ function PortFolioStatus() {
     const [engagementDirector, setEngagementDirector] = useState("");
     const [deliveryDirector, setDeliveryDirector] = useState("");
     const [deliveryManager, setDeliveryManager] = useState("");
+    const [handleSteps, setDataFromChild] = useState("");
 
+
+    function steps(data) {
+        setDataFromChild(data);
+      }
+
+      useEffect(() => {
+        console.log(handleSteps, 'handleSteps')
+      }, [handleSteps])
+      
+      
     const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
     // Check if both required fields are selected
@@ -34,7 +45,7 @@ function PortFolioStatus() {
                         </Typography>
                         <Dropdown
                             input={dropdowns}
-                            handleOnSelect={(event, newValue) => setState(newValue)}
+                            handleOnSelect={(event, newValue) => {setState(newValue); console.log(newValue)}}
                             selectedValues={state}
                         />
                     </Box>
@@ -49,8 +60,8 @@ function PortFolioStatus() {
                     opacity: isStepFormEnabled ? 1 : 0.5, // Reduce visibility
                 }}
             >
-                <MultipleStepForm />
-                <OneProtFolioDetails />
+                <MultipleStepForm handleSteps={handleSteps} />
+                <OneProtFolioDetails nextStep={steps} />
             </Box>
         </Box>
     );

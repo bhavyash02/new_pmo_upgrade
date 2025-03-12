@@ -1,27 +1,65 @@
 import React, { useState } from "react";
 import { Dropdown } from "../../components/molecules";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import NumberStepper from "../../components/molecules/NumberStepper";
 
-export default function OneProtFolioDetails() {
-
-
+export default function OneProtFolioDetails({nextStep}) {
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+  const [protfolioStatus, setProtfolioStatus] = useState("");
+
+  // const [inFlight, setInFlight] = useState("");
+  // const [projectsOnTrack, setProjectsOnTrack] = useState("");
+  // const [newProjects, setNewProjects] = useState("");
+  // const [highRisk, setHighRisk] = useState({});
+  // const [rampDown, setRampDown] = useState("");
+  // const [churn, setChurn] = useState("");
+
+  // console.log(inFlight, 'inFlight')
+  // this.props.onActiveNext(false);
+
+  const handleNext = () => {
+    if(!protfolioStatus) {
+      alert('1')
+    } else { 
+      alert('2')
+      handleClick();
+    }
+    
+  }
+
+  function handleClick() {
+    nextStep({value: true, step: 'next'});
+  }
   return (
     <>
-    {/* <form onSubmit= {e => contactSubmit(e)}> */}
       <Box sx={{ margin: 3, display: "flex", flex: 1 }}>
-        <Dropdown placeholder="Protfolio Status" />
-        <NumberStepper placeholder="In Flight (EE)" />
-        <NumberStepper placeholder="Projects on Track" />
+        <Dropdown
+          input={dropdowns}
+          placeholder="Protfolio Status"
+          selectedValues={protfolioStatus}
+          handleOnSelect={(event, newValue) => {
+            setProtfolioStatus(newValue);
+            console.log(newValue, "123");
+          }}
+        />
+        <NumberStepper
+          placeholder="In Flight (EE)"
+        />
+        <NumberStepper
+          placeholder="Projects on Track"
+        />
       </Box>
-      <Box sx={{ margin: 5, display: "flex", flexWrap: 1 }}>
-        <NumberStepper placeholder="New Projects" />
-        <NumberStepper placeholder="Projects at High Risk" />
+      <Box sx={{ margin: 3, display: "flex", flexWrap: 1 }}>
+        <NumberStepper
+          placeholder="New Projects"
+        />
+        <NumberStepper
+          placeholder="Projects at High Risk"
+        />
         <NumberStepper placeholder="Ramp Down" />
       </Box>
-      <Box sx={{ margin: 5, display: "flex", flexWrap: 1 }}>
+      <Box sx={{ margin: 3, display: "flex", flexWrap: 1 }}>
         <NumberStepper placeholder="Churn" />
       </Box>
       <Box
@@ -36,13 +74,10 @@ export default function OneProtFolioDetails() {
           {/* disabled={activeStep === 0} onClick={handleBack} */}
           Back
         </Button>
-        <Button variant="contained" sx={{ ml: 1 }}>
-          {/* onClick={handleNext} */}
-          {/* {activeStep === steps.length - 1 ? "Next" : "Next"} */}
+        <Button variant="contained" sx={{ ml: 1 }} type="submit" onClick={handleNext}>
           Next
         </Button>
       </Box>
-      {/* </form> */}
-      </>
+     </>
   );
 }
