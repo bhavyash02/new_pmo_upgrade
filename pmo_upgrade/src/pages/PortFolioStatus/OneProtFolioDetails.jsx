@@ -36,7 +36,7 @@ export default function OneProtFolioDetails({nextStep}) {
       <Box sx={{ margin: 3, display: "flex", flex: 1 }}>
         <Dropdown
           input={dropdowns}
-          placeholder="Protfolio Status"
+          placeholder="Protfolio Status*"
           selectedValues={protfolioStatus}
           handleOnSelect={(event, newValue) => {
             setProtfolioStatus(newValue);
