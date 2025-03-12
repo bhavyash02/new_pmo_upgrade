@@ -7,12 +7,20 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
         const newValue = event.target.value;
         setValue(newValue ? Math.max(min, Math.min(max, Number(newValue))) : '');
     };
-
     return (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{display: "flex",
+            // flex: 1,
+            flexWrap: "wrap",
+            alignItems: "center",
+            maxHeight: 60,
+            maxWidth: "320px",
+            textAlign: "left" }}>
+        <Box>
             <Typography variant="subtitle1" sx={{ fontSize: 14 }} gutterBottom>
               {placeholder}
             </Typography>
+        </Box>
+
             <TextField
                 type="number"
                 value={value}
