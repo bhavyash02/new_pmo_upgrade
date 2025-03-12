@@ -20,9 +20,9 @@ export default function OneProtFolioDetails({nextStep}) {
 
   const handleNext = () => {
     if(!protfolioStatus) {
-      alert('1')
+      // alert('1')
     } else { 
-      alert('2')
+      // alert('2')
       handleClick();
     }
     
