@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Dropdown from "../../components/molecules/Dropdown";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import { Box, Typography } from "@mui/material";
-import OneProtFolioDetails  from "./OneProtFolioDetails";
 
 function PortFolioStatus() {
     const [buHead, setBuHead] = useState("");
@@ -10,17 +9,19 @@ function PortFolioStatus() {
     const [deliveryDirector, setDeliveryDirector] = useState("");
     const [deliveryManager, setDeliveryManager] = useState("");
     const [handleSteps, setDataFromChild] = useState("");
+    const [protfolioStatus, setProtfolioStatus] = useState(null);
+
 
 
     function steps(data) {
         setDataFromChild(data);
-      }
+    }
 
-      useEffect(() => {
+    useEffect(() => {
         console.log(handleSteps, 'handleSteps')
-      }, [handleSteps])
-      
-      
+    }, [handleSteps])
+
+
     const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
     // Check if both required fields are selected
@@ -28,7 +29,7 @@ function PortFolioStatus() {
 
     return (
         <Box sx={{ margin: 5 }}>
-            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, marginBottom: 10, marginRight:150 }}>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 600, marginBottom: 10, marginRight: 150 }}>
                 Add Portfolio Status For March 2025
             </Typography>
 
@@ -40,12 +41,12 @@ function PortFolioStatus() {
                     { label: "Delivery Manager", state: deliveryManager, setState: setDeliveryManager, required: true },
                 ].map(({ label, state, setState, required }) => (
                     <Box key={label} sx={{ display: "flex", flexDirection: "column", minWidth: 200 }}>
-                        <Typography sx={{ fontWeight: 500, marginBottom: 1, textAlign: "center", marginRight:"auto" }}>
+                        <Typography sx={{ fontWeight: 500, marginBottom: 1, textAlign: "center", marginRight: "auto" }}>
                             {label} {required && <span style={{ color: "red" }}>*</span>}
                         </Typography>
                         <Dropdown
                             input={dropdowns}
-                            handleOnSelect={(event, newValue) => {setState(newValue); console.log(newValue)}}
+                            handleOnSelect={(event, newValue) => { setState(newValue); console.log(newValue) }}
                             selectedValues={state}
                         />
                     </Box>
@@ -60,8 +61,8 @@ function PortFolioStatus() {
                     opacity: isStepFormEnabled ? 1 : 0.5, // Reduce visibility
                 }}
             >
-                <MultipleStepForm handleSteps={handleSteps} />
-                <OneProtFolioDetails nextStep={steps} />
+                <MultipleStepForm setProtfolioStatus={setProtfolioStatus} protfolioStatus = {protfolioStatus}/>
+                {/* <OneProtFolioDetails nextStep={steps} /> */}
             </Box>
         </Box>
     );

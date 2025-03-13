@@ -1,70 +1,85 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
+import { Step, Button } from "@mui/material";
 import StepLabel from "@mui/material/StepLabel";
-// import Button from "@mui/material/Button";
+import OneProtFolioDetails from "../../pages/PortFolioStatus/OneProtFolioDetails";
+import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
 
-const steps = [
+const stepLabels = [
     "Portfolio Details",
-    "Program",
+    "Program Details",
     "Program Risk",
     "Resources",
     "Customer",
-    "Finance"
+    "Finance",
 ];
 
-export default function MultipleStepForm({handleSteps}) {
+export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus }) {
     const [activeStep, setActiveStep] = useState(0);
+    //     if (handleSteps?.step === "next" && activeStep < stepLabels.length - 1) {
+    //       setActiveStep((prevStep) => prevStep + 1);
+    //     }
+    //     if (handleSteps?.step === "prevOne" && activeStep > 0) {
+    //       setActiveStep((prevStep) => prevStep - 1);
+    //     }
+    //   }, [handleSteps]);
 
-    useEffect(() => {
-        if (activeStep < steps.length - 1 && handleSteps.step === 'next') {
+    const handleNext = () => {
+        if (activeStep < stepLabels.length - 1) {
             setActiveStep((prevStep) => prevStep + 1);
         }
+    };
 
-        if (activeStep > 0 && handleSteps.step === 'prevOne') {
+    const handleBack = () => {
+        if (activeStep > 0) {
             setActiveStep((prevStep) => prevStep - 1);
         }
-    }, [handleSteps])
-    
+    };
+
+    const renderStepContent = () => {
+        switch (activeStep) {
+            case 0:
+                return <OneProtFolioDetails protfolioStatus={protfolioStatus} setProtfolioStatus={setProtfolioStatus} />;
+            case 1:
+                return <ProgramPage />;
+            case 2:
+                return <h3>Program Risk</h3>;
+            case 3:
+                return <h3>Resources</h3>;
+            case 4:
+                return <h3>Customer</h3>;
+            case 5:
+                return <h3>Finance</h3>;
+            default:
+                return <h3>Unknown Step</h3>;
+        }
+    };
 
     return (
-        <Box 
-            sx={{ 
-                width: "100%", 
-                // minHeight: "80vh",  // Push content down
-                display: "flex", 
-                flexDirection: "column"
-            }}
-        >
+        <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
             <Stepper activeStep={activeStep} alternativeLabel>
-                {steps.map((label, index) => (
+                {stepLabels.map((label, index) => (
                     <Step key={index}>
                         <StepLabel>{label}</StepLabel>
                     </Step>
                 ))}
             </Stepper>
 
-            {/* Display content based on step */}
             <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1 }}>
-                <h3>{steps[activeStep]}</h3>
+                {renderStepContent()}
             </Box>
 
-            {/* Navigation Buttons at the Bottom Right */}
-            <Box 
-                sx={{ 
-                    display: "flex", 
-                    justifyContent: "flex-end", 
-                    mt: "auto",  // Push to bottom
-                    p: 3 
-                }}
-            >
-                {/* <Button disabled={activeStep === 0} onClick={handleBack}>
+            <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+                <Button onClick={handleBack} disabled={activeStep === 0} variant="outlined">
                     Back
                 </Button>
-                <Button variant="contained" onClick={handleNext} sx={{ ml: 1 }}>
-                    {activeStep === steps.length - 1 ? "Next" : "Next"}
-                </Button> */}
+                {activeStep === 0 && protfolioStatus || activeStep !== 0 ?
+
+                    <Button onClick={handleNext} disabled={activeStep === stepLabels.length - 1} variant="contained">
+
+                        {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
+                    </Button> : ""}
             </Box>
         </Box>
     );

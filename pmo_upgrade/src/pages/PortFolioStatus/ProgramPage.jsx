@@ -103,13 +103,6 @@ export default function ProgramPage({ nextStep }) {
                     p: 3,
                 }}
             >
-                <Button>
-                    {/* disabled={activeStep === 0} onClick={handleBack} */}
-                    Back
-                </Button>
-                <Button variant="contained" sx={{ ml: 1 }} type="submit" onClick={handleNext}>
-                    Next
-                </Button>
             </Box>
         </Box>
     );
