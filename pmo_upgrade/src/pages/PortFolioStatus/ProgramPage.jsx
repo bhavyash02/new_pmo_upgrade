@@ -1,32 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Box, Stack, TextField, Typography, InputAdornment,
-    FormControlLabel, RadioGroup, Radio, Button
+    FormControlLabel, RadioGroup, Radio, FormControl, FormHelperText
 } from "@mui/material";
 import NumberStepper from "../../components/molecules/NumberStepper";
 
-export default function ProgramPage({ nextStep }) {
-    const [valueBoardEvaluation, setValueBoardEvaluation] = useState("");
-    const handleNext = () => {
-        // if(!protfolioStatus) {
-        //   // alert('1')
-        // } else { 
-        //   // alert('2')
-        handleClick();
-        // }
-
-    }
-
-    function handleClick() {
-        nextStep({ value: true, step: 'next' });
-    }
+export default function ProgramPage({ newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation }) {
+    const [avbPvbError, setAvbPvbError] = useState(false);
+    const [valueAddsError, setValueAddsError] = useState(false)
+    const [genAiError, setGenAiError] = useState(false)
 
     return (
         <Box sx={{ width: "100%", paddingX: 2 }}>
             {/* First Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
-                <NumberStepper placeholder="New Prospects" />
-                <NumberStepper placeholder="New Initiatives" />
+                <NumberStepper placeholder="New Prospects" counter={newProspects} setCounter={setNewProspects} />
+                <NumberStepper placeholder="New Initiatives" counter={newInitiatives} setCounter={setNewInitiatives} />
 
                 {/* Value Adds Delivered */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
@@ -47,14 +36,26 @@ export default function ProgramPage({ nextStep }) {
                     <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto" }}>
                         Value Adds (Revenue)<span style={{ color: "red" }}>*</span>
                     </Typography>
-                    <TextField
-                        sx={{ width: "350px" }}
-                        variant="outlined"
-                        placeholder="Enter Amount"
-                        InputProps={{
-                            startAdornment: <InputAdornment position="start">$</InputAdornment>
-                        }}
-                    />
+                    <FormControl sx={{ width: "350px" }} error={valueAddsError}>
+                        <TextField
+                            sx={{ width: "350px" }}
+                            variant="outlined"
+                            placeholder="Enter Amount"
+                            onChange={(e) => {
+                                setValueAdds(e.target.value)
+                                setValueAddsError(false)
+                            }}
+                            InputProps={{
+                                startAdornment: <InputAdornment position="start">$</InputAdornment>
+                            }}
+                            onFocus={() => {
+                                if (!valueAdds) {
+                                    setValueAddsError(true); // Show error when field is empty
+                                }
+                            }}
+                        />
+                        {valueAddsError && <FormHelperText>Please fill this field as its mandatory</FormHelperText>}
+                    </FormControl>
                 </Box>
 
                 {/* Value Board Evaluation - Fixed Alignment */}
@@ -72,29 +73,54 @@ export default function ProgramPage({ nextStep }) {
                     </RadioGroup>
                 </Box>
 
-                {/* AVB/PVB Details - Right Aligned */}
+                {/* AVB/PVB Details with Validation */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto" }}>
                         AVB/PVB Details<span style={{ color: "red" }}>*</span>
                     </Typography>
-                    <TextField
-                        sx={{ width: "350px" }}
-                        variant="outlined"
-                        placeholder="Enter Amount"
-                    />
+                    <FormControl sx={{ width: "350px" }} error={avbPvbError}>
+                        <TextField
+                            variant="outlined"
+                            placeholder="Enter Amount"
+                            onChange={(e) => {
+                                setAvbPvbDetails(e.target.value);
+                                setAvbPvbError(false); // Remove error when user starts typing
+                            }}
+                            onFocus={() => {
+                                if (!avbPvbDetails) {
+                                    setAvbPvbError(true); // Show error when field is empty
+                                }
+                            }}
+                        />
+                        {avbPvbError && <FormHelperText>Please fill this field as its mandatory</FormHelperText>}
+                    </FormControl>
                 </Box>
             </Stack>
+
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
                     <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
-                        GenAI/New Technology Initiatives
+                        GenAI/New Technology Initiatives<span style={{ color: "red" }}>*</span>
                     </Typography>
-                    <Box sx={{ display: "flex", gap: 2 }}>
-                        <TextField variant="outlined" sx={{ width: "100px" }} />
-                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px" }} />
-                    </Box>
+                    <FormControl sx={{ width: "350px" }} error={genAiError}>
+                        <Box sx={{ display: "flex", gap: 2 }}>
+                            <TextField variant="outlined" sx={{ width: "100px" }} />
+                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px" }} onChange={(e) => {
+                                setGenAITech(e.target.value)
+                                setGenAiError(false)
+                            }}
+                                onFocus={() => {
+                                    if (!genAITech) {
+                                        setGenAiError(true); // Show error when field is empty
+                                    }
+                                }} />
+                        </Box>
+                        {genAiError && <FormHelperText>Please fill this field as its mandatory</FormHelperText>}
+                    </FormControl>
+
                 </Box>
             </Stack>
+
             <Box
                 sx={{
                     display: "flex",

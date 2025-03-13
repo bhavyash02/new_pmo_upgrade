@@ -10,12 +10,12 @@ function PortFolioStatus() {
     const [deliveryManager, setDeliveryManager] = useState("");
     const [handleSteps, setDataFromChild] = useState("");
     const [protfolioStatus, setProtfolioStatus] = useState(null);
-
-
-
-    function steps(data) {
-        setDataFromChild(data);
-    }
+    const [newProspects, setNewProspects] = useState(0);
+    const [newInitiatives, setNewInitiatives] = useState(0)
+    const [avbPvbDetails, setAvbPvbDetails] = useState("")
+    const [valueAdds, setValueAdds] = useState("")
+    const [genAITech, setGenAITech] = useState("")
+    const [valueBoardEvaluation, setValueBoardEvaluation] = useState("");
 
     useEffect(() => {
         console.log(handleSteps, 'handleSteps')
@@ -61,7 +61,21 @@ function PortFolioStatus() {
                     opacity: isStepFormEnabled ? 1 : 0.5, // Reduce visibility
                 }}
             >
-                <MultipleStepForm setProtfolioStatus={setProtfolioStatus} protfolioStatus = {protfolioStatus}/>
+                <MultipleStepForm
+                    setProtfolioStatus={setProtfolioStatus}
+                    protfolioStatus={protfolioStatus}
+                    newProspects={newProspects}
+                    setNewProspects={setNewProspects}
+                    newInitiatives={newInitiatives}
+                    setNewInitiatives={setNewInitiatives}
+                    avbPvbDetails={avbPvbDetails}
+                    setAvbPvbDetails={setAvbPvbDetails}
+                    valueAdds={valueAdds}
+                    setValueAdds={setValueAdds}
+                    genAITech={genAITech}
+                    setGenAITech={setGenAITech}
+                    valueBoardEvaluation={valueBoardEvaluation}
+                    setValueBoardEvaluation={setValueBoardEvaluation} />
                 {/* <OneProtFolioDetails nextStep={steps} /> */}
             </Box>
         </Box>

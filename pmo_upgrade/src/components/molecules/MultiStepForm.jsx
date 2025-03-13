@@ -15,15 +15,8 @@ const stepLabels = [
     "Finance",
 ];
 
-export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus }) {
+export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation }) {
     const [activeStep, setActiveStep] = useState(0);
-    //     if (handleSteps?.step === "next" && activeStep < stepLabels.length - 1) {
-    //       setActiveStep((prevStep) => prevStep + 1);
-    //     }
-    //     if (handleSteps?.step === "prevOne" && activeStep > 0) {
-    //       setActiveStep((prevStep) => prevStep - 1);
-    //     }
-    //   }, [handleSteps]);
 
     const handleNext = () => {
         if (activeStep < stepLabels.length - 1) {
@@ -42,7 +35,8 @@ export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus }
             case 0:
                 return <OneProtFolioDetails protfolioStatus={protfolioStatus} setProtfolioStatus={setProtfolioStatus} />;
             case 1:
-                return <ProgramPage />;
+                return <ProgramPage newProspects={newProspects} setNewProspects={setNewProspects} newInitiatives={newInitiatives} setNewInitiatives={setNewInitiatives} avbPvbDetails={avbPvbDetails} setAvbPvbDetails={setAvbPvbDetails} valueAdds={valueAdds} setValueAdds={setValueAdds} genAITech={genAITech} setGenAITech={setGenAITech} valueBoardEvaluation={valueBoardEvaluation}
+                    setValueBoardEvaluation={setValueBoardEvaluation} />;
             case 2:
                 return <h3>Program Risk</h3>;
             case 3:
@@ -74,12 +68,14 @@ export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus }
                 <Button onClick={handleBack} disabled={activeStep === 0} variant="outlined">
                     Back
                 </Button>
-                {activeStep === 0 && protfolioStatus || activeStep !== 0 ?
 
-                    <Button onClick={handleNext} disabled={activeStep === stepLabels.length - 1} variant="contained">
+                <Button onClick={handleNext} disabled={
+                    (activeStep === 0 && !protfolioStatus) ||
+                    (activeStep === 1 && (!genAITech || !valueAdds || !avbPvbDetails || !valueBoardEvaluation))
+                } variant="contained">
 
-                        {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
-                    </Button> : ""}
+                    {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
+                </Button>
             </Box>
         </Box>
     );
