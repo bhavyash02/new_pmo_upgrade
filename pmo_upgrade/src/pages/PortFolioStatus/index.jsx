@@ -13,6 +13,9 @@ function PortFolioStatus() {
     const [inFlight, setInFlight] = useState(null);
     const [projectsOnTrack, setProjectsOnTrack] = useState(null);
     const [newProjects, setNewProjects] = useState(null);
+    const [projectAtRisk,setProjectAtRisk]= useState(null);
+    const [rampDown,setRampDown]= useState(null);
+    const [chrun,setChrun]= useState(null);
     // section Two
     const [newProspects, setNewProspects] = useState(0);
     const [newInitiatives, setNewInitiatives] = useState(0);
@@ -103,6 +106,12 @@ function PortFolioStatus() {
                     setProjectsOnTrack={setProjectsOnTrack}
                     newProjects={newProjects}
                     setNewProjects={setNewProjects}
+                    projectAtRisk={projectAtRisk}
+                    setProjectAtRisk={setProjectAtRisk}
+                    rampDown={rampDown}
+                    setRampDown={setRampDown}
+                    chrun={chrun}
+                    setChrun={setChrun}
                     newProspects={newProspects}
                     setNewProspects={setNewProspects}
                     newInitiatives={newInitiatives}

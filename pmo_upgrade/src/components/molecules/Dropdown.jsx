@@ -41,9 +41,7 @@ export function Dropdown({
             {...params}
             {...rest} // Pass react-hook-form properties here
             placeholder={placeholder}
-            onFocus={(event) =>
-              (event.target.placeholder = onFocus || placeholder)
-            }
+            onFocus={(event) => onFocus}
             onBlur={(event) =>
               (event.target.placeholder = onBlur || placeholder)
             }

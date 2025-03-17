@@ -7,12 +7,12 @@ import OneProtFolioDetails from "../../pages/PortFolioStatus/OneProtFolioDetails
 import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
 
 const stepLabels = [
-    "Portfolio Details",
-    "Program Details",
-    "Program Risk",
-    "Resources",
-    "Customer",
-    "Finance",
+  "Portfolio Details",
+  "Program Details",
+  "Program Risk",
+  "Resources",
+  "Customer",
+  "Finance",
 ];
 
 export default function MultipleStepForm({
@@ -39,22 +39,28 @@ export default function MultipleStepForm({
     valueAddsStepper,
     setValueAddsStepper, genAiStepper,
     setGenAiStepper,
+    projectAtRisk,
+    setProjectAtRisk,
+    rampDown,
+    setRampDown,
+    chrun,
+    setChrun,
     valueAddsDelivered,
-    setValueAddsDelivered
+    setValueAddsDelivered,
 }) {
-    const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
-    const handleNext = () => {
-        if (activeStep < stepLabels.length - 1) {
-            setActiveStep((prevStep) => prevStep + 1);
-        }
-    };
+  const handleNext = () => {
+    if (activeStep < stepLabels.length - 1) {
+      setActiveStep((prevStep) => prevStep + 1);
+    }
+  };
 
-    const handleBack = () => {
-        if (activeStep > 0) {
-            setActiveStep((prevStep) => prevStep - 1);
-        }
-    };
+  const handleBack = () => {
+    if (activeStep > 0) {
+      setActiveStep((prevStep) => prevStep - 1);
+    }
+  };
 
     const renderStepContent = () => {
         switch (activeStep) {
@@ -63,6 +69,18 @@ export default function MultipleStepForm({
                     <OneProtFolioDetails
                         protfolioStatus={protfolioStatus}
                         setProtfolioStatus={setProtfolioStatus}
+                        inFlight={inFlight}
+                        setInFlight={setInFlight}
+                        projectsOnTrack={projectsOnTrack}
+                        setProjectsOnTrack={setProjectsOnTrack}
+                        newProjects={newProjects}
+                        setNewProjects={setNewProjects}
+                        projectAtRisk={projectAtRisk}
+                        setProjectAtRisk={setProjectAtRisk}
+                        rampDown={rampDown}
+                        setRampDown={setRampDown}
+                        chrun={chrun}
+                        setChrun={setChrun}
                     />
                 );
             case 1:
@@ -100,44 +118,49 @@ export default function MultipleStepForm({
         }
     };
 
-    return (
-        <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
-            <Stepper activeStep={activeStep} alternativeLabel>
-                {stepLabels.map((label, index) => (
-                    <Step key={index}>
-                        <StepLabel>{label}</StepLabel>
-                    </Step>
-                ))}
-            </Stepper>
+  return (
+    <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
+      <Stepper activeStep={activeStep} alternativeLabel>
+        {stepLabels.map((label, index) => (
+          <Step key={index}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
 
-            <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1 }}>
-                {renderStepContent()}
-            </Box>
+      <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1 }}>
+        {renderStepContent()}
+      </Box>
 
-            <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-                <Button
-                    onClick={handleBack}
-                    disabled={activeStep === 0}
-                    variant="outlined"
-                >
-                    Back
-                </Button>
+      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+        <Button
+          onClick={handleBack}
+          disabled={activeStep === 0}
+          variant="outlined"
+        >
+          Back
+        </Button>
 
-                <Button
-                    onClick={handleNext}
-                    disabled={
-                        (activeStep === 0 && !protfolioStatus) ||
-                        (activeStep === 1 &&
-                            (!genAITech ||
-                                !valueAdds ||
-                                !avbPvbDetails ||
-                                !valueBoardEvaluation))
-                    }
-                    variant="contained"
-                >
-                    {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
-                </Button>
-            </Box>
-        </Box>
-    );
+        <Button
+          onClick={handleNext}
+          disabled={
+            (activeStep === 0 &&
+              (!protfolioStatus ||
+                !inFlight ||
+                !projectsOnTrack ||
+                !projectsOnTrack ||
+                !newProjects)) ||
+            (activeStep === 1 &&
+              (!genAITech ||
+                !valueAdds ||
+                !avbPvbDetails ||
+                !valueBoardEvaluation))
+          }
+          variant="contained"
+        >
+          {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
+        </Button>
+      </Box>
+    </Box>
+  );
 }
