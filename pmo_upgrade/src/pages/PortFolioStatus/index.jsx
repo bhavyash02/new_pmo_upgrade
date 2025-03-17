@@ -22,6 +22,7 @@ function PortFolioStatus() {
     const [valueBoardEvaluation, setValueBoardEvaluation] = useState("");
     const [genAiStepper, setGenAiStepper] = useState(0)
     const [valueAddsStepper, setValueAddsStepper] = useState(0);
+    const [valueAddsDelivered, setValueAddsDelivered] = useState("")
 
     const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
@@ -115,9 +116,11 @@ function PortFolioStatus() {
                     valueBoardEvaluation={valueBoardEvaluation}
                     setValueBoardEvaluation={setValueBoardEvaluation}
                     valueAddsStepper={valueAddsStepper}
-                    setValueAddsStepper={setValueAddsStepper} 
+                    setValueAddsStepper={setValueAddsStepper}
                     genAiStepper={genAiStepper}
                     setGenAiStepper={setGenAiStepper}
+                    valueAddsDelivered={valueAddsDelivered}
+                    setValueAddsDelivered={setValueAddsDelivered}
                 />
                 {/* <OneProtFolioDetails nextStep={steps} /> */}
             </Box>

@@ -38,7 +38,9 @@ export default function MultipleStepForm({
     setValueBoardEvaluation,
     valueAddsStepper,
     setValueAddsStepper, genAiStepper,
-    setGenAiStepper
+    setGenAiStepper,
+    valueAddsDelivered,
+    setValueAddsDelivered
 }) {
     const [activeStep, setActiveStep] = useState(0);
 
@@ -81,6 +83,8 @@ export default function MultipleStepForm({
                         valueAddsStepper={valueAddsStepper}
                         setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
                         setGenAiStepper={setGenAiStepper}
+                        valueAddsDelivered={valueAddsDelivered}
+                        setValueAddsDelivered={setValueAddsDelivered}
                     />
                 );
             case 2:

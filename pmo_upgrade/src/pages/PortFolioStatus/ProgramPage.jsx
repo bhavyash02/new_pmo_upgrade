@@ -5,7 +5,8 @@ import {
 } from "@mui/material";
 import NumberStepper from "../../components/molecules/NumberStepper";
 
-export default function ProgramPage({ newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation, valueAddsStepper, setValueAddsStepper, genAiStepper, setGenAiStepper }) {
+export default function ProgramPage({ newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation, valueAddsStepper, setValueAddsStepper, genAiStepper, setGenAiStepper, valueAddsDelivered,
+    setValueAddsDelivered }) {
     const [avbPvbError, setAvbPvbError] = useState(false);
     const [valueAddsError, setValueAddsError] = useState(false)
     const [genAiError, setGenAiError] = useState(false)
@@ -24,7 +25,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                     </Typography> */}
                     <Box sx={{ display: "flex", gap: 2 }}>
                         <NumberStepper placeholder="Value Adds Delivered" counter={valueAddsStepper} setCounter={setValueAddsStepper} width="150px" />
-                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "28px" }} />
+                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "28px" }} onChange={(e) => setValueAddsDelivered(e.target.value)} />
                     </Box>
                 </Box>
             </Stack>
@@ -53,6 +54,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                                     setValueAddsError(true); // Show error when field is empty
                                 }
                             }}
+                            disabled={valueAddsStepper === 0 && !valueAddsStepper}
                         />
                         {valueAddsError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
                     </FormControl>
