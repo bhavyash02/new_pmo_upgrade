@@ -9,14 +9,6 @@ export default function OneProtFolioDetails({
 }) {
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
-  // const handleNext = () => {
-  //   if (!protfolioStatus) {
-  //     alert("Please select a Portfolio Status before proceeding.");
-  //   } else {
-  //     nextStep({ step: "next" }); // Update step
-  //   }
-  // };
-
   return (
     <>
       <Box sx={{ flex: 1, width: "100%" }}>
