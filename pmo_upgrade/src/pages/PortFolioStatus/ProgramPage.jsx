@@ -104,8 +104,8 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                     </Typography> */}
                     <FormControl sx={{ width: "350px" }} error={genAiError}>
                         <Box sx={{ display: "flex", gap: 2 }}>
-                        <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="150px" />
-                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "55px"}} onChange={(e) => {
+                            <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="150px" mandatory={true} />
+                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "55px" }} onChange={(e) => {
                                 setGenAITech(e.target.value)
                                 setGenAiError(false)
                             }}
@@ -120,16 +120,6 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
 
                 </Box>
             </Stack>
-
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    mt: "auto", // Push to bottom
-                    p: 3,
-                }}
-            >
-            </Box>
         </Box>
     );
 }
