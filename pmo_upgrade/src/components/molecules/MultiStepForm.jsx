@@ -15,8 +15,31 @@ const stepLabels = [
     "Finance",
 ];
 
-export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation, valueAddsStepper,
-    setValueAddsStepper, genAiStepper, setGenAiStepper}) {
+export default function MultipleStepForm({
+    setProtfolioStatus,
+    protfolioStatus,
+    inFlight,
+    setInFlight,
+    projectsOnTrack,
+    setProjectsOnTrack,
+    newProjects,
+    setNewProjects,
+    newProspects,
+    setNewProspects,
+    newInitiatives,
+    setNewInitiatives,
+    avbPvbDetails,
+    setAvbPvbDetails,
+    valueAdds,
+    setValueAdds,
+    genAITech,
+    setGenAITech,
+    valueBoardEvaluation,
+    setValueBoardEvaluation,
+    valueAddsStepper,
+    setValueAddsStepper, genAiStepper,
+    setGenAiStepper
+}) {
     const [activeStep, setActiveStep] = useState(0);
 
     const handleNext = () => {
@@ -34,12 +57,32 @@ export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, 
     const renderStepContent = () => {
         switch (activeStep) {
             case 0:
-                return <OneProtFolioDetails protfolioStatus={protfolioStatus} setProtfolioStatus={setProtfolioStatus} />;
+                return (
+                    <OneProtFolioDetails
+                        protfolioStatus={protfolioStatus}
+                        setProtfolioStatus={setProtfolioStatus}
+                    />
+                );
             case 1:
-                return <ProgramPage newProspects={newProspects} setNewProspects={setNewProspects} newInitiatives={newInitiatives} setNewInitiatives={setNewInitiatives} avbPvbDetails={avbPvbDetails} setAvbPvbDetails={setAvbPvbDetails} valueAdds={valueAdds} setValueAdds={setValueAdds} genAITech={genAITech} setGenAITech={setGenAITech} valueBoardEvaluation={valueBoardEvaluation}
-                    setValueBoardEvaluation={setValueBoardEvaluation} valueAddsStepper={valueAddsStepper}
-                    setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
-                    setGenAiStepper={setGenAiStepper} />;
+                return (
+                    <ProgramPage
+                        newProspects={newProspects}
+                        setNewProspects={setNewProspects}
+                        newInitiatives={newInitiatives}
+                        setNewInitiatives={setNewInitiatives}
+                        avbPvbDetails={avbPvbDetails}
+                        setAvbPvbDetails={setAvbPvbDetails}
+                        valueAdds={valueAdds}
+                        setValueAdds={setValueAdds}
+                        genAITech={genAITech}
+                        setGenAITech={setGenAITech}
+                        valueBoardEvaluation={valueBoardEvaluation}
+                        setValueBoardEvaluation={setValueBoardEvaluation}
+                        valueAddsStepper={valueAddsStepper}
+                        setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
+                        setGenAiStepper={setGenAiStepper}
+                    />
+                );
             case 2:
                 return <h3>Program Risk</h3>;
             case 3:
@@ -67,16 +110,27 @@ export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, 
                 {renderStepContent()}
             </Box>
 
-            <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3, margin:10 }}>
-                <Button onClick={handleBack} disabled={activeStep === 0} variant="outlined">
+            <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+                <Button
+                    onClick={handleBack}
+                    disabled={activeStep === 0}
+                    variant="outlined"
+                >
                     Back
                 </Button>
 
-                <Button onClick={handleNext} disabled={
-                    (activeStep === 0 && !protfolioStatus) ||
-                    (activeStep === 1 && (!genAITech || !valueAdds || !avbPvbDetails || !valueBoardEvaluation))
-                } variant="contained">
-
+                <Button
+                    onClick={handleNext}
+                    disabled={
+                        (activeStep === 0 && !protfolioStatus) ||
+                        (activeStep === 1 &&
+                            (!genAITech ||
+                                !valueAdds ||
+                                !avbPvbDetails ||
+                                !valueBoardEvaluation))
+                    }
+                    variant="contained"
+                >
                     {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
                 </Button>
             </Box>
