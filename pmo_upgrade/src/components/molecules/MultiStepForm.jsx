@@ -15,7 +15,8 @@ const stepLabels = [
     "Finance",
 ];
 
-export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation }) {
+export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation, valueAddsStepper,
+    setValueAddsStepper, genAiStepper, setGenAiStepper}) {
     const [activeStep, setActiveStep] = useState(0);
 
     const handleNext = () => {
@@ -36,7 +37,9 @@ export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, 
                 return <OneProtFolioDetails protfolioStatus={protfolioStatus} setProtfolioStatus={setProtfolioStatus} />;
             case 1:
                 return <ProgramPage newProspects={newProspects} setNewProspects={setNewProspects} newInitiatives={newInitiatives} setNewInitiatives={setNewInitiatives} avbPvbDetails={avbPvbDetails} setAvbPvbDetails={setAvbPvbDetails} valueAdds={valueAdds} setValueAdds={setValueAdds} genAITech={genAITech} setGenAITech={setGenAITech} valueBoardEvaluation={valueBoardEvaluation}
-                    setValueBoardEvaluation={setValueBoardEvaluation} />;
+                    setValueBoardEvaluation={setValueBoardEvaluation} valueAddsStepper={valueAddsStepper}
+                    setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
+                    setGenAiStepper={setGenAiStepper} />;
             case 2:
                 return <h3>Program Risk</h3>;
             case 3:
@@ -64,7 +67,7 @@ export default function MultipleStepForm({ setProtfolioStatus, protfolioStatus, 
                 {renderStepContent()}
             </Box>
 
-            <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
+            <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3, margin:10 }}>
                 <Button onClick={handleBack} disabled={activeStep === 0} variant="outlined">
                     Back
                 </Button>

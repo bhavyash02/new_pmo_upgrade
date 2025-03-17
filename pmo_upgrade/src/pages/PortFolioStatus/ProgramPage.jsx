@@ -5,7 +5,7 @@ import {
 } from "@mui/material";
 import NumberStepper from "../../components/molecules/NumberStepper";
 
-export default function ProgramPage({ newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation }) {
+export default function ProgramPage({ newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation, valueAddsStepper, setValueAddsStepper, genAiStepper, setGenAiStepper }) {
     const [avbPvbError, setAvbPvbError] = useState(false);
     const [valueAddsError, setValueAddsError] = useState(false)
     const [genAiError, setGenAiError] = useState(false)
@@ -14,17 +14,17 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
         <Box sx={{ width: "100%", paddingX: 2 }}>
             {/* First Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
-                <NumberStepper placeholder="New Prospects" counter={newProspects} setCounter={setNewProspects} />
-                <NumberStepper placeholder="New Initiatives" counter={newInitiatives} setCounter={setNewInitiatives} />
+                <NumberStepper placeholder="New Prospects" counter={newProspects} setCounter={setNewProspects} width="350px" />
+                <NumberStepper placeholder="New Initiatives" counter={newInitiatives} setCounter={setNewInitiatives} width="350px" />
 
                 {/* Value Adds Delivered */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
-                    <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
+                    {/* <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
                         Value Adds Delivered
-                    </Typography>
+                    </Typography> */}
                     <Box sx={{ display: "flex", gap: 2 }}>
-                        <TextField variant="outlined" sx={{ width: "100px" }} />
-                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px" }} />
+                        <NumberStepper placeholder="Value Adds Delivered" counter={valueAddsStepper} setCounter={setValueAddsStepper} width="150px" />
+                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "28px" }} />
                     </Box>
                 </Box>
             </Stack>
@@ -48,13 +48,13 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                             InputProps={{
                                 startAdornment: <InputAdornment position="start">$</InputAdornment>
                             }}
-                            onFocus={() => {
+                            onBlur={() => {
                                 if (!valueAdds) {
                                     setValueAddsError(true); // Show error when field is empty
                                 }
                             }}
                         />
-                        {valueAddsError && <FormHelperText>Please fill this field as its mandatory</FormHelperText>}
+                        {valueAddsError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
                     </FormControl>
                 </Box>
 
@@ -86,36 +86,36 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                                 setAvbPvbDetails(e.target.value);
                                 setAvbPvbError(false); // Remove error when user starts typing
                             }}
-                            onFocus={() => {
+                            onBlur={() => {
                                 if (!avbPvbDetails) {
                                     setAvbPvbError(true); // Show error when field is empty
                                 }
                             }}
                         />
-                        {avbPvbError && <FormHelperText>Please fill this field as its mandatory</FormHelperText>}
+                        {avbPvbError && <FormHelperText>Please add AVB/PVB Details</FormHelperText>}
                     </FormControl>
                 </Box>
             </Stack>
 
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
-                    <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
+                    {/* <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
                         GenAI/New Technology Initiatives<span style={{ color: "red" }}>*</span>
-                    </Typography>
+                    </Typography> */}
                     <FormControl sx={{ width: "350px" }} error={genAiError}>
                         <Box sx={{ display: "flex", gap: 2 }}>
-                            <TextField variant="outlined" sx={{ width: "100px" }} />
-                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px" }} onChange={(e) => {
+                        <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="150px" />
+                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "55px"}} onChange={(e) => {
                                 setGenAITech(e.target.value)
                                 setGenAiError(false)
                             }}
-                                onFocus={() => {
+                                onBlur={() => {
                                     if (!genAITech) {
                                         setGenAiError(true); // Show error when field is empty
                                     }
                                 }} />
                         </Box>
-                        {genAiError && <FormHelperText>Please fill this field as its mandatory</FormHelperText>}
+                        {genAiError && <FormHelperText>Please Add GenAI/New Technology Initiatives</FormHelperText>}
                     </FormControl>
 
                 </Box>

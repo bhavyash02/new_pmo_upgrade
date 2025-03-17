@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Box, Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
-export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 100 }) {
-    console.log(value,"val")
+export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 100, width }) {
     const handleChange = (event) => {
         const newValue = event.target.value;
         setValue(newValue ? Math.max(min, Math.min(max, Number(newValue))) : '');
@@ -14,7 +13,7 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
             flexWrap: "wrap",
             alignItems: "center",
             maxHeight: 60,
-            maxWidth: "320px",
+            maxWidth: {width},
             textAlign: "left" }}>
         <Box>
             <Typography variant="subtitle1" sx={{ fontSize: 14 }} gutterBottom>
@@ -44,8 +43,8 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
     );
 }
 
-export default function NumberStepper({placeholder, counter, setCounter}) {
+export default function NumberStepper({placeholder, counter, setCounter, width}) {
     // const [counter, setCounter] = React.useState(0);
 
-    return <NumberInput value={counter} setValue={setCounter} placeholder={placeholder} />;
+    return <NumberInput value={counter} setValue={setCounter} placeholder={placeholder} width={width} />;
 }

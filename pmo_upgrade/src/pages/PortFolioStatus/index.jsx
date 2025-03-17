@@ -14,7 +14,9 @@ function PortFolioStatus() {
     const [newInitiatives, setNewInitiatives] = useState(0)
     const [avbPvbDetails, setAvbPvbDetails] = useState("")
     const [valueAdds, setValueAdds] = useState("")
+    const [valueAddsStepper, setValueAddsStepper] = useState(0);
     const [genAITech, setGenAITech] = useState("")
+    const [genAiStepper, setGenAiStepper] = useState(0)
     const [valueBoardEvaluation, setValueBoardEvaluation] = useState("");
 
     useEffect(() => {
@@ -75,7 +77,11 @@ function PortFolioStatus() {
                     genAITech={genAITech}
                     setGenAITech={setGenAITech}
                     valueBoardEvaluation={valueBoardEvaluation}
-                    setValueBoardEvaluation={setValueBoardEvaluation} />
+                    setValueBoardEvaluation={setValueBoardEvaluation}
+                    valueAddsStepper={valueAddsStepper}
+                    setValueAddsStepper={setValueAddsStepper}
+                    genAiStepper={genAiStepper}
+                    setGenAiStepper={setGenAiStepper} />
                 {/* <OneProtFolioDetails nextStep={steps} /> */}
             </Box>
         </Box>
