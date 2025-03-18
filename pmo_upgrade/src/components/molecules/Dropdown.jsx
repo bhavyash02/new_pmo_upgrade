@@ -7,6 +7,7 @@ export function Dropdown({
   input = [], // Ensure default to an empty array if `input` is undefined
   handleOnSelect,
   selectedValues = [],
+  mandatory,
   placeholder = "", // Default placeholder
   onFocus,
   onBlur,
@@ -27,7 +28,7 @@ export function Dropdown({
     >
         <Box>
       <Typography variant="subtitle1" sx={{ fontSize: 14 }} gutterBottom>
-        {placeholder}
+        {placeholder}{mandatory && <span style={{ color: "red" }}>*</span>}
       </Typography></Box>
       <Autocomplete
         options={input}

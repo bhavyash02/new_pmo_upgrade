@@ -46,11 +46,12 @@ export default function OneProtFolioDetails({
           alignItems="flex-start"
           padding="20px"
         >
-          <FormControl sx={{ width: "350px" }} error={portfolioStatusError}>
+          <FormControl sx={{ width: "320px" }} error={portfolioStatusError}>
             <Dropdown
               input={dropdowns}
-              placeholder="Portfolio Status*"
+              placeholder="Portfolio Status"
               selectedValues={protfolioStatus}
+              mandatory={true}
               handleOnSelect={(event, newValue) => {
                 setProtfolioStatus(newValue);
                 setPortfolioStatusError(false);
