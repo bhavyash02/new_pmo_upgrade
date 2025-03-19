@@ -5,6 +5,7 @@ import { Step, Button } from "@mui/material";
 import StepLabel from "@mui/material/StepLabel";
 import OneProtFolioDetails from "../../pages/PortFolioStatus/OneProtFolioDetails";
 import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
+import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
 
 const stepLabels = [
   "Portfolio Details",
@@ -16,37 +17,47 @@ const stepLabels = [
 ];
 
 export default function MultipleStepForm({
-    setProtfolioStatus,
-    protfolioStatus,
-    inFlight,
-    setInFlight,
-    projectsOnTrack,
-    setProjectsOnTrack,
-    newProjects,
-    setNewProjects,
-    newProspects,
-    setNewProspects,
-    newInitiatives,
-    setNewInitiatives,
-    avbPvbDetails,
-    setAvbPvbDetails,
-    valueAdds,
-    setValueAdds,
-    genAITech,
-    setGenAITech,
-    valueBoardEvaluation,
-    setValueBoardEvaluation,
-    valueAddsStepper,
-    setValueAddsStepper, genAiStepper,
-    setGenAiStepper,
-    projectAtRisk,
-    setProjectAtRisk,
-    rampDown,
-    setRampDown,
-    chrun,
-    setChrun,
-    valueAddsDelivered,
-    setValueAddsDelivered,
+  setProtfolioStatus,
+  protfolioStatus,
+  inFlight,
+  setInFlight,
+  projectsOnTrack,
+  setProjectsOnTrack,
+  newProjects,
+  setNewProjects,
+  newProspects,
+  setNewProspects,
+  newInitiatives,
+  setNewInitiatives,
+  avbPvbDetails,
+  setAvbPvbDetails,
+  valueAdds,
+  setValueAdds,
+  genAITech,
+  setGenAITech,
+  valueBoardEvaluation,
+  setValueBoardEvaluation,
+  valueAddsStepper,
+  setValueAddsStepper, genAiStepper,
+  setGenAiStepper,
+  projectAtRisk,
+  setProjectAtRisk,
+  rampDown,
+  setRampDown,
+  chrun,
+  setChrun,
+  valueAddsDelivered,
+  setValueAddsDelivered,
+  closure, 
+  setClosure, 
+  costImpact,
+  setCostImpact, 
+  writeOff, 
+  setWriteOff, 
+  unbilledResources, 
+  setUnbilledResources, 
+  growthImpact, 
+  setGrowthImpact
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -62,61 +73,71 @@ export default function MultipleStepForm({
     }
   };
 
-    const renderStepContent = () => {
-        switch (activeStep) {
-            case 0:
-                return (
-                    <OneProtFolioDetails
-                        protfolioStatus={protfolioStatus}
-                        setProtfolioStatus={setProtfolioStatus}
-                        inFlight={inFlight}
-                        setInFlight={setInFlight}
-                        projectsOnTrack={projectsOnTrack}
-                        setProjectsOnTrack={setProjectsOnTrack}
-                        newProjects={newProjects}
-                        setNewProjects={setNewProjects}
-                        projectAtRisk={projectAtRisk}
-                        setProjectAtRisk={setProjectAtRisk}
-                        rampDown={rampDown}
-                        setRampDown={setRampDown}
-                        chrun={chrun}
-                        setChrun={setChrun}
-                    />
-                );
-            case 1:
-                return (
-                    <ProgramPage
-                        newProspects={newProspects}
-                        setNewProspects={setNewProspects}
-                        newInitiatives={newInitiatives}
-                        setNewInitiatives={setNewInitiatives}
-                        avbPvbDetails={avbPvbDetails}
-                        setAvbPvbDetails={setAvbPvbDetails}
-                        valueAdds={valueAdds}
-                        setValueAdds={setValueAdds}
-                        genAITech={genAITech}
-                        setGenAITech={setGenAITech}
-                        valueBoardEvaluation={valueBoardEvaluation}
-                        setValueBoardEvaluation={setValueBoardEvaluation}
-                        valueAddsStepper={valueAddsStepper}
-                        setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
-                        setGenAiStepper={setGenAiStepper}
-                        valueAddsDelivered={valueAddsDelivered}
-                        setValueAddsDelivered={setValueAddsDelivered}
-                    />
-                );
-            case 2:
-                return <h3>Program Risk</h3>;
-            case 3:
-                return <h3>Resources</h3>;
-            case 4:
-                return <h3>Customer</h3>;
-            case 5:
-                return <h3>Finance</h3>;
-            default:
-                return <h3>Unknown Step</h3>;
-        }
-    };
+  const renderStepContent = () => {
+    switch (activeStep) {
+      case 0:
+        return (
+          <OneProtFolioDetails
+            protfolioStatus={protfolioStatus}
+            setProtfolioStatus={setProtfolioStatus}
+            inFlight={inFlight}
+            setInFlight={setInFlight}
+            projectsOnTrack={projectsOnTrack}
+            setProjectsOnTrack={setProjectsOnTrack}
+            newProjects={newProjects}
+            setNewProjects={setNewProjects}
+            projectAtRisk={projectAtRisk}
+            setProjectAtRisk={setProjectAtRisk}
+            rampDown={rampDown}
+            setRampDown={setRampDown}
+            chrun={chrun}
+            setChrun={setChrun}
+          />
+        );
+      case 1:
+        return (
+          <ProgramPage
+            newProspects={newProspects}
+            setNewProspects={setNewProspects}
+            newInitiatives={newInitiatives}
+            setNewInitiatives={setNewInitiatives}
+            avbPvbDetails={avbPvbDetails}
+            setAvbPvbDetails={setAvbPvbDetails}
+            valueAdds={valueAdds}
+            setValueAdds={setValueAdds}
+            genAITech={genAITech}
+            setGenAITech={setGenAITech}
+            valueBoardEvaluation={valueBoardEvaluation}
+            setValueBoardEvaluation={setValueBoardEvaluation}
+            valueAddsStepper={valueAddsStepper}
+            setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
+            setGenAiStepper={setGenAiStepper}
+            valueAddsDelivered={valueAddsDelivered}
+            setValueAddsDelivered={setValueAddsDelivered}
+          />
+        );
+      case 2:
+        return <h3><ProgramRiskPage
+          closure={closure}
+          setClosure={setClosure}
+          costImpact={costImpact}
+          setCostImpact={setCostImpact}
+          writeOff={writeOff}
+          setWriteOff={setWriteOff}
+          unbilledResources={unbilledResources}
+          setUnbilledResources={setUnbilledResources}
+          growthImpact={growthImpact}
+          setGrowthImpact={setGrowthImpact} /></h3>;
+      case 3:
+        return <h3>Resources</h3>;
+      case 4:
+        return <h3>Customer</h3>;
+      case 5:
+        return <h3>Finance</h3>;
+      default:
+        return <h3>Unknown Step</h3>;
+    }
+  };
 
   return (
     <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
