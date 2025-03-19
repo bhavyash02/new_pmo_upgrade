@@ -8,7 +8,6 @@ import NumberStepper from "../../components/molecules/NumberStepper";
 export default function ProgramPage({ newProspects, setNewProspects, newInitiatives, setNewInitiatives, avbPvbDetails, setAvbPvbDetails, valueAdds, setValueAdds, genAITech, setGenAITech, valueBoardEvaluation, setValueBoardEvaluation, valueAddsStepper, setValueAddsStepper, genAiStepper, setGenAiStepper, valueAddsDelivered,
     setValueAddsDelivered }) {
     const [avbPvbError, setAvbPvbError] = useState(false);
-    const [valueAddsError, setValueAddsError] = useState(false)
     const [genAiError, setGenAiError] = useState(false)
 
     return (
@@ -34,30 +33,8 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" paddingX="20px">
                 {/* Value Adds Revenue */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto" }}>
-                        Value Adds (Revenue)<span style={{ color: "red" }}>*</span>
-                    </Typography>
-                    <FormControl sx={{ width: "350px" }} error={valueAddsError}>
-                        <TextField
-                            sx={{ width: "350px" }}
-                            variant="outlined"
-                            placeholder="Enter Amount"
-                            onChange={(e) => {
-                                setValueAdds(e.target.value)
-                                setValueAddsError(false)
-                            }}
-                            InputProps={{
-                                startAdornment: <InputAdornment position="start">$</InputAdornment>
-                            }}
-                            onBlur={() => {
-                                if (!valueAdds) {
-                                    setValueAddsError(true); // Show error when field is empty
-                                }
-                            }}
-                            disabled={valueAddsStepper === 0 && !valueAddsStepper}
-                        />
-                        {valueAddsError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
-                    </FormControl>
+
+                    <NumberStepper placeholder=" Value Adds (Revenue)" counter={valueAdds} setCounter={setValueAdds} width="350px" mandatory={true} dollarSymbol={true} disabled={!valueAddsStepper ? true : false}></NumberStepper>
                 </Box>
 
                 {/* Value Board Evaluation - Fixed Alignment */}
@@ -107,7 +84,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                     <FormControl sx={{ width: "350px" }} error={genAiError}>
                         <Box sx={{ display: "flex", gap: 2 }}>
                             <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="150px" mandatory={true} />
-                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "250px", marginTop: "55px" }} onChange={(e) => {
+                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "150px", marginTop: "55px" }} onChange={(e) => {
                                 setGenAITech(e.target.value)
                                 setGenAiError(false)
                             }}

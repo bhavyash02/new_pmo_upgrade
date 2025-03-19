@@ -5,6 +5,7 @@ import { Step, Button } from "@mui/material";
 import StepLabel from "@mui/material/StepLabel";
 import OneProtFolioDetails from "../../pages/PortFolioStatus/OneProtFolioDetails";
 import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
+import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
 
 const stepLabels = [
   "Portfolio Details",
@@ -48,6 +49,16 @@ export default function MultipleStepForm({
   setChrun,
   valueAddsDelivered,
   setValueAddsDelivered,
+  closure,
+  setClosure,
+  costImpact,
+  setCostImpact,
+  writeOff,
+  setWriteOff,
+  unbilledResources,
+  setUnbilledResources,
+  growthImpact,
+  setGrowthImpact
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -108,7 +119,17 @@ export default function MultipleStepForm({
           />
         );
       case 2:
-        return <h3>Program Risk</h3>;
+        return <h3><ProgramRiskPage
+          closure={closure}
+          setClosure={setClosure}
+          costImpact={costImpact}
+          setCostImpact={setCostImpact}
+          writeOff={writeOff}
+          setWriteOff={setWriteOff}
+          unbilledResources={unbilledResources}
+          setUnbilledResources={setUnbilledResources}
+          growthImpact={growthImpact}
+          setGrowthImpact={setGrowthImpact} /></h3>;
       case 3:
         return <h3>Resources</h3>;
       case 4:
@@ -148,7 +169,11 @@ export default function MultipleStepForm({
               (!genAITech ||
                 !valueAdds ||
                 !avbPvbDetails ||
-                !valueBoardEvaluation))
+                !valueBoardEvaluation)) ||
+            (activeStep === 2 &&
+              (!costImpact ||
+                !unbilledResources ||
+                !growthImpact))
           }
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"

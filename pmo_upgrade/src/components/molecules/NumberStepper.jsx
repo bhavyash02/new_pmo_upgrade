@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, InputAdornment } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
-export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 100, width, mandatory }) {
+export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 100, width, mandatory, dollarSymbol = false, disabled = false }) {
     const handleChange = (event) => {
         const newValue = event.target.value;
         setValue(newValue ? Math.max(min, Math.min(max, Number(newValue))) : '');
@@ -40,14 +40,20 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
                         opacity: 1,
                         display: 'block'
                     },
+                    ...(disabled && { 
+                        filter: "blur(2px)", // Apply blur effect
+                        opacity: 0.9,       // Reduce opacity
+                        cursor: "not-allowed" // Change cursor style
+                    })
                 }}
+                InputProps={dollarSymbol ? { startAdornment: <InputAdornment position="start">$</InputAdornment> } : ""}
+                disabled={disabled}
             />
         </Box>
     );
 }
 
-export default function NumberStepper({ placeholder, counter, setCounter, width, mandatory }) {
-    // const [counter, setCounter] = React.useState(0);
+export default function NumberStepper({ placeholder, counter, setCounter, width, mandatory, dollarSymbol, disabled }) {
 
-    return <NumberInput value={counter} setValue={setCounter} placeholder={placeholder} width={width} mandatory={mandatory} />;
+    return <NumberInput value={counter} setValue={setCounter} placeholder={placeholder} width={width} mandatory={mandatory} dollarSymbol={dollarSymbol} disabled={disabled} />;
 }

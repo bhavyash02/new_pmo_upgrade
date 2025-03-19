@@ -4,28 +4,33 @@ import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import { Box, Typography } from "@mui/material";
 
 function PortFolioStatus() {
-  const [buHead, setBuHead] = useState("");
-  const [engagementDirector, setEngagementDirector] = useState("");
-  const [deliveryDirector, setDeliveryDirector] = useState("");
-  const [deliveryManager, setDeliveryManager] = useState("");
-  // section One
-  const [protfolioStatus, setProtfolioStatus] = useState(null);
-  const [inFlight, setInFlight] = useState(null);
-  const [projectsOnTrack, setProjectsOnTrack] = useState(null);
-  const [newProjects, setNewProjects] = useState(null);
-  const [projectAtRisk, setProjectAtRisk] = useState(null);
-  const [rampDown, setRampDown] = useState(null);
-  const [chrun, setChrun] = useState(null);
-  // section Two
-  const [newProspects, setNewProspects] = useState(0);
-  const [newInitiatives, setNewInitiatives] = useState(0);
-  const [avbPvbDetails, setAvbPvbDetails] = useState("");
-  const [valueAdds, setValueAdds] = useState("");
-  const [genAITech, setGenAITech] = useState("");
-  const [valueBoardEvaluation, setValueBoardEvaluation] = useState("");
-  const [genAiStepper, setGenAiStepper] = useState(0);
-  const [valueAddsStepper, setValueAddsStepper] = useState(0);
-  const [valueAddsDelivered, setValueAddsDelivered] = useState("");
+    const [buHead, setBuHead] = useState("");
+    const [engagementDirector, setEngagementDirector] = useState("");
+    const [deliveryDirector, setDeliveryDirector] = useState("");
+    const [deliveryManager, setDeliveryManager] = useState("");
+    // section One
+    const [protfolioStatus, setProtfolioStatus] = useState(null);
+    const [inFlight, setInFlight] = useState(null);
+    const [projectsOnTrack, setProjectsOnTrack] = useState(null);
+    const [newProjects, setNewProjects] = useState(null);
+    const [projectAtRisk, setProjectAtRisk] = useState(null);
+    const [rampDown, setRampDown] = useState(null);
+    const [chrun, setChrun] = useState(null);
+    // section Two
+    const [newProspects, setNewProspects] = useState(0);
+    const [newInitiatives, setNewInitiatives] = useState(0);
+    const [avbPvbDetails, setAvbPvbDetails] = useState("");
+    const [valueAdds, setValueAdds] = useState("");
+    const [genAITech, setGenAITech] = useState("");
+    const [valueBoardEvaluation, setValueBoardEvaluation] = useState("");
+    const [genAiStepper, setGenAiStepper] = useState(0)
+    const [valueAddsStepper, setValueAddsStepper] = useState(0);
+    const [valueAddsDelivered, setValueAddsDelivered] = useState("")
+    const [closure, setClosure] = useState(0);
+    const [costImpact, setCostImpact] = useState(0);
+    const [writeOff, setWriteOff] = useState(0);
+    const [unbilledResources, setUnbilledResources] = useState(0);
+    const [growthImpact, setGrowthImpact] = useState(0);
 
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
@@ -132,6 +137,16 @@ function PortFolioStatus() {
           setGenAiStepper={setGenAiStepper}
           valueAddsDelivered={valueAddsDelivered}
           setValueAddsDelivered={setValueAddsDelivered}
+          closure={closure}
+          setClosure={setClosure}
+          costImpact={costImpact}
+          setCostImpact={setCostImpact}
+          writeOff={writeOff}
+          setWriteOff={setWriteOff}
+          unbilledResources={unbilledResources}
+          setUnbilledResources={setUnbilledResources}
+          growthImpact={growthImpact}
+          setGrowthImpact={setGrowthImpact}
         />
         {/* <OneProtFolioDetails nextStep={steps} /> */}
       </Box>
