@@ -38,7 +38,8 @@ export default function MultipleStepForm({
   valueBoardEvaluation,
   setValueBoardEvaluation,
   valueAddsStepper,
-  setValueAddsStepper, genAiStepper,
+  setValueAddsStepper,
+  genAiStepper,
   setGenAiStepper,
   projectAtRisk,
   setProjectAtRisk,
@@ -48,15 +49,15 @@ export default function MultipleStepForm({
   setChrun,
   valueAddsDelivered,
   setValueAddsDelivered,
-  closure, 
-  setClosure, 
+  closure,
+  setClosure,
   costImpact,
-  setCostImpact, 
-  writeOff, 
-  setWriteOff, 
-  unbilledResources, 
-  setUnbilledResources, 
-  growthImpact, 
+  setCostImpact,
+  writeOff,
+  setWriteOff,
+  unbilledResources,
+  setUnbilledResources,
+  growthImpact,
   setGrowthImpact
 }) {
   const [activeStep, setActiveStep] = useState(0);
@@ -110,7 +111,8 @@ export default function MultipleStepForm({
             valueBoardEvaluation={valueBoardEvaluation}
             setValueBoardEvaluation={setValueBoardEvaluation}
             valueAddsStepper={valueAddsStepper}
-            setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
+            setValueAddsStepper={setValueAddsStepper}
+            genAiStepper={genAiStepper}
             setGenAiStepper={setGenAiStepper}
             valueAddsDelivered={valueAddsDelivered}
             setValueAddsDelivered={setValueAddsDelivered}
@@ -153,15 +155,7 @@ export default function MultipleStepForm({
         {renderStepContent()}
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-        <Button
-          onClick={handleBack}
-          disabled={activeStep === 0}
-          variant="outlined"
-        >
-          Back
-        </Button>
-
+      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3 }}>
         <Button
           onClick={handleNext}
           disabled={
@@ -175,11 +169,32 @@ export default function MultipleStepForm({
               (!genAITech ||
                 !valueAdds ||
                 !avbPvbDetails ||
-                !valueBoardEvaluation))
+                !valueBoardEvaluation)) ||
+            (activeStep === 2 &&
+              (!costImpact ||
+                !unbilledResources ||
+                !growthImpact))
           }
+          sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"
         >
           {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
+        </Button>
+        <Button
+          onClick={handleBack}
+          disabled={activeStep === 0}
+          variant="outlined"
+          sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
+        >
+          Previous
+        </Button>
+        <Button
+          onClick={handleBack}
+          //   disabled={activeStep === 0}
+          variant="outlined"
+          sx={{ width: "114px", height: "40px" }}
+        >
+          Cancel
         </Button>
       </Box>
     </Box>

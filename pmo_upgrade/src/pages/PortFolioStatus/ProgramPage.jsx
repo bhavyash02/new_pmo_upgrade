@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
     Box, Stack, TextField, Typography, InputAdornment,
     FormControlLabel, RadioGroup, Radio, FormControl, FormHelperText
@@ -34,7 +34,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                 {/* Value Adds Revenue */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
 
-                    <NumberStepper placeholder=" Value Adds (Revenue)" counter={valueAdds} setCounter={setValueAdds} width="350px" mandatory={true} dollarSymbol={true} disabled={valueAddsStepper === 0 && !valueAddsStepper ? true : false}></NumberStepper>
+                    <NumberStepper placeholder=" Value Adds (Revenue)" counter={valueAdds} setCounter={setValueAdds} width="350px" mandatory={true} dollarSymbol={true} disabled={!valueAddsStepper ? true : false}></NumberStepper>
                 </Box>
 
                 {/* Value Board Evaluation - Fixed Alignment */}
