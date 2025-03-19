@@ -16,37 +16,38 @@ const stepLabels = [
 ];
 
 export default function MultipleStepForm({
-    setProtfolioStatus,
-    protfolioStatus,
-    inFlight,
-    setInFlight,
-    projectsOnTrack,
-    setProjectsOnTrack,
-    newProjects,
-    setNewProjects,
-    newProspects,
-    setNewProspects,
-    newInitiatives,
-    setNewInitiatives,
-    avbPvbDetails,
-    setAvbPvbDetails,
-    valueAdds,
-    setValueAdds,
-    genAITech,
-    setGenAITech,
-    valueBoardEvaluation,
-    setValueBoardEvaluation,
-    valueAddsStepper,
-    setValueAddsStepper, genAiStepper,
-    setGenAiStepper,
-    projectAtRisk,
-    setProjectAtRisk,
-    rampDown,
-    setRampDown,
-    chrun,
-    setChrun,
-    valueAddsDelivered,
-    setValueAddsDelivered,
+  setProtfolioStatus,
+  protfolioStatus,
+  inFlight,
+  setInFlight,
+  projectsOnTrack,
+  setProjectsOnTrack,
+  newProjects,
+  setNewProjects,
+  newProspects,
+  setNewProspects,
+  newInitiatives,
+  setNewInitiatives,
+  avbPvbDetails,
+  setAvbPvbDetails,
+  valueAdds,
+  setValueAdds,
+  genAITech,
+  setGenAITech,
+  valueBoardEvaluation,
+  setValueBoardEvaluation,
+  valueAddsStepper,
+  setValueAddsStepper,
+  genAiStepper,
+  setGenAiStepper,
+  projectAtRisk,
+  setProjectAtRisk,
+  rampDown,
+  setRampDown,
+  chrun,
+  setChrun,
+  valueAddsDelivered,
+  setValueAddsDelivered,
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -62,61 +63,62 @@ export default function MultipleStepForm({
     }
   };
 
-    const renderStepContent = () => {
-        switch (activeStep) {
-            case 0:
-                return (
-                    <OneProtFolioDetails
-                        protfolioStatus={protfolioStatus}
-                        setProtfolioStatus={setProtfolioStatus}
-                        inFlight={inFlight}
-                        setInFlight={setInFlight}
-                        projectsOnTrack={projectsOnTrack}
-                        setProjectsOnTrack={setProjectsOnTrack}
-                        newProjects={newProjects}
-                        setNewProjects={setNewProjects}
-                        projectAtRisk={projectAtRisk}
-                        setProjectAtRisk={setProjectAtRisk}
-                        rampDown={rampDown}
-                        setRampDown={setRampDown}
-                        chrun={chrun}
-                        setChrun={setChrun}
-                    />
-                );
-            case 1:
-                return (
-                    <ProgramPage
-                        newProspects={newProspects}
-                        setNewProspects={setNewProspects}
-                        newInitiatives={newInitiatives}
-                        setNewInitiatives={setNewInitiatives}
-                        avbPvbDetails={avbPvbDetails}
-                        setAvbPvbDetails={setAvbPvbDetails}
-                        valueAdds={valueAdds}
-                        setValueAdds={setValueAdds}
-                        genAITech={genAITech}
-                        setGenAITech={setGenAITech}
-                        valueBoardEvaluation={valueBoardEvaluation}
-                        setValueBoardEvaluation={setValueBoardEvaluation}
-                        valueAddsStepper={valueAddsStepper}
-                        setValueAddsStepper={setValueAddsStepper} genAiStepper={genAiStepper}
-                        setGenAiStepper={setGenAiStepper}
-                        valueAddsDelivered={valueAddsDelivered}
-                        setValueAddsDelivered={setValueAddsDelivered}
-                    />
-                );
-            case 2:
-                return <h3>Program Risk</h3>;
-            case 3:
-                return <h3>Resources</h3>;
-            case 4:
-                return <h3>Customer</h3>;
-            case 5:
-                return <h3>Finance</h3>;
-            default:
-                return <h3>Unknown Step</h3>;
-        }
-    };
+  const renderStepContent = () => {
+    switch (activeStep) {
+      case 0:
+        return (
+          <OneProtFolioDetails
+            protfolioStatus={protfolioStatus}
+            setProtfolioStatus={setProtfolioStatus}
+            inFlight={inFlight}
+            setInFlight={setInFlight}
+            projectsOnTrack={projectsOnTrack}
+            setProjectsOnTrack={setProjectsOnTrack}
+            newProjects={newProjects}
+            setNewProjects={setNewProjects}
+            projectAtRisk={projectAtRisk}
+            setProjectAtRisk={setProjectAtRisk}
+            rampDown={rampDown}
+            setRampDown={setRampDown}
+            chrun={chrun}
+            setChrun={setChrun}
+          />
+        );
+      case 1:
+        return (
+          <ProgramPage
+            newProspects={newProspects}
+            setNewProspects={setNewProspects}
+            newInitiatives={newInitiatives}
+            setNewInitiatives={setNewInitiatives}
+            avbPvbDetails={avbPvbDetails}
+            setAvbPvbDetails={setAvbPvbDetails}
+            valueAdds={valueAdds}
+            setValueAdds={setValueAdds}
+            genAITech={genAITech}
+            setGenAITech={setGenAITech}
+            valueBoardEvaluation={valueBoardEvaluation}
+            setValueBoardEvaluation={setValueBoardEvaluation}
+            valueAddsStepper={valueAddsStepper}
+            setValueAddsStepper={setValueAddsStepper}
+            genAiStepper={genAiStepper}
+            setGenAiStepper={setGenAiStepper}
+            valueAddsDelivered={valueAddsDelivered}
+            setValueAddsDelivered={setValueAddsDelivered}
+          />
+        );
+      case 2:
+        return <h3>Program Risk</h3>;
+      case 3:
+        return <h3>Resources</h3>;
+      case 4:
+        return <h3>Customer</h3>;
+      case 5:
+        return <h3>Finance</h3>;
+      default:
+        return <h3>Unknown Step</h3>;
+    }
+  };
 
   return (
     <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
@@ -132,15 +134,7 @@ export default function MultipleStepForm({
         {renderStepContent()}
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}>
-        <Button
-          onClick={handleBack}
-          disabled={activeStep === 0}
-          variant="outlined"
-        >
-          Back
-        </Button>
-
+      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3 }}>
         <Button
           onClick={handleNext}
           disabled={
@@ -156,9 +150,26 @@ export default function MultipleStepForm({
                 !avbPvbDetails ||
                 !valueBoardEvaluation))
           }
+          sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"
         >
           {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
+        </Button>
+        <Button
+          onClick={handleBack}
+          disabled={activeStep === 0}
+          variant="outlined"
+          sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
+        >
+          Previous
+        </Button>
+        <Button
+          onClick={handleBack}
+          //   disabled={activeStep === 0}
+          variant="outlined"
+          sx={{ width: "114px", height: "40px" }}
+        >
+          Cancel
         </Button>
       </Box>
     </Box>
