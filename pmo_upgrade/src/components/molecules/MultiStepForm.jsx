@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import OneProtFolioDetails from "../../pages/PortFolioStatus/OneProtFolioDetails";
 import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
 import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
+import CustomerPage from "../../pages/PortFolioStatus/CustomerPage";
 
 const stepLabels = [
   "Portfolio Details",
@@ -58,7 +59,41 @@ export default function MultipleStepForm({
   unbilledResources,
   setUnbilledResources,
   growthImpact,
-  setGrowthImpact
+  setGrowthImpact,
+  csat,
+  setCsat,
+  feedback,
+  setFeedBack,
+  escalation,
+  setEscalation,
+  escalationDescription,
+  setEscalationDescription,
+  apprecition,
+  setApprecition,
+  apprecitionDescription,
+  setApprecitionDescription,
+  critical,
+  setCritical,
+  nonCritical,
+  setNonCritical,
+  qbr,
+  setQbr,
+  capabilitiesPositioned,
+  setCapabilitiesPositioned,
+  capabilitiesDescription,
+  setCapabilitiesDescription,
+  pocsInFlight,
+  setPocsInFlight,
+  pocsPlanned,
+  setPocsPlanned,
+  hackathons,
+  setHackathons,
+  hackathonsDescribed,
+  setHackathonsDescribed,
+  crossSellOportunity,
+  setCrossSellOpportunity,
+  architechtureAdvisory,
+  setArchitechtureAdvisory
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -133,7 +168,41 @@ export default function MultipleStepForm({
       case 3:
         return <h3>Resources</h3>;
       case 4:
-        return <h3>Customer</h3>;
+        return <h3><CustomerPage
+          csat={csat}
+          setCsat={setCsat}
+          feedback={feedback}
+          setFeedBack={setFeedBack}
+          escalation={escalation}
+          setEscalation={setEscalation}
+          escalationDescription={escalationDescription}
+          setEscalationDescription={setEscalationDescription}
+          apprecition={apprecition}
+          setApprecition={setApprecition}
+          apprecitionDescription={apprecitionDescription}
+          setApprecitionDescription={setApprecitionDescription}
+          critical={critical}
+          setCritical={setCritical}
+          nonCritical={nonCritical}
+          setNonCritical={setNonCritical}
+          qbr={qbr}
+          setQbr={setQbr}
+          capabilitiesPositioned={capabilitiesPositioned}
+          setCapabilitiesPositioned={setCapabilitiesPositioned}
+          capabilitiesDescription={capabilitiesDescription}
+          setCapabilitiesDescription={setCapabilitiesDescription}
+          pocsInFlight={pocsInFlight}
+          setPocsInFlight={setPocsInFlight}
+          pocsPlanned={pocsPlanned}
+          setPocsPlanned={setPocsPlanned}
+          hackathons={hackathons}
+          setHackathons={setHackathons}
+          hackathonsDescribed={hackathonsDescribed}
+          setHackathonsDescribed={setHackathonsDescribed}
+          crossSellOportunity={crossSellOportunity}
+          setCrossSellOpportunity={setCrossSellOpportunity}
+          architechtureAdvisory={architechtureAdvisory}
+          setArchitechtureAdvisory={setArchitechtureAdvisory} /></h3>;
       case 5:
         return <h3>Finance</h3>;
       default:
@@ -173,7 +242,14 @@ export default function MultipleStepForm({
             (activeStep === 2 &&
               (!costImpact ||
                 !unbilledResources ||
-                !growthImpact))
+                !growthImpact)) ||
+            (activeStep === 4 &&
+              (!csat ||
+                !feedback ||
+                !critical ||
+                !nonCritical ||
+                !qbr
+              ))
           }
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"

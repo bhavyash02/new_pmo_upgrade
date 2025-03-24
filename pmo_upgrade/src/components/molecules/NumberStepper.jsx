@@ -18,7 +18,9 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
             textAlign: "left"
         }}>
             <Box>
-                <Typography variant="subtitle1" sx={{ fontSize: 14 }} gutterBottom>
+                <Typography variant="subtitle1" sx={{ fontSize: 14, whiteSpace: "nowrap",  // Ensures single-line text
+        overflow: "hidden",     // Prevents text overflow
+        textOverflow: "ellipsis" }} gutterBottom>
                     {placeholder}
                     {mandatory ? <span style={{ color: "red" }}>*</span> : ""}
                 </Typography>
@@ -29,7 +31,6 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
                 value={value}
                 variant="outlined"
                 onChange={handleChange}
-                placeholder={placeholder}
                 inputProps={{
                     min,
                     max,
