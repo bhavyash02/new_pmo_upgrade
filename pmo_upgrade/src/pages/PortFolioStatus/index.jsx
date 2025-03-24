@@ -45,6 +45,24 @@ function PortFolioStatus() {
   const [attritionRisk, setAttritionRisk] = useState(0);
   const [topPerformers, setTopPerformers] = useState(0);
   const [topPerformersDesc, settopPerformersDesc] = useState(0);
+  const [csat, setCsat] = useState(0)
+  const [feedback, setFeedBack] = useState("")
+  const [escalation, setEscalation] = useState(0)
+  const [escalationDescription, setEscalationDescription] = useState("")
+  const [apprecition, setApprecition] = useState(0)
+  const [apprecitionDescription, setApprecitionDescription] = useState("")
+  const [critical, setCritical] = useState(0)
+  const [nonCritical, setNonCritical] = useState(0)
+  const [qbr, setQbr] = useState("")
+  const [capabilitiesPositioned, setCapabilitiesPositioned] = useState(0)
+  const [capabilitiesDescription, setCapabilitiesDescription] = useState(0)
+  const [pocsInFlight, setPocsInFlight] = useState(0)
+  const [pocsPlanned, setPocsPlanned] = useState(0)
+  const [hackathons, setHackathons] = useState(0)
+  const [hackathonsDescribed, setHackathonsDescribed] = useState(0)
+  const [crossSellOportunity, setCrossSellOpportunity] = useState("")
+  const [architechtureAdvisory, setArchitechtureAdvisory] = useState("")
+
 
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
@@ -185,6 +203,40 @@ function PortFolioStatus() {
           setTopPerformers={setTopPerformers}
           topPerformersDesc={topPerformersDesc}
           settopPerformersDesc={settopPerformersDesc}
+          csat={csat}
+          setCsat={setCsat}
+          feedback={feedback}
+          setFeedBack={setFeedBack}
+          escalation={escalation}
+          setEscalation={setEscalation}
+          escalationDescription={escalationDescription}
+          setEscalationDescription={setEscalationDescription}
+          apprecition={apprecition}
+          setApprecition={setApprecition}
+          apprecitionDescription={apprecitionDescription}
+          setApprecitionDescription={setApprecitionDescription}
+          critical={critical}
+          setCritical={setCritical}
+          nonCritical={nonCritical}
+          setNonCritical={setNonCritical}
+          qbr={qbr}
+          setQbr={setQbr}
+          capabilitiesPositioned={capabilitiesPositioned}
+          setCapabilitiesPositioned={setCapabilitiesPositioned}
+          capabilitiesDescription={capabilitiesDescription}
+          setCapabilitiesDescription={setCapabilitiesDescription}
+          pocsInFlight={pocsInFlight}
+          setPocsInFlight={setPocsInFlight}
+          pocsPlanned={pocsPlanned}
+          setPocsPlanned={setPocsPlanned}
+          hackathons={hackathons}
+          setHackathons={setHackathons}
+          hackathonsDescribed={hackathonsDescribed}
+          setHackathonsDescribed={setHackathonsDescribed}
+          crossSellOportunity={crossSellOportunity}
+          setCrossSellOpportunity={setCrossSellOpportunity}
+          architechtureAdvisory={architechtureAdvisory}
+          setArchitechtureAdvisory={setArchitechtureAdvisory}
         />
       </Box>
     </Box>
