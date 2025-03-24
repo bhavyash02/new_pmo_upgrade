@@ -57,7 +57,6 @@ export default function OneProtFolioDetails({
                 setPortfolioStatusError(false);
               }}
               onFocus={() => {
-                alert("focus");
                 if (!protfolioStatus) {
                   setPortfolioStatusError(true); // Show error when field is empty
                 }

@@ -1,0 +1,285 @@
+import React, { useState } from "react";
+import { Dropdown } from "../../components/molecules";
+import {
+  Box,
+  Stack,
+  Typography,
+  InputAdornment,
+  TextField,
+  FormControlLabel,
+  RadioGroup,
+  Radio,
+  FormControl,
+  FormHelperText,
+} from "@mui/material";
+import NumberStepper from "../../components/molecules/NumberStepper";
+
+export default function ResourcesForm(
+  techinal,
+  setTechinal,
+  product,
+  setProduct,
+  manager,
+  setManager,
+  teamSize,
+  setTeamSize,
+  voluntary,
+  setVoluntary,
+  involuntary,
+  setInvoluntary,
+  employeeScore,
+  setEmployeeScore,
+  learnings,
+  setLearnings,
+  additions,
+  setAdditions,
+  attritionRisk,
+  setAttritionRisk,
+  topPerformers,
+  setTopPerformers,
+  topPerformersDesc,
+  settopPerformersDesc
+) {
+  const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+  const [teamSizeError, setTeamSizeError] = useState(false);
+  const [learningError, setLearningError] = useState(false);
+  const [additionsError, setAdditionsError] = useState(false);
+  const [attritionsError, setAttritionsError] = useState(false);
+  const [employeeScoreError, setEmployeeScoreError] = useState(false);
+  const [performers, setPerformers] = useState(false);
+  return (
+    <>
+      {/* First Row */}
+      <Box sx={{ flex: 1, width: "100%" }}>
+        <Stack
+          direction="row"
+          spacing={3}
+          justifyContent="space-between"
+          alignItems="flex-start"
+          padding="20px"
+        >
+         <TextField id="outlined-basic" label="Open Positions(9)" variant="outlined" sx={{width: "825px"}}/>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+              width: "305px",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 500, marginRight: "auto" }}
+            >
+              Current Team Size<span style={{ color: "red" }}>*</span>
+            </Typography>
+            <FormControl sx={{ width: "305px" }} error={teamSizeError}>
+              
+              <TextField
+                sx={{ width: "305px" }}
+                variant="outlined"
+                placeholder="Current Team Size"
+                onChange={(e) => {
+                  setTeamSize(e.target.value)
+                  setTeamSizeError(false)
+                }}
+                onBlur={() => {
+                  if (!teamSize) {
+                  setTeamSizeError(true); // Show error when field is empty
+                  }
+                }}
+              />
+              {teamSizeError && <FormHelperText>Please add  Current Team Size</FormHelperText>}
+            </FormControl>
+          </Box>
+        </Stack>
+      </Box>
+      {/* Second Row */}
+      <Box sx={{ flex: 1, width: "100%" }}>
+        <Stack
+          direction="row"
+          spacing={3}
+          justifyContent="space-between"
+          alignItems="flex-start"
+          padding="20px"
+        >
+          <FormControl sx={{ width: "305px" }}>
+            <NumberStepper
+              placeholder="In Flight (EE)"
+              mandatory={true}
+              //   counter={inFlight}
+              //   setCounter={setInFlight}
+              width="320px"
+            />
+            {/* {portfolioStatusError && (
+        <FormHelperText>
+          Please fill this field as its mandatory
+        </FormHelperText>
+      )} */}
+          </FormControl>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+              width: "305px",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 500, marginRight: "auto", fontSize: "14px" }}
+            >
+              ESAT(Employee Satisfaction Score - out of 10)<span style={{ color: "red" }}>*</span>
+            </Typography>
+            <FormControl sx={{ width: "305px" }} error={employeeScoreError}>
+              <TextField
+                sx={{ width: "305px" }}
+                variant="outlined"
+                placeholder="Enter"
+                onChange={(e) => {
+                    setEmployeeScore(e.target.value)
+                    setEmployeeScoreError(false)
+                }}
+                onBlur={() => {
+                  if (!employeeScore) {
+                    setEmployeeScoreError(true); // Show error when field is empty
+                  }
+                }}
+              />
+              {employeeScoreError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
+            </FormControl>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+              width: "305px",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 500, marginRight: "auto" }}
+            >
+              Learning/Certifications<span style={{ color: "red" }}>*</span>
+            </Typography>
+            <FormControl sx={{ width: "305px" }} error={learningError}>
+              <TextField
+                sx={{ width: "305px" }}
+                variant="outlined"
+                placeholder="Learning/Certifications"
+                onChange={(e) => {
+                  setLearnings(e.target.value)
+                  setLearningError(false)
+                }}
+                onBlur={() => {
+                  if (!learnings) {
+                  setLearningError(true); // Show error when field is empty
+                  }
+                }}
+              />
+              {learningError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
+            </FormControl>
+          </Box>
+        </Stack>
+      </Box>
+      {/* Third Row */}
+      <Box sx={{ flex: 1, width: "100%" }}>
+        <Stack
+          direction="row"
+          spacing={3}
+          justifyContent="space-between"
+          alignItems="flex-start"
+          padding="20px"
+        >
+          <FormControl sx={{ width: "305px" }} error={additionsError}>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 500, marginRight: "auto" }}
+            >
+              New Additions<span style={{ color: "red" }}>*</span>
+            </Typography>
+            <TextField
+              variant="outlined"
+              placeholder="Enter Amount"
+              onChange={(e) => {
+                setAdditions(e.target.value);
+                setAdditionsError(false); // Remove error when user starts typing
+              }}
+              onBlur={() => {
+                if (!additions) {
+                    setAdditionsError(true); // Show error when field is empty
+                }
+              }}
+            />
+            {additionsError && <FormHelperText>Please add  Value Adds 1 (Revenue)</FormHelperText>}
+          </FormControl>
+          <FormControl sx={{ width: "305px" }} error={attritionsError}>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 500, marginRight: "auto" }}
+            >
+              Attrition Risk<span style={{ color: "red" }}>*</span>
+            </Typography>
+            <TextField
+              variant="outlined"
+              placeholder="Enter Amount"
+              onChange={(e) => {
+                setAttritionRisk(e.target.value);
+                setAttritionsError(false); // Remove error when user starts typing
+              }}
+              onBlur={() => {
+                if (!attritionRisk) {
+                    setAttritionsError(true); // Show error when field is empty
+                }
+              }}
+            />
+            {attritionsError && <FormHelperText>Please add  Value Adds 12 (Revenue)</FormHelperText>}
+          </FormControl>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+              width: "305px",
+            }}
+          >
+            {/* <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 500, marginRight: "auto" }}
+            >
+              Top Performers<span style={{ color: "red" }}>*</span>
+            </Typography> */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 1,
+                width: "305px",
+              }}
+            >
+              {/* <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
+                        Top Performers
+                    </Typography> */}
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <NumberStepper
+                  placeholder="Top Performers"
+                  width="105px"
+                  mandatory={true}
+                />
+                {/* counter={valueAddsStepper} setCounter={setValueAddsStepper} */}
+                <TextField
+                  placeholder="Enter Description"
+                  variant="outlined"
+                  sx={{ width: "230px", marginTop: "28px" }}
+                  onChange={(e) => console.log(e)}
+                />
+                {/* setValueAddsDelivered(e.target.value) */}
+              </Box>
+            </Box>
+          </Box>
+        </Stack>
+      </Box>
+    </>
+  );
+}
