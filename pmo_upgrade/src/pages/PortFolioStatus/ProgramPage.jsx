@@ -18,7 +18,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                 <NumberStepper placeholder="New Initiatives" counter={newInitiatives} setCounter={setNewInitiatives} width="350px" />
 
                 {/* Value Adds Delivered */}
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "305px" }}>
                     {/* <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
                         Value Adds Delivered
                     </Typography> */}
@@ -32,14 +32,14 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
             {/* Second Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" paddingX="20px">
                 {/* Value Adds Revenue */}
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "305px" }}>
 
                     <NumberStepper placeholder=" Value Adds (Revenue)" counter={valueAdds} setCounter={setValueAdds} width="350px" mandatory={true} dollarSymbol={true} disabled={!valueAddsStepper ? true : false}></NumberStepper>
                 </Box>
 
                 {/* Value Board Evaluation - Fixed Alignment */}
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 200, marginRight: "auto", marginTop: "10px" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "305px" }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 200, marginRight: "auto", marginTop: "10px" }}>
                         Value Board Evaluation Done<span style={{ color: "red" }}>*</span>
                     </Typography>
                     <RadioGroup
@@ -53,11 +53,11 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                 </Box>
 
                 {/* AVB/PVB Details with Validation */}
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "305px" }}>
                     <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto" }}>
                         AVB/PVB Details<span style={{ color: "red" }}>*</span>
                     </Typography>
-                    <FormControl sx={{ width: "350px" }} error={avbPvbError}>
+                    <FormControl sx={{ width: "305px" }} error={avbPvbError}>
                         <TextField
                             variant="outlined"
                             placeholder="Enter Amount"
@@ -77,11 +77,11 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
             </Stack>
 
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "305px" }}>
                     {/* <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
                         GenAI/New Technology Initiatives<span style={{ color: "red" }}>*</span>
                     </Typography> */}
-                    <FormControl sx={{ width: "350px" }} error={genAiError}>
+                    <FormControl sx={{ width: "305px" }} error={genAiError}>
                         <Box sx={{ display: "flex", gap: 2 }}>
                             <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="150px" mandatory={true} />
                             <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "150px", marginTop: "30px" }} onChange={(e) => {

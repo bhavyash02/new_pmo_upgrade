@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import OneProtFolioDetails from "../../pages/PortFolioStatus/OneProtFolioDetails";
 import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
 import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
+import ResourcesForm from "../../pages/PortFolioStatus/ResourcesForm";
 import CustomerPage from "../../pages/PortFolioStatus/CustomerPage";
 
 const stepLabels = [
@@ -60,6 +61,30 @@ export default function MultipleStepForm({
   setUnbilledResources,
   growthImpact,
   setGrowthImpact,
+  techinal,
+  setTechinal,
+  product,
+  setProduct,
+  manager,
+  setManager,
+  teamSize,
+  setTeamSize,
+  voluntary,
+  setVoluntary,
+  involuntary,
+  setInvoluntary,
+  employeeScore,
+  setEmployeeScore,
+  learnings,
+  setLearnings,
+  additions,
+  setAdditions,
+  attritionRisk,
+  setAttritionRisk,
+  topPerformers,
+  setTopPerformers,
+  topPerformersDesc,
+  settopPerformersDesc,
   csat,
   setCsat,
   feedback,
@@ -154,19 +179,51 @@ export default function MultipleStepForm({
           />
         );
       case 2:
-        return <h3><ProgramRiskPage
-          closure={closure}
-          setClosure={setClosure}
-          costImpact={costImpact}
-          setCostImpact={setCostImpact}
-          writeOff={writeOff}
-          setWriteOff={setWriteOff}
-          unbilledResources={unbilledResources}
-          setUnbilledResources={setUnbilledResources}
-          growthImpact={growthImpact}
-          setGrowthImpact={setGrowthImpact} /></h3>;
+        return (
+          <h3>
+            <ProgramRiskPage
+              closure={closure}
+              setClosure={setClosure}
+              costImpact={costImpact}
+              setCostImpact={setCostImpact}
+              writeOff={writeOff}
+              setWriteOff={setWriteOff}
+              unbilledResources={unbilledResources}
+              setUnbilledResources={setUnbilledResources}
+              growthImpact={growthImpact}
+              setGrowthImpact={setGrowthImpact}
+            />
+          </h3>
+        );
       case 3:
-        return <h3>Resources</h3>;
+        return (
+          <ResourcesForm
+          techinal={techinal}
+          setTechinal={setTechinal}
+          product={product}
+          setProduct={setProduct}
+          manager={manager}
+          setManager={setManager}
+          teamSize={teamSize}
+          setTeamSize={setTeamSize}
+          voluntary={voluntary}
+          setVoluntary={setVoluntary}
+          involuntary={involuntary}
+          setInvoluntary={setInvoluntary}
+          employeeScore={employeeScore}
+          setEmployeeScore={setEmployeeScore}
+          learnings={learnings}
+          setLearnings={setLearnings}
+          additions={additions}
+          setAdditions={setAdditions}
+          attritionRisk={attritionRisk}
+          setAttritionRisk={setAttritionRisk}
+          topPerformers={topPerformers}
+          setTopPerformers={setTopPerformers}
+          topPerformersDesc={topPerformersDesc}
+          settopPerformersDesc={settopPerformersDesc}
+          />
+        );
       case 4:
         return <h3><CustomerPage
           csat={csat}
@@ -243,6 +300,20 @@ export default function MultipleStepForm({
               (!costImpact ||
                 !unbilledResources ||
                 !growthImpact)) ||
+                (activeStep === 3 &&
+                (!techinal ||
+                  !product ||
+                  !manager ||
+                  !teamSize ||
+                  !voluntary || 
+                  !involuntary ||
+                  !employeeScore || 
+                  !learnings ||
+                  !additions ||
+                  !attritionRisk ||
+                  !topPerformers || 
+                  !topPerformersDesc
+                )) ||
             (activeStep === 4 &&
               (!csat ||
                 !feedback ||
