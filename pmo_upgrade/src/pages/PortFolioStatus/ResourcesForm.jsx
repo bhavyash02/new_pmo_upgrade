@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import NumberStepper from "../../components/molecules/NumberStepper";
 
-export default function ResourcesForm(
+export default function ResourcesForm({
   techinal,
   setTechinal,
   product,
@@ -39,14 +39,13 @@ export default function ResourcesForm(
   setTopPerformers,
   topPerformersDesc,
   settopPerformersDesc
-) {
-  const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+}) {
   const [teamSizeError, setTeamSizeError] = useState(false);
   const [learningError, setLearningError] = useState(false);
   const [additionsError, setAdditionsError] = useState(false);
   const [attritionsError, setAttritionsError] = useState(false);
   const [employeeScoreError, setEmployeeScoreError] = useState(false);
-  const [performers, setPerformers] = useState(false);
+  const [performersError, setPerformersError] = useState(false);
   return (
     <>
       {/* First Row */}
@@ -58,7 +57,67 @@ export default function ResourcesForm(
           alignItems="flex-start"
           padding="20px"
         >
-         <TextField id="outlined-basic" label="Open Positions(9)" variant="outlined" sx={{width: "825px"}}/>
+          <Box
+            sx={{
+              border: "1px solid #ccc",
+              padding: 2,
+              borderRadius: 2,
+              marginRight: "70px",
+              width: "795px",
+              position: "relative",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: "bold",
+                marginRight: "auto",
+                marginRight: "40px",
+                position: "absolute",
+                top: -15,
+                left: 25,
+                background: "white",
+                padding: "0 4px",
+              }}
+            >
+              Open Positions(9)
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "30px",
+              }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <NumberStepper
+                  placeholder="Techinal"
+                  counter={techinal}
+                  setCounter={setTechinal}
+                  mandatory={true}
+                  width="220px"
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <NumberStepper
+                  placeholder="Product"
+                  counter={product}
+                  setCounter={setProduct}
+                  mandatory={true}
+                  width="220px"
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <NumberStepper
+                  placeholder="Lead/Manager"
+                  counter={manager}
+                  setCounter={setManager}
+                  mandatory={true}
+                  width="220px"
+                />
+              </Box>
+            </Box>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -74,22 +133,23 @@ export default function ResourcesForm(
               Current Team Size<span style={{ color: "red" }}>*</span>
             </Typography>
             <FormControl sx={{ width: "305px" }} error={teamSizeError}>
-              
               <TextField
                 sx={{ width: "305px" }}
                 variant="outlined"
                 placeholder="Current Team Size"
                 onChange={(e) => {
-                  setTeamSize(e.target.value)
-                  setTeamSizeError(false)
+                  setTeamSize(e.target.value);
+                  setTeamSizeError(false);
                 }}
                 onBlur={() => {
                   if (!teamSize) {
-                  setTeamSizeError(true); // Show error when field is empty
+                    setTeamSizeError(true); // Show error when field is empty
                   }
                 }}
               />
-              {teamSizeError && <FormHelperText>Please add  Current Team Size</FormHelperText>}
+              {teamSizeError && (
+                <FormHelperText>Please add Current Team Size</FormHelperText>
+              )}
             </FormControl>
           </Box>
         </Stack>
@@ -103,20 +163,58 @@ export default function ResourcesForm(
           alignItems="flex-start"
           padding="20px"
         >
-          <FormControl sx={{ width: "305px" }}>
-            <NumberStepper
-              placeholder="In Flight (EE)"
-              mandatory={true}
-              //   counter={inFlight}
-              //   setCounter={setInFlight}
-              width="320px"
-            />
-            {/* {portfolioStatusError && (
-        <FormHelperText>
-          Please fill this field as its mandatory
-        </FormHelperText>
-      )} */}
-          </FormControl>
+          <Box
+            sx={{
+              border: "1px solid #ccc",
+              padding: 2,
+              borderRadius: 2,
+              marginRight: "70px",
+              position: "relative",
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              sx={{
+                fontWeight: "bold",
+                marginRight: "auto",
+                marginRight: "40px",
+                position: "absolute",
+                top: -15,
+                left: 25,
+                background: "white",
+                padding: "0 4px",
+              }}
+            >
+              Attrition
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 2,
+                marginBottom: "30px",
+              }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <NumberStepper
+                  placeholder="Voluntary"
+                  counter={voluntary}
+                  setCounter={setVoluntary}
+                  mandatory={true}
+                  width="128px"
+                />
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                <NumberStepper
+                  placeholder="Involuntary"
+                  counter={involuntary}
+                  setCounter={setInvoluntary}
+                  mandatory={true}
+                  width="127px"
+                />
+              </Box>
+            </Box>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -129,7 +227,8 @@ export default function ResourcesForm(
               variant="subtitle1"
               sx={{ fontWeight: 500, marginRight: "auto", fontSize: "14px" }}
             >
-              ESAT(Employee Satisfaction Score - out of 10)<span style={{ color: "red" }}>*</span>
+              ESAT(Employee Satisfaction Score - out of 10)
+              <span style={{ color: "red" }}>*</span>
             </Typography>
             <FormControl sx={{ width: "305px" }} error={employeeScoreError}>
               <TextField
@@ -137,8 +236,8 @@ export default function ResourcesForm(
                 variant="outlined"
                 placeholder="Enter"
                 onChange={(e) => {
-                    setEmployeeScore(e.target.value)
-                    setEmployeeScoreError(false)
+                  setEmployeeScore(e.target.value);
+                  setEmployeeScoreError(false);
                 }}
                 onBlur={() => {
                   if (!employeeScore) {
@@ -146,7 +245,9 @@ export default function ResourcesForm(
                   }
                 }}
               />
-              {employeeScoreError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
+              {employeeScoreError && (
+                <FormHelperText>Please add Value Adds (Revenue)</FormHelperText>
+              )}
             </FormControl>
           </Box>
           <Box
@@ -169,16 +270,18 @@ export default function ResourcesForm(
                 variant="outlined"
                 placeholder="Learning/Certifications"
                 onChange={(e) => {
-                  setLearnings(e.target.value)
-                  setLearningError(false)
+                  setLearnings(e.target.value);
+                  setLearningError(false);
                 }}
                 onBlur={() => {
                   if (!learnings) {
-                  setLearningError(true); // Show error when field is empty
+                    setLearningError(true); // Show error when field is empty
                   }
                 }}
               />
-              {learningError && <FormHelperText>Please add  Value Adds (Revenue)</FormHelperText>}
+              {learningError && (
+                <FormHelperText>Please add Value Adds (Revenue)</FormHelperText>
+              )}
             </FormControl>
           </Box>
         </Stack>
@@ -208,11 +311,13 @@ export default function ResourcesForm(
               }}
               onBlur={() => {
                 if (!additions) {
-                    setAdditionsError(true); // Show error when field is empty
+                  setAdditionsError(true); // Show error when field is empty
                 }
               }}
             />
-            {additionsError && <FormHelperText>Please add  Value Adds 1 (Revenue)</FormHelperText>}
+            {additionsError && (
+              <FormHelperText>Please add Value Adds 1 (Revenue)</FormHelperText>
+            )}
           </FormControl>
           <FormControl sx={{ width: "305px" }} error={attritionsError}>
             <Typography
@@ -230,11 +335,15 @@ export default function ResourcesForm(
               }}
               onBlur={() => {
                 if (!attritionRisk) {
-                    setAttritionsError(true); // Show error when field is empty
+                  setAttritionsError(true); // Show error when field is empty
                 }
               }}
             />
-            {attritionsError && <FormHelperText>Please add  Value Adds 12 (Revenue)</FormHelperText>}
+            {attritionsError && (
+              <FormHelperText>
+                Please add Value Adds 12 (Revenue)
+              </FormHelperText>
+            )}
           </FormControl>
           <Box
             sx={{
@@ -244,39 +353,34 @@ export default function ResourcesForm(
               width: "305px",
             }}
           >
-            {/* <Typography
-              variant="subtitle1"
-              sx={{ fontWeight: 500, marginRight: "auto" }}
-            >
-              Top Performers<span style={{ color: "red" }}>*</span>
-            </Typography> */}
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-                width: "305px",
-              }}
-            >
-              {/* <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
-                        Top Performers
-                    </Typography> */}
+            <FormControl sx={{ width: "305px" }} error={performersError}>
               <Box sx={{ display: "flex", gap: 2 }}>
                 <NumberStepper
                   placeholder="Top Performers"
-                  width="105px"
+                  counter={topPerformers}
+                  setCounter={setTopPerformers}
+                  width="120px"
                   mandatory={true}
                 />
-                {/* counter={valueAddsStepper} setCounter={setValueAddsStepper} */}
                 <TextField
                   placeholder="Enter Description"
                   variant="outlined"
-                  sx={{ width: "230px", marginTop: "28px" }}
-                  onChange={(e) => console.log(e)}
+                  sx={{ width: "180px", marginTop: "30px" }}
+                  onChange={(e) => {
+                    settopPerformersDesc(e.target.value);
+                    setPerformersError(false);
+                  }}
+                  onBlur={() => {
+                    if (!topPerformersDesc) {
+                      setPerformersError(true); // Show error when field is empty
+                    }
+                  }}
                 />
-                {/* setValueAddsDelivered(e.target.value) */}
               </Box>
-            </Box>
+              {performersError && (
+                <FormHelperText>Please Add Top Performer</FormHelperText>
+              )}
+            </FormControl>
           </Box>
         </Stack>
       </Box>

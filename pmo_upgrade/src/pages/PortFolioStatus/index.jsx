@@ -40,11 +40,12 @@ function PortFolioStatus() {
   const [voluntary, setVoluntary] = useState(0);
   const [involuntary, setInvoluntary] = useState(0);
   const [employeeScore, setEmployeeScore] = useState(0);
-  const [learnings, setLearnings] = useState(0);
+  const [learnings, setLearnings] = useState("");
   const [additions, setAdditions] = useState(0);
   const [attritionRisk, setAttritionRisk] = useState(0);
   const [topPerformers, setTopPerformers] = useState(0);
-  const [topPerformersDesc, settopPerformersDesc] = useState(0);
+  const [topPerformersDesc, settopPerformersDesc] = useState("");
+  // section Five
   const [csat, setCsat] = useState(0)
   const [feedback, setFeedBack] = useState("")
   const [escalation, setEscalation] = useState(0)

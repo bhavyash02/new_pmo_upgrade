@@ -300,6 +300,20 @@ export default function MultipleStepForm({
               (!costImpact ||
                 !unbilledResources ||
                 !growthImpact)) ||
+                (activeStep === 3 &&
+                (!techinal ||
+                  !product ||
+                  !manager ||
+                  !teamSize ||
+                  !voluntary || 
+                  !involuntary ||
+                  !employeeScore || 
+                  !learnings ||
+                  !additions ||
+                  !attritionRisk ||
+                  !topPerformers || 
+                  !topPerformersDesc
+                )) ||
             (activeStep === 4 &&
               (!csat ||
                 !feedback ||
