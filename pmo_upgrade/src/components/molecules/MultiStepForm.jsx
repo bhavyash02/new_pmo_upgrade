@@ -8,6 +8,7 @@ import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
 import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
 import ResourcesForm from "../../pages/PortFolioStatus/ResourcesForm";
 import CustomerPage from "../../pages/PortFolioStatus/CustomerPage";
+import FinancePage from "../../pages/PortFolioStatus/FinancePage"
 
 const stepLabels = [
   "Portfolio Details",
@@ -118,7 +119,25 @@ export default function MultipleStepForm({
   crossSellOportunity,
   setCrossSellOpportunity,
   architechtureAdvisory,
-  setArchitechtureAdvisory
+  setArchitechtureAdvisory,
+  totalRevenue,
+  setTotalRevenue,
+  budget,
+  setBudget,
+  totalSpend,
+  setTotalSpend,
+  gm,
+  setGm,
+  resources,
+  setResources,
+  spend,
+  setSpend,
+  totalInvoice,
+  setTotalInvoice,
+  invoiceNotRealized,
+  setInvoiceNotRealized,
+  sunkCosts,
+  setSunkCosts
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -198,30 +217,30 @@ export default function MultipleStepForm({
       case 3:
         return (
           <ResourcesForm
-          techinal={techinal}
-          setTechinal={setTechinal}
-          product={product}
-          setProduct={setProduct}
-          manager={manager}
-          setManager={setManager}
-          teamSize={teamSize}
-          setTeamSize={setTeamSize}
-          voluntary={voluntary}
-          setVoluntary={setVoluntary}
-          involuntary={involuntary}
-          setInvoluntary={setInvoluntary}
-          employeeScore={employeeScore}
-          setEmployeeScore={setEmployeeScore}
-          learnings={learnings}
-          setLearnings={setLearnings}
-          additions={additions}
-          setAdditions={setAdditions}
-          attritionRisk={attritionRisk}
-          setAttritionRisk={setAttritionRisk}
-          topPerformers={topPerformers}
-          setTopPerformers={setTopPerformers}
-          topPerformersDesc={topPerformersDesc}
-          settopPerformersDesc={settopPerformersDesc}
+            techinal={techinal}
+            setTechinal={setTechinal}
+            product={product}
+            setProduct={setProduct}
+            manager={manager}
+            setManager={setManager}
+            teamSize={teamSize}
+            setTeamSize={setTeamSize}
+            voluntary={voluntary}
+            setVoluntary={setVoluntary}
+            involuntary={involuntary}
+            setInvoluntary={setInvoluntary}
+            employeeScore={employeeScore}
+            setEmployeeScore={setEmployeeScore}
+            learnings={learnings}
+            setLearnings={setLearnings}
+            additions={additions}
+            setAdditions={setAdditions}
+            attritionRisk={attritionRisk}
+            setAttritionRisk={setAttritionRisk}
+            topPerformers={topPerformers}
+            setTopPerformers={setTopPerformers}
+            topPerformersDesc={topPerformersDesc}
+            settopPerformersDesc={settopPerformersDesc}
           />
         );
       case 4:
@@ -261,7 +280,25 @@ export default function MultipleStepForm({
           architechtureAdvisory={architechtureAdvisory}
           setArchitechtureAdvisory={setArchitechtureAdvisory} /></h3>;
       case 5:
-        return <h3>Finance</h3>;
+        return <h3><FinancePage
+          totalRevenue={totalRevenue}
+          setTotalRevenue={setTotalRevenue}
+          budget={budget}
+          setBudget={setBudget}
+          totalSpend={totalSpend}
+          setTotalSpend={setTotalSpend}
+          gm={gm}
+          setGm={setGm}
+          resources={resources}
+          setResources={setResources}
+          spend={spend}
+          setSpend={setSpend}
+          totalInvoice={totalInvoice}
+          setTotalInvoice={setTotalInvoice}
+          invoiceNotRealized={invoiceNotRealized}
+          setInvoiceNotRealized={setInvoiceNotRealized}
+          sunkCosts={sunkCosts}
+          setSunkCosts={setSunkCosts} /></h3>;
       default:
         return <h3>Unknown Step</h3>;
     }
@@ -300,26 +337,34 @@ export default function MultipleStepForm({
               (!costImpact ||
                 !unbilledResources ||
                 !growthImpact)) ||
-                (activeStep === 3 &&
-                (!techinal ||
-                  !product ||
-                  !manager ||
-                  !teamSize ||
-                  !voluntary || 
-                  !involuntary ||
-                  !employeeScore || 
-                  !learnings ||
-                  !additions ||
-                  !attritionRisk ||
-                  !topPerformers || 
-                  !topPerformersDesc
-                )) ||
+            (activeStep === 3 &&
+              (!techinal ||
+                !product ||
+                !manager ||
+                !teamSize ||
+                !voluntary ||
+                !involuntary ||
+                !employeeScore ||
+                !learnings ||
+                !additions ||
+                !attritionRisk ||
+                !topPerformers ||
+                !topPerformersDesc
+              )) ||
             (activeStep === 4 &&
               (!csat ||
                 !feedback ||
                 !critical ||
                 !nonCritical ||
                 !qbr
+              )) ||
+            (activeStep === 5 &&
+              (!totalRevenue ||
+                !budget ||
+                !totalSpend ||
+                !gm ||
+                !totalInvoice || !invoiceNotRealized
+                || !sunkCosts
               ))
           }
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
