@@ -63,6 +63,15 @@ function PortFolioStatus() {
   const [hackathonsDescribed, setHackathonsDescribed] = useState(0)
   const [crossSellOportunity, setCrossSellOpportunity] = useState("")
   const [architechtureAdvisory, setArchitechtureAdvisory] = useState("")
+  const [totalRevenue, setTotalRevenue] = useState(0);
+  const [budget, setBudget] = useState(0);
+  const [totalSpend, setTotalSpend] = useState(0);
+  const [gm, setGm] = useState("");
+  const [resources, setResources] = useState(0);
+  const [spend, setSpend] = useState(0);
+  const [totalInvoice, setTotalInvoice] = useState(0);
+  const [invoiceNotRealized, setInvoiceNotRealized] = useState(0);
+  const [sunkCosts, setSunkCosts] = useState(0);
 
 
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
@@ -238,6 +247,24 @@ function PortFolioStatus() {
           setCrossSellOpportunity={setCrossSellOpportunity}
           architechtureAdvisory={architechtureAdvisory}
           setArchitechtureAdvisory={setArchitechtureAdvisory}
+          totalRevenue={totalRevenue}
+          setTotalRevenue={setTotalRevenue}
+          budget={budget}
+          setBudget={setBudget}
+          totalSpend={totalSpend}
+          setTotalSpend={setTotalSpend}
+          gm={gm}
+          setGm={setGm}
+          resources={resources}
+          setResources={setResources}
+          spend={spend}
+          setSpend={setSpend}
+          totalInvoice={totalInvoice}
+          setTotalInvoice={setTotalInvoice}
+          invoiceNotRealized={invoiceNotRealized}
+          setInvoiceNotRealized={setInvoiceNotRealized}
+          sunkCosts={sunkCosts}
+          setSunkCosts={setSunkCosts}
         />
       </Box>
     </Box>
