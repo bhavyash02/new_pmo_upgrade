@@ -8,7 +8,7 @@ import ProgramPage from "../../pages/PortFolioStatus/ProgramPage";
 import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
 import ResourcesForm from "../../pages/PortFolioStatus/ResourcesForm";
 import CustomerPage from "../../pages/PortFolioStatus/CustomerPage";
-import FinancePage from "../../pages/PortFolioStatus/FinancePage"
+import FinancePage from "../../pages/PortFolioStatus/FinancePage";
 
 const stepLabels = [
   "Portfolio Details",
@@ -137,7 +137,7 @@ export default function MultipleStepForm({
   invoiceNotRealized,
   setInvoiceNotRealized,
   sunkCosts,
-  setSunkCosts
+  setSunkCosts,
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -244,61 +244,71 @@ export default function MultipleStepForm({
           />
         );
       case 4:
-        return <h3><CustomerPage
-          csat={csat}
-          setCsat={setCsat}
-          feedback={feedback}
-          setFeedBack={setFeedBack}
-          escalation={escalation}
-          setEscalation={setEscalation}
-          escalationDescription={escalationDescription}
-          setEscalationDescription={setEscalationDescription}
-          apprecition={apprecition}
-          setApprecition={setApprecition}
-          apprecitionDescription={apprecitionDescription}
-          setApprecitionDescription={setApprecitionDescription}
-          critical={critical}
-          setCritical={setCritical}
-          nonCritical={nonCritical}
-          setNonCritical={setNonCritical}
-          qbr={qbr}
-          setQbr={setQbr}
-          capabilitiesPositioned={capabilitiesPositioned}
-          setCapabilitiesPositioned={setCapabilitiesPositioned}
-          capabilitiesDescription={capabilitiesDescription}
-          setCapabilitiesDescription={setCapabilitiesDescription}
-          pocsInFlight={pocsInFlight}
-          setPocsInFlight={setPocsInFlight}
-          pocsPlanned={pocsPlanned}
-          setPocsPlanned={setPocsPlanned}
-          hackathons={hackathons}
-          setHackathons={setHackathons}
-          hackathonsDescribed={hackathonsDescribed}
-          setHackathonsDescribed={setHackathonsDescribed}
-          crossSellOportunity={crossSellOportunity}
-          setCrossSellOpportunity={setCrossSellOpportunity}
-          architechtureAdvisory={architechtureAdvisory}
-          setArchitechtureAdvisory={setArchitechtureAdvisory} /></h3>;
+        return (
+          <h3>
+            <CustomerPage
+              csat={csat}
+              setCsat={setCsat}
+              feedback={feedback}
+              setFeedBack={setFeedBack}
+              escalation={escalation}
+              setEscalation={setEscalation}
+              escalationDescription={escalationDescription}
+              setEscalationDescription={setEscalationDescription}
+              apprecition={apprecition}
+              setApprecition={setApprecition}
+              apprecitionDescription={apprecitionDescription}
+              setApprecitionDescription={setApprecitionDescription}
+              critical={critical}
+              setCritical={setCritical}
+              nonCritical={nonCritical}
+              setNonCritical={setNonCritical}
+              qbr={qbr}
+              setQbr={setQbr}
+              capabilitiesPositioned={capabilitiesPositioned}
+              setCapabilitiesPositioned={setCapabilitiesPositioned}
+              capabilitiesDescription={capabilitiesDescription}
+              setCapabilitiesDescription={setCapabilitiesDescription}
+              pocsInFlight={pocsInFlight}
+              setPocsInFlight={setPocsInFlight}
+              pocsPlanned={pocsPlanned}
+              setPocsPlanned={setPocsPlanned}
+              hackathons={hackathons}
+              setHackathons={setHackathons}
+              hackathonsDescribed={hackathonsDescribed}
+              setHackathonsDescribed={setHackathonsDescribed}
+              crossSellOportunity={crossSellOportunity}
+              setCrossSellOpportunity={setCrossSellOpportunity}
+              architechtureAdvisory={architechtureAdvisory}
+              setArchitechtureAdvisory={setArchitechtureAdvisory}
+            />
+          </h3>
+        );
       case 5:
-        return <h3><FinancePage
-          totalRevenue={totalRevenue}
-          setTotalRevenue={setTotalRevenue}
-          budget={budget}
-          setBudget={setBudget}
-          totalSpend={totalSpend}
-          setTotalSpend={setTotalSpend}
-          gm={gm}
-          setGm={setGm}
-          resources={resources}
-          setResources={setResources}
-          spend={spend}
-          setSpend={setSpend}
-          totalInvoice={totalInvoice}
-          setTotalInvoice={setTotalInvoice}
-          invoiceNotRealized={invoiceNotRealized}
-          setInvoiceNotRealized={setInvoiceNotRealized}
-          sunkCosts={sunkCosts}
-          setSunkCosts={setSunkCosts} /></h3>;
+        return (
+          <h3>
+            <FinancePage
+              totalRevenue={totalRevenue}
+              setTotalRevenue={setTotalRevenue}
+              budget={budget}
+              setBudget={setBudget}
+              totalSpend={totalSpend}
+              setTotalSpend={setTotalSpend}
+              gm={gm}
+              setGm={setGm}
+              resources={resources}
+              setResources={setResources}
+              spend={spend}
+              setSpend={setSpend}
+              totalInvoice={totalInvoice}
+              setTotalInvoice={setTotalInvoice}
+              invoiceNotRealized={invoiceNotRealized}
+              setInvoiceNotRealized={setInvoiceNotRealized}
+              sunkCosts={sunkCosts}
+              setSunkCosts={setSunkCosts}
+            />
+          </h3>
+        );
       default:
         return <h3>Unknown Step</h3>;
     }
@@ -306,7 +316,17 @@ export default function MultipleStepForm({
 
   return (
     <Box sx={{ width: "100%", display: "flex", flexDirection: "column" }}>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Stepper
+        activeStep={activeStep}
+        alternativeLabel
+        sx={{
+          backgroundColor: "#ecf1ff",
+          padding: "50px",
+          borderRadius: "20px",
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
+        }}
+      >
         {stepLabels.map((label, index) => (
           <Step key={index}>
             <StepLabel>{label}</StepLabel>
@@ -314,11 +334,11 @@ export default function MultipleStepForm({
         ))}
       </Stepper>
 
-      <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1 }}>
+      <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1, padding: "0 50px", }}>
         {renderStepContent()}
       </Box>
 
-      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3 }}>
+      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, padding: "50px", }}>
         <Button
           onClick={handleNext}
           disabled={
@@ -334,9 +354,7 @@ export default function MultipleStepForm({
                 !avbPvbDetails ||
                 !valueBoardEvaluation)) ||
             (activeStep === 2 &&
-              (!costImpact ||
-                !unbilledResources ||
-                !growthImpact)) ||
+              (!costImpact || !unbilledResources || !growthImpact)) ||
             (activeStep === 3 &&
               (!techinal ||
                 !product ||
@@ -349,23 +367,17 @@ export default function MultipleStepForm({
                 !additions ||
                 !attritionRisk ||
                 !topPerformers ||
-                !topPerformersDesc
-              )) ||
+                !topPerformersDesc)) ||
             (activeStep === 4 &&
-              (!csat ||
-                !feedback ||
-                !critical ||
-                !nonCritical ||
-                !qbr
-              )) ||
+              (!csat || !feedback || !critical || !nonCritical || !qbr)) ||
             (activeStep === 5 &&
               (!totalRevenue ||
                 !budget ||
                 !totalSpend ||
                 !gm ||
-                !totalInvoice || !invoiceNotRealized
-                || !sunkCosts
-              ))
+                !totalInvoice ||
+                !invoiceNotRealized ||
+                !sunkCosts))
           }
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"

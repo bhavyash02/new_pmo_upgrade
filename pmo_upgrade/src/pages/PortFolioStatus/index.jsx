@@ -144,6 +144,8 @@ function PortFolioStatus() {
           maxWidth: "1400px",
           width: "100%",
           margin: "80px auto 0",
+          border: "1px solid #D9D9D9",
+          borderRadius: "20px",
         }}
       >
         <MultipleStepForm

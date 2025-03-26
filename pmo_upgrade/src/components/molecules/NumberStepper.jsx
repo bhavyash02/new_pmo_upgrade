@@ -36,7 +36,7 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
                     max,
                 }}
                 sx={{
-                    width: '305px',
+                    width: '320px',
                     '& input[type=number]::-webkit-inner-spin-button, & input[type=number]::-webkit-outer-spin-button': {
                         opacity: 1,
                         display: 'block'

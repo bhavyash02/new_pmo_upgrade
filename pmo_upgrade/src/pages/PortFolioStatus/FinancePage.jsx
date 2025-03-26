@@ -21,7 +21,7 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
                         GM% (RAG) <span style={{ color: "red" }}>*</span>
                     </Typography>
                     <Box sx={{ display: "flex", gap: 2 }}>
-                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "305px" }} onChange={(e) => setGm(e.target.value)} />
+                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "320px" }} onChange={(e) => setGm(e.target.value)} />
                     </Box>
                 </Box>
                 <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", marginTop: "20px", width: "270px" }}>
@@ -55,7 +55,7 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
             </Stack>
             <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <NumberStepper placeholder="Invoice not realized>30d" counter={invoiceNotRealized} setCounter={setInvoiceNotRealized} width="350px" dollarSymbol={true} mandatory={true} />
-                <Box sx={{ display: "flex", flexDirection: "row", marginRight: "500px" }}>
+                <Box sx={{ display: "flex", flexDirection: "row", marginRight: "454px" }}>
                     <NumberStepper placeholder="Sunk Costs(Write-off and Unbilled Resources)" counter={sunkCosts} setCounter={setSunkCosts} width="350px" dollarSymbol={true} mandatory={true} />
                 </Box>
             </Stack>

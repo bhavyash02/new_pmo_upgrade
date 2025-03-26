@@ -36,7 +36,7 @@ export function Dropdown({
         getOptionLabel={(option) => option.toString() || ""} // Ensure option has title
         onChange={handleOnSelect} // Pass the handler function
         value={selectedValues} // Selected values dynamically passed
-        sx={{ width: 305, marginRight: 2, display: "block", }}
+        sx={{ width: 320,  display: "block", }}
         renderInput={(params) => (
           <TextField
             {...params}

@@ -134,7 +134,7 @@ export default function CustomerPage({ csat,
                     <Typography variant="subtitle1" sx={{ marginRight: "180px" }}>
                         Cross Sell Opportunity
                     </Typography>
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "305px" }} onChange={(e) => setCrossSellOpportunity(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "320px" }} onChange={(e) => setCrossSellOpportunity(e.target.value)} />
                 </Box>
 
                 {/* Extra Text Field */}

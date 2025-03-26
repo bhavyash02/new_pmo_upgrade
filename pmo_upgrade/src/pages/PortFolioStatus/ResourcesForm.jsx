@@ -63,7 +63,7 @@ export default function ResourcesForm({
               padding: 2,
               borderRadius: 2,
               marginRight: "70px",
-              width: "795px",
+              width: "765px",
               position: "relative",
             }}
           >
@@ -123,7 +123,7 @@ export default function ResourcesForm({
               display: "flex",
               flexDirection: "column",
               gap: 1,
-              width: "305px",
+              width: "320px",
             }}
           >
             <Typography
@@ -132,9 +132,9 @@ export default function ResourcesForm({
             >
               Current Team Size<span style={{ color: "red" }}>*</span>
             </Typography>
-            <FormControl sx={{ width: "305px" }} error={teamSizeError}>
+            <FormControl sx={{ width: "320px" }} error={teamSizeError}>
               <TextField
-                sx={{ width: "305px" }}
+                sx={{ width: "320px" }}
                 variant="outlined"
                 placeholder="Current Team Size"
                 onChange={(e) => {
@@ -170,6 +170,8 @@ export default function ResourcesForm({
               borderRadius: 2,
               marginRight: "70px",
               position: "relative",
+              maxWidth: "290px",
+              width: "100%"
             }}
           >
             <Typography
@@ -220,7 +222,7 @@ export default function ResourcesForm({
               display: "flex",
               flexDirection: "column",
               gap: 1,
-              width: "305px",
+              width: "320px",
             }}
           >
             <Typography
@@ -230,9 +232,9 @@ export default function ResourcesForm({
               ESAT(Employee Satisfaction Score - out of 10)
               <span style={{ color: "red" }}>*</span>
             </Typography>
-            <FormControl sx={{ width: "305px" }} error={employeeScoreError}>
+            <FormControl sx={{ width: "320px" }} error={employeeScoreError}>
               <TextField
-                sx={{ width: "305px" }}
+                sx={{ width: "320px" }}
                 variant="outlined"
                 placeholder="Enter"
                 onChange={(e) => {
@@ -255,7 +257,7 @@ export default function ResourcesForm({
               display: "flex",
               flexDirection: "column",
               gap: 1,
-              width: "305px",
+              width: "320px",
             }}
           >
             <Typography
@@ -264,9 +266,9 @@ export default function ResourcesForm({
             >
               Learning/Certifications<span style={{ color: "red" }}>*</span>
             </Typography>
-            <FormControl sx={{ width: "305px" }} error={learningError}>
+            <FormControl sx={{ width: "320px" }} error={learningError}>
               <TextField
-                sx={{ width: "305px" }}
+                sx={{ width: "320px" }}
                 variant="outlined"
                 placeholder="Learning/Certifications"
                 onChange={(e) => {
@@ -295,7 +297,7 @@ export default function ResourcesForm({
           alignItems="flex-start"
           padding="20px"
         >
-          <FormControl sx={{ width: "305px" }} error={additionsError}>
+          <FormControl sx={{ width: "320px" }} error={additionsError}>
             <Typography
               variant="subtitle1"
               sx={{ fontWeight: 500, marginRight: "auto" }}
@@ -319,7 +321,7 @@ export default function ResourcesForm({
               <FormHelperText>Please add Value Adds 1 (Revenue)</FormHelperText>
             )}
           </FormControl>
-          <FormControl sx={{ width: "305px" }} error={attritionsError}>
+          <FormControl sx={{ width: "320px" }} error={attritionsError}>
             <Typography
               variant="subtitle1"
               sx={{ fontWeight: 500, marginRight: "auto" }}
@@ -350,10 +352,10 @@ export default function ResourcesForm({
               display: "flex",
               flexDirection: "column",
               gap: 1,
-              width: "305px",
+              width: "320px",
             }}
           >
-            <FormControl sx={{ width: "305px" }} error={performersError}>
+            <FormControl sx={{ width: "320px" }} error={performersError}>
               <Box sx={{ display: "flex", gap: 2 }}>
                 <NumberStepper
                   placeholder="Top Performers"

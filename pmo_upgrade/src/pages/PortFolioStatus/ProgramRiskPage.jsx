@@ -18,7 +18,7 @@ export default function ProgramRiskPage({ closure, setClosure, costImpact, setCo
             {/* Second Row */}
             <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <NumberStepper placeholder="Unbilled Resources" counter={unbilledResources} setCounter={setUnbilledResources} width="350px" mandatory={true} />
-                <Box sx={{ display: "flex", flexDirection: "row", marginRight: "500px" }}>
+                <Box sx={{ display: "flex", flexDirection: "row", marginRight: "454px" }}>
                     <NumberStepper placeholder="Potential Growth Impact" counter={growthImpact} setCounter={setGrowthImpact} width="350px" mandatory={true} dollarSymbol={true} />
                 </Box>
             </Stack>
