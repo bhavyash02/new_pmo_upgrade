@@ -21,10 +21,10 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
                         GM% (RAG) <span style={{ color: "red" }}>*</span>
                     </Typography>
                     <Box sx={{ display: "flex", gap: 2 }}>
-                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "320px" }} onChange={(e) => setGm(e.target.value)} />
+                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px" }} onChange={(e) => setGm(e.target.value)} />
                     </Box>
                 </Box>
-                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", marginTop: "20px", width: "270px" }}>
+                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", marginTop: "20px", width: "308px", marginRight: "10px" }}>
                     <Typography
                         variant="subtitle1"
                         sx={{

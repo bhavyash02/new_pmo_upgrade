@@ -22,7 +22,7 @@ export function Dropdown({
         flexWrap: "wrap",
         alignItems: "center",
         maxHeight: 60,
-        maxWidth: "320px",
+        maxWidth: "340px",
         textAlign: "left"
       }}
     >
@@ -36,7 +36,7 @@ export function Dropdown({
         getOptionLabel={(option) => option.toString() || ""} // Ensure option has title
         onChange={handleOnSelect} // Pass the handler function
         value={selectedValues} // Selected values dynamically passed
-        sx={{ width: 320,  display: "block", }}
+        sx={{ width: 340,  display: "block", }}
         renderInput={(params) => (
           <TextField
             {...params}
