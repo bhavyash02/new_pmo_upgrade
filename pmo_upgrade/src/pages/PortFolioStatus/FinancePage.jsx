@@ -29,7 +29,6 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
                         variant="subtitle1"
                         sx={{
                             fontWeight: "bold",
-                            marginRight: "auto",
                             marginRight: "20px",
                             position: "relative",
                             top: -35,

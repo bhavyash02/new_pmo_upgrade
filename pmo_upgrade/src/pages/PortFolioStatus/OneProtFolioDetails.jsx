@@ -3,12 +3,6 @@ import { Dropdown } from "../../components/molecules";
 import {
   Box,
   Stack,
-  Typography,
-  InputAdornment,
-  TextField,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
   FormControl,
   FormHelperText,
 } from "@mui/material";
