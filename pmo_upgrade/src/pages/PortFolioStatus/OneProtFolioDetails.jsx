@@ -40,7 +40,7 @@ export default function OneProtFolioDetails({
           alignItems="flex-start"
           padding="20px"
         >
-          <FormControl sx={{ width: "320px" }} error={portfolioStatusError}>
+          <FormControl sx={{ width: "340px" }} error={portfolioStatusError}>
             <Dropdown
               input={dropdowns}
               placeholder="Portfolio Status"
@@ -68,7 +68,7 @@ export default function OneProtFolioDetails({
               mandatory={true}
               counter={inFlight}
               setCounter={setInFlight}
-              width="320px"
+              width="340px"
             />
           </Box>
           <NumberStepper
@@ -76,7 +76,7 @@ export default function OneProtFolioDetails({
             mandatory={true}
             counter={projectsOnTrack}
             setCounter={setProjectsOnTrack}
-            width="320px"
+            width="340px"
           />
         </Stack>
       </Box>
@@ -93,19 +93,19 @@ export default function OneProtFolioDetails({
             mandatory={true}
             counter={newProjects}
             setCounter={setNewProjects}
-            width="320px"
+            width="340px"
           />
           <NumberStepper
             placeholder="Projects  at High Risk"
             counter={projectAtRisk}
             setCounter={setProjectAtRisk}
-            width="320px"
+            width="340px"
           />
           <NumberStepper
             placeholder="Ramp Down"
             counter={rampDown}
             setCounter={setRampDown}
-            width="320px"
+            width="340px"
           />
         </Stack>
       </Box>
@@ -121,7 +121,7 @@ export default function OneProtFolioDetails({
             placeholder="Chrun"
             counter={chrun}
             setCounter={setChrun}
-            width="320px"
+            width="340px"
           />
         </Stack>
       </Box>

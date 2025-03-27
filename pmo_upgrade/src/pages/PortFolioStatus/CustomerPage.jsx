@@ -56,11 +56,11 @@ export default function CustomerPage({ csat,
 
                 {/* Feedback */}
                 <Box sx={{ flex: 1 }}>
-                    <Typography sx={{ fontSize: "14px", marginRight: "310px", marginBottom: "5px" }}>Feedback<span style={{ color: "red" }}>*</span></Typography>
-                    <TextField sx={{ width: "300px", marginRight: "80px" }} placeholder="Enter Description" variant="outlined" onChange={(e) => setFeedBack(e.target.value)} />
+                    <Typography sx={{ fontSize: "14px", marginBottom: "5px", textAlign: "left", marginLeft: "6px" }}>Feedback<span style={{ color: "red" }}>*</span></Typography>
+                    <TextField sx={{ width: "340px", alignItems: "left", marginLeft: "-52px" }} placeholder="Enter Description" variant="outlined" onChange={(e) => setFeedBack(e.target.value)} />
                 </Box>
                 <Box sx={{ flex: 1 }}>
-                    <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1, width: "100%", marginLeft: "80px" }}>
+                    <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1, width: "100%", marginLeft: "50px" }}>
                         <NumberStepper placeholder="Escalations" counter={escalation} setCounter={setEscalation} width="100px" />
                         <TextField sx={{ width: "200px", marginTop: "28px" }} placeholder="Enter Description" variant="outlined" />
                     </Box>
@@ -116,7 +116,7 @@ export default function CustomerPage({ csat,
             {/* Third Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <Box sx={{ display: "flex", gap: 2 }}>
-                    <NumberStepper placeholder="capabilities positioned" counter={capabilitiesPositioned} setCounter={setCapabilitiesPositioned} width="100px" />
+                    <NumberStepper placeholder="Capabilities Positioned" counter={capabilitiesPositioned} setCounter={setCapabilitiesPositioned} width="100px" />
                     <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "190px", marginTop: "30px" }} onChange={(e) => setCapabilitiesDescription(e.target.value)} />
                 </Box>
                 <NumberStepper placeholder="PoCs in Flight" counter={pocsInFlight} setCounter={setPocsInFlight} width="350px" dollarSymbol={true} />
