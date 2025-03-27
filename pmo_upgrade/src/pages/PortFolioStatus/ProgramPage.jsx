@@ -34,12 +34,12 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                 {/* Value Adds Revenue */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "340px" }}>
 
-                    <NumberStepper placeholder=" Value Adds (Revenue)" counter={valueAdds} setCounter={setValueAdds} width="350px" mandatory={true} dollarSymbol={true} disabled={!valueAddsStepper ? true : false}></NumberStepper>
+                    <NumberStepper placeholder=" Value Adds (Revenue)" counter={valueAdds} setCounter={setValueAdds} width="340px" mandatory={true} dollarSymbol={true} disabled={!valueAddsStepper ? true : false}></NumberStepper>
                 </Box>
 
                 {/* Value Board Evaluation - Fixed Alignment */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "340px" }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 200, marginRight: "auto", marginTop: "10px" }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto", marginTop: "10px" }}>
                         Value Board Evaluation Done<span style={{ color: "red" }}>*</span>
                     </Typography>
                     <RadioGroup
@@ -83,8 +83,8 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
                     </Typography> */}
                     <FormControl sx={{ width: "340px" }} error={genAiError}>
                         <Box sx={{ display: "flex", gap: 2 }}>
-                            <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="150px" mandatory={true} />
-                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "150px", marginTop: "30px" }} onChange={(e) => {
+                            <NumberStepper placeholder="GenAI/New Technology Initiatives" counter={genAiStepper} setCounter={setGenAiStepper} width="120px" mandatory={true} />
+                            <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "100%", marginTop: "30px" }} onChange={(e) => {
                                 setGenAITech(e.target.value)
                                 setGenAiError(false)
                             }}

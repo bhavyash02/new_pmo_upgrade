@@ -60,20 +60,20 @@ export default function CustomerPage({ csat,
                     <TextField sx={{ width: "340px", alignItems: "left", marginLeft: "-52px" }} placeholder="Enter Description" variant="outlined" onChange={(e) => setFeedBack(e.target.value)} />
                 </Box>
                 <Box sx={{ flex: 1 }}>
-                    <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1, width: "100%", marginLeft: "50px" }}>
+                    <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1, marginLeft: "50px", width: "340px"}}>
                         <NumberStepper placeholder="Escalations" counter={escalation} setCounter={setEscalation} width="100px" />
-                        <TextField sx={{ width: "200px", marginTop: "28px" }} placeholder="Enter Description" variant="outlined" />
+                        <TextField sx={{ width: "100%", marginTop: "28px" }} placeholder="Enter Description" variant="outlined" />
                     </Box>
                 </Box>
             </Stack>
 
             {/* Second Row */}
             <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px">
-                <Box sx={{ display: "flex", gap: 2 }}>
+                <Box sx={{ display: "flex", gap: 2, width: "340px" }}>
                     <NumberStepper placeholder="Apprecitions" counter={apprecition} setCounter={setApprecition} width="100px" />
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "190px", marginTop: "28px" }} onChange={(e) => setApprecitionDescription(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "100%", marginTop: "28px" }} onChange={(e) => setApprecitionDescription(e.target.value)} />
                 </Box>
-                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", width: "270px" }}>
+                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", width: "310px" }}>
                     <Typography
                         variant="subtitle1"
                         sx={{
@@ -115,26 +115,26 @@ export default function CustomerPage({ csat,
 
             {/* Third Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
-                <Box sx={{ display: "flex", gap: 2 }}>
+                <Box sx={{ display: "flex", gap: 2, width: "340px" }}>
                     <NumberStepper placeholder="Capabilities Positioned" counter={capabilitiesPositioned} setCounter={setCapabilitiesPositioned} width="100px" />
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "190px", marginTop: "30px" }} onChange={(e) => setCapabilitiesDescription(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "100%", marginTop: "30px" }} onChange={(e) => setCapabilitiesDescription(e.target.value)} />
                 </Box>
-                <NumberStepper placeholder="PoCs in Flight" counter={pocsInFlight} setCounter={setPocsInFlight} width="350px" dollarSymbol={true} />
-                <NumberStepper placeholder="PoCs Planned(This month)" counter={pocsPlanned} setCounter={setPocsPlanned} width="350px" dollarSymbol={true} />
+                <NumberStepper placeholder="PoCs in Flight" counter={pocsInFlight} setCounter={setPocsInFlight} width="340px" dollarSymbol={true} />
+                <NumberStepper placeholder="PoCs Planned(This month)" counter={pocsPlanned} setCounter={setPocsPlanned} width="340px" dollarSymbol={true} />
             </Stack>
 
             {/* Fourth Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="center" padding="20px">
-                <Box sx={{ display: "flex", gap: 2, marginRight: "90px" }}>
+                <Box sx={{ display: "flex", gap: 2, marginRight: "90px", width: "340px" }}>
                     <NumberStepper placeholder="Hackathon/s" counter={hackathons} setCounter={setHackathons} width="100px" />
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "190px", marginTop: "30px", }} onChange={(e) => setHackathonsDescribed(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "100%", marginTop: "30px", }} onChange={(e) => setHackathonsDescribed(e.target.value)} />
                 </Box>
                 {/* Cross Sell Opportunity Field */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
                     <Typography variant="subtitle1" sx={{ marginRight: "180px" }}>
                         Cross Sell Opportunity
                     </Typography>
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "320px" }} onChange={(e) => setCrossSellOpportunity(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px" }} onChange={(e) => setCrossSellOpportunity(e.target.value)} />
                 </Box>
 
                 {/* Extra Text Field */}
@@ -142,7 +142,7 @@ export default function CustomerPage({ csat,
                     <Typography variant="subtitle1" sx={{ marginRight: "200px" }}>
                         Architecture/Advisory
                     </Typography>
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "320px" }} onChange={(e) => setArchitechtureAdvisory(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px", marginLeft: "10px" }} onChange={(e) => setArchitechtureAdvisory(e.target.value)} />
                 </Box>
             </Stack>
         </Box>

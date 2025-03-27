@@ -242,7 +242,7 @@ export default function ResourcesForm({
                 }}
               />
               {employeeScoreError && (
-                <FormHelperText>Please add Value Adds (Revenue)</FormHelperText>
+                <FormHelperText>Please add ESAT</FormHelperText>
               )}
             </FormControl>
           </Box>
@@ -276,7 +276,7 @@ export default function ResourcesForm({
                 }}
               />
               {learningError && (
-                <FormHelperText>Please add Value Adds (Revenue)</FormHelperText>
+                <FormHelperText>Please add Learning/Certifications</FormHelperText>
               )}
             </FormControl>
           </Box>
@@ -312,7 +312,7 @@ export default function ResourcesForm({
               }}
             />
             {additionsError && (
-              <FormHelperText>Please add Value Adds 1 (Revenue)</FormHelperText>
+              <FormHelperText>Please add New Additions</FormHelperText>
             )}
           </FormControl>
           <FormControl sx={{ width: "340px" }} error={attritionsError}>
@@ -337,7 +337,7 @@ export default function ResourcesForm({
             />
             {attritionsError && (
               <FormHelperText>
-                Please add Value Adds 12 (Revenue)
+                Please add Attritions
               </FormHelperText>
             )}
           </FormControl>
@@ -361,7 +361,7 @@ export default function ResourcesForm({
                 <TextField
                   placeholder="Enter Description"
                   variant="outlined"
-                  sx={{ marginTop: "30px" }}
+                  sx={{ width: "100%", marginTop: "30px" }}
                   onChange={(e) => {
                     settopPerformersDesc(e.target.value);
                     setPerformersError(false);
