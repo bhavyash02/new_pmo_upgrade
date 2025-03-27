@@ -350,6 +350,7 @@ export default function MultipleStepForm({
                 !newProjects)) ||
             (activeStep === 1 &&
               (!genAITech ||
+                !genAiStepper ||
                 !valueAdds ||
                 !avbPvbDetails ||
                 !valueBoardEvaluation)) ||

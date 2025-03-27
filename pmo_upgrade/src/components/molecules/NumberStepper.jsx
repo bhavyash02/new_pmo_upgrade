@@ -18,9 +18,11 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
             textAlign: "left"
         }}>
             <Box>
-                <Typography variant="subtitle1" sx={{ fontSize: 14, whiteSpace: "nowrap",  // Ensures single-line text
-        overflow: "hidden",     // Prevents text overflow
-        textOverflow: "ellipsis" }} gutterBottom>
+                <Typography variant="subtitle1" sx={{
+                    fontSize: 14, whiteSpace: "nowrap",  // Ensures single-line text
+                    overflow: "hidden",     // Prevents text overflow
+                    textOverflow: "ellipsis"
+                }} gutterBottom>
                     {placeholder}
                     {mandatory ? <span style={{ color: "red" }}>*</span> : ""}
                 </Typography>
@@ -41,13 +43,22 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
                         opacity: 1,
                         display: 'block'
                     },
-                    ...(disabled && { 
-                        filter: "blur(2px)", // Apply blur effect
-                        opacity: 0.9,       // Reduce opacity
+                    ...(disabled && {
+                        opacity: 0.6,       // Reduce opacity
                         cursor: "not-allowed" // Change cursor style
+
                     })
                 }}
-                InputProps={dollarSymbol ? { startAdornment: <InputAdornment position="start">$</InputAdornment> } : ""}
+                InputProps={dollarSymbol ? {
+                    startAdornment: <InputAdornment position="start" sx={{
+                        backgroundColor: "#ffffff",
+                        padding: "12px",
+                        borderRight: "1px solid #ccc",
+                        minWidth: "25px",
+                        textAlign: "center",
+                        color: "#000000", // Dark black color
+                    }}>$</InputAdornment>
+                } : ""}
                 disabled={disabled}
             />
         </Box>
