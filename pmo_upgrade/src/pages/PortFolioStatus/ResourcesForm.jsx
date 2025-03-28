@@ -50,7 +50,7 @@ export default function ResourcesForm({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px"
+          padding="20px 0"
         >
           <Box
             sx={{
@@ -155,7 +155,7 @@ export default function ResourcesForm({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px"
+          padding="20px 0"
         >
           <Box
             sx={{
@@ -289,7 +289,7 @@ export default function ResourcesForm({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px"
+          padding="20px 0"
         >
           <FormControl sx={{ width: "340px" }} error={additionsError}>
             <Typography
