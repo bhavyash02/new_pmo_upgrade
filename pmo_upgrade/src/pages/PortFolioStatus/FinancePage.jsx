@@ -54,7 +54,7 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
             </Stack>
             <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <NumberStepper placeholder="Invoice not realized>30d" counter={invoiceNotRealized} setCounter={setInvoiceNotRealized} width="350px" dollarSymbol={true} mandatory={true} />
-                <Box sx={{ display: "flex", flexDirection: "row", marginRight: "454px" }}>
+                <Box sx={{ display: "flex", flexDirection: "row", marginRight: "400px" }}>
                     <NumberStepper placeholder="Sunk Costs(Write-off and Unbilled Resources)" counter={sunkCosts} setCounter={setSunkCosts} width="350px" dollarSymbol={true} mandatory={true} />
                 </Box>
             </Stack>

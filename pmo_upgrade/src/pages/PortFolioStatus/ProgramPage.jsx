@@ -39,7 +39,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
 
                 {/* Value Board Evaluation - Fixed Alignment */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "340px" }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto", marginTop: "10px" }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto", marginTop: "10px", fontSize:"15px" }}>
                         Value Board Evaluation Done<span style={{ color: "red" }}>*</span>
                     </Typography>
                     <RadioGroup
@@ -54,7 +54,7 @@ export default function ProgramPage({ newProspects, setNewProspects, newInitiati
 
                 {/* AVB/PVB Details with Validation */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "340px" }}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto" }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto", fontSize:"15px" }}>
                         AVB/PVB Details<span style={{ color: "red" }}>*</span>
                     </Typography>
                     <FormControl sx={{ width: "340px" }} error={avbPvbError}>

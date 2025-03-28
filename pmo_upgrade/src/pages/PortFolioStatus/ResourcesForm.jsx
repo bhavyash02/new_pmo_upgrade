@@ -122,7 +122,7 @@ export default function ResourcesForm({
           >
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 500, marginRight: "auto" }}
+              sx={{ fontWeight: 500,fontSize:"15px", marginRight: "auto" }}
             >
               Current Team Size<span style={{ color: "red" }}>*</span>
             </Typography>
@@ -256,7 +256,7 @@ export default function ResourcesForm({
           >
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 500, marginRight: "auto" }}
+              sx={{ fontWeight: 500, marginRight: "auto", fontSize:"15px" }}
             >
               Learning/Certifications<span style={{ color: "red" }}>*</span>
             </Typography>
@@ -294,7 +294,7 @@ export default function ResourcesForm({
           <FormControl sx={{ width: "340px" }} error={additionsError}>
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 500, marginRight: "auto" }}
+              sx={{ fontWeight: 500, marginRight: "auto", fontSize:"15px" }}
             >
               New Additions<span style={{ color: "red" }}>*</span>
             </Typography>
@@ -318,7 +318,7 @@ export default function ResourcesForm({
           <FormControl sx={{ width: "340px" }} error={attritionsError}>
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 500, marginRight: "auto" }}
+              sx={{ fontWeight: 500, marginRight: "auto", fontSize:"15px" }}
             >
               Attrition Risk<span style={{ color: "red" }}>*</span>
             </Typography>

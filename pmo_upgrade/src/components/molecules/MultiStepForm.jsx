@@ -157,6 +157,27 @@ export default function MultipleStepForm({
     switch (activeStep) {
       case 0:
         return (
+          <Box
+          sx={{
+            flexGrow: 1,
+            height: "300px", // Ensure there is enough space to scroll
+            overflowY: "auto",
+            overflowX: "hidden",
+            padding: "20px",
+            scrollbarWidth: "thin", // Firefox
+            "&::-webkit-scrollbar": {
+              width: "8px", // Scrollbar width
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#888",
+              borderRadius: "4px",
+            },
+            "&::-webkit-scrollbar-thumb:hover": {
+              backgroundColor: "#555",
+            },
+          }}
+        >
+          <Box sx={{ minHeight: "600px" }}>
           <OneProtFolioDetails
             protfolioStatus={protfolioStatus}
             setProtfolioStatus={setProtfolioStatus}
@@ -173,140 +194,253 @@ export default function MultipleStepForm({
             chrun={chrun}
             setChrun={setChrun}
           />
+          </Box></Box>
         );
       case 1:
         return (
-          <ProgramPage
-            newProspects={newProspects}
-            setNewProspects={setNewProspects}
-            newInitiatives={newInitiatives}
-            setNewInitiatives={setNewInitiatives}
-            avbPvbDetails={avbPvbDetails}
-            setAvbPvbDetails={setAvbPvbDetails}
-            valueAdds={valueAdds}
-            setValueAdds={setValueAdds}
-            genAITech={genAITech}
-            setGenAITech={setGenAITech}
-            valueBoardEvaluation={valueBoardEvaluation}
-            setValueBoardEvaluation={setValueBoardEvaluation}
-            valueAddsStepper={valueAddsStepper}
-            setValueAddsStepper={setValueAddsStepper}
-            genAiStepper={genAiStepper}
-            setGenAiStepper={setGenAiStepper}
-            valueAddsDelivered={valueAddsDelivered}
-            setValueAddsDelivered={setValueAddsDelivered}
-          />
+          <Box
+            sx={{
+              flexGrow: 1,
+              height: "300px", // Ensure there is enough space to scroll
+              overflowY: "auto",
+              overflowX: "hidden",
+              padding: "50px",
+              scrollbarWidth: "thin", // Firefox
+              "&::-webkit-scrollbar": {
+                width: "8px", // Scrollbar width
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#888",
+                borderRadius: "4px",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                backgroundColor: "#555",
+              },
+            }}
+          >
+            <Box sx={{ minHeight: "700px" }}> {/* Force content to be taller than parent */}
+              <ProgramPage
+                newProspects={newProspects}
+                setNewProspects={setNewProspects}
+                newInitiatives={newInitiatives}
+                setNewInitiatives={setNewInitiatives}
+                avbPvbDetails={avbPvbDetails}
+                setAvbPvbDetails={setAvbPvbDetails}
+                valueAdds={valueAdds}
+                setValueAdds={setValueAdds}
+                genAITech={genAITech}
+                setGenAITech={setGenAITech}
+                valueBoardEvaluation={valueBoardEvaluation}
+                setValueBoardEvaluation={setValueBoardEvaluation}
+                valueAddsStepper={valueAddsStepper}
+                setValueAddsStepper={setValueAddsStepper}
+                genAiStepper={genAiStepper}
+                setGenAiStepper={setGenAiStepper}
+                valueAddsDelivered={valueAddsDelivered}
+                setValueAddsDelivered={setValueAddsDelivered}
+              />
+            </Box>
+          </Box>
+
         );
       case 2:
         return (
           <h3>
-            <ProgramRiskPage
-              closure={closure}
-              setClosure={setClosure}
-              costImpact={costImpact}
-              setCostImpact={setCostImpact}
-              writeOff={writeOff}
-              setWriteOff={setWriteOff}
-              unbilledResources={unbilledResources}
-              setUnbilledResources={setUnbilledResources}
-              growthImpact={growthImpact}
-              setGrowthImpact={setGrowthImpact}
-            />
+            <Box
+              sx={{
+                flexGrow: 1,
+                height: "300px", // Ensure there is enough space to scroll
+                overflowY: "auto",
+                overflowX: "hidden",
+                padding: "50px",
+                scrollbarWidth: "thin", // Firefox
+                "&::-webkit-scrollbar": {
+                  width: "8px", // Scrollbar width
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "#888",
+                  borderRadius: "4px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  backgroundColor: "#555",
+                },
+              }}
+            >
+              <Box sx={{ minHeight: "600px" }}>
+                <ProgramRiskPage
+                  closure={closure}
+                  setClosure={setClosure}
+                  costImpact={costImpact}
+                  setCostImpact={setCostImpact}
+                  writeOff={writeOff}
+                  setWriteOff={setWriteOff}
+                  unbilledResources={unbilledResources}
+                  setUnbilledResources={setUnbilledResources}
+                  growthImpact={growthImpact}
+                  setGrowthImpact={setGrowthImpact}
+                />
+              </Box>
+            </Box>
           </h3>
         );
       case 3:
         return (
-          <ResourcesForm
-            techinal={techinal}
-            setTechinal={setTechinal}
-            product={product}
-            setProduct={setProduct}
-            manager={manager}
-            setManager={setManager}
-            teamSize={teamSize}
-            setTeamSize={setTeamSize}
-            voluntary={voluntary}
-            setVoluntary={setVoluntary}
-            involuntary={involuntary}
-            setInvoluntary={setInvoluntary}
-            employeeScore={employeeScore}
-            setEmployeeScore={setEmployeeScore}
-            learnings={learnings}
-            setLearnings={setLearnings}
-            additions={additions}
-            setAdditions={setAdditions}
-            attritionRisk={attritionRisk}
-            setAttritionRisk={setAttritionRisk}
-            topPerformers={topPerformers}
-            setTopPerformers={setTopPerformers}
-            topPerformersDesc={topPerformersDesc}
-            settopPerformersDesc={settopPerformersDesc}
-          />
+          <Box
+            sx={{
+              flexGrow: 1,
+              height: "300px", // Ensure there is enough space to scroll
+              overflowY: "auto",
+              overflowX: "hidden",
+              padding: "50px",
+              scrollbarWidth: "thin", // Firefox
+              "&::-webkit-scrollbar": {
+                width: "8px", // Scrollbar width
+              },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#888",
+                borderRadius: "4px",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                backgroundColor: "#555",
+              },
+            }}
+          >
+            <Box sx={{ minHeight: "600px" }}>
+              <ResourcesForm
+                techinal={techinal}
+                setTechinal={setTechinal}
+                product={product}
+                setProduct={setProduct}
+                manager={manager}
+                setManager={setManager}
+                teamSize={teamSize}
+                setTeamSize={setTeamSize}
+                voluntary={voluntary}
+                setVoluntary={setVoluntary}
+                involuntary={involuntary}
+                setInvoluntary={setInvoluntary}
+                employeeScore={employeeScore}
+                setEmployeeScore={setEmployeeScore}
+                learnings={learnings}
+                setLearnings={setLearnings}
+                additions={additions}
+                setAdditions={setAdditions}
+                attritionRisk={attritionRisk}
+                setAttritionRisk={setAttritionRisk}
+                topPerformers={topPerformers}
+                setTopPerformers={setTopPerformers}
+                topPerformersDesc={topPerformersDesc}
+                settopPerformersDesc={settopPerformersDesc}
+              /></Box></Box>
         );
       case 4:
         return (
           <h3>
-            <CustomerPage
-              csat={csat}
-              setCsat={setCsat}
-              feedback={feedback}
-              setFeedBack={setFeedBack}
-              escalation={escalation}
-              setEscalation={setEscalation}
-              escalationDescription={escalationDescription}
-              setEscalationDescription={setEscalationDescription}
-              apprecition={apprecition}
-              setApprecition={setApprecition}
-              apprecitionDescription={apprecitionDescription}
-              setApprecitionDescription={setApprecitionDescription}
-              critical={critical}
-              setCritical={setCritical}
-              nonCritical={nonCritical}
-              setNonCritical={setNonCritical}
-              qbr={qbr}
-              setQbr={setQbr}
-              capabilitiesPositioned={capabilitiesPositioned}
-              setCapabilitiesPositioned={setCapabilitiesPositioned}
-              capabilitiesDescription={capabilitiesDescription}
-              setCapabilitiesDescription={setCapabilitiesDescription}
-              pocsInFlight={pocsInFlight}
-              setPocsInFlight={setPocsInFlight}
-              pocsPlanned={pocsPlanned}
-              setPocsPlanned={setPocsPlanned}
-              hackathons={hackathons}
-              setHackathons={setHackathons}
-              hackathonsDescribed={hackathonsDescribed}
-              setHackathonsDescribed={setHackathonsDescribed}
-              crossSellOportunity={crossSellOportunity}
-              setCrossSellOpportunity={setCrossSellOpportunity}
-              architechtureAdvisory={architechtureAdvisory}
-              setArchitechtureAdvisory={setArchitechtureAdvisory}
-            />
+            <Box
+              sx={{
+                flexGrow: 1,
+                height: "300px", // Ensure there is enough space to scroll
+                overflowY: "auto",
+                overflowX: "hidden",
+                padding: "20px",
+                scrollbarWidth: "thin", // Firefox
+                "&::-webkit-scrollbar": {
+                  width: "8px", // Scrollbar width
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "#888",
+                  borderRadius: "4px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  backgroundColor: "#555",
+                },
+              }}
+            >
+              <Box sx={{ minHeight: "600px" }}>
+                <CustomerPage
+                  csat={csat}
+                  setCsat={setCsat}
+                  feedback={feedback}
+                  setFeedBack={setFeedBack}
+                  escalation={escalation}
+                  setEscalation={setEscalation}
+                  escalationDescription={escalationDescription}
+                  setEscalationDescription={setEscalationDescription}
+                  apprecition={apprecition}
+                  setApprecition={setApprecition}
+                  apprecitionDescription={apprecitionDescription}
+                  setApprecitionDescription={setApprecitionDescription}
+                  critical={critical}
+                  setCritical={setCritical}
+                  nonCritical={nonCritical}
+                  setNonCritical={setNonCritical}
+                  qbr={qbr}
+                  setQbr={setQbr}
+                  capabilitiesPositioned={capabilitiesPositioned}
+                  setCapabilitiesPositioned={setCapabilitiesPositioned}
+                  capabilitiesDescription={capabilitiesDescription}
+                  setCapabilitiesDescription={setCapabilitiesDescription}
+                  pocsInFlight={pocsInFlight}
+                  setPocsInFlight={setPocsInFlight}
+                  pocsPlanned={pocsPlanned}
+                  setPocsPlanned={setPocsPlanned}
+                  hackathons={hackathons}
+                  setHackathons={setHackathons}
+                  hackathonsDescribed={hackathonsDescribed}
+                  setHackathonsDescribed={setHackathonsDescribed}
+                  crossSellOportunity={crossSellOportunity}
+                  setCrossSellOpportunity={setCrossSellOpportunity}
+                  architechtureAdvisory={architechtureAdvisory}
+                  setArchitechtureAdvisory={setArchitechtureAdvisory}
+                />
+              </Box></Box>
           </h3>
         );
       case 5:
         return (
           <h3>
-            <FinancePage
-              totalRevenue={totalRevenue}
-              setTotalRevenue={setTotalRevenue}
-              budget={budget}
-              setBudget={setBudget}
-              totalSpend={totalSpend}
-              setTotalSpend={setTotalSpend}
-              gm={gm}
-              setGm={setGm}
-              resources={resources}
-              setResources={setResources}
-              spend={spend}
-              setSpend={setSpend}
-              totalInvoice={totalInvoice}
-              setTotalInvoice={setTotalInvoice}
-              invoiceNotRealized={invoiceNotRealized}
-              setInvoiceNotRealized={setInvoiceNotRealized}
-              sunkCosts={sunkCosts}
-              setSunkCosts={setSunkCosts}
-            />
+            <Box
+              sx={{
+                flexGrow: 1,
+                height: "300px", // Ensure there is enough space to scroll
+                overflowY: "auto",
+                overflowX: "hidden",
+                padding: "50px",
+                scrollbarWidth: "thin", // Firefox
+                "&::-webkit-scrollbar": {
+                  width: "8px", // Scrollbar width
+                },
+                "&::-webkit-scrollbar-thumb": {
+                  backgroundColor: "#888",
+                  borderRadius: "4px",
+                },
+                "&::-webkit-scrollbar-thumb:hover": {
+                  backgroundColor: "#555",
+                },
+              }}
+            >
+              <Box sx={{ minHeight: "700px" }}>
+                <FinancePage
+                  totalRevenue={totalRevenue}
+                  setTotalRevenue={setTotalRevenue}
+                  budget={budget}
+                  setBudget={setBudget}
+                  totalSpend={totalSpend}
+                  setTotalSpend={setTotalSpend}
+                  gm={gm}
+                  setGm={setGm}
+                  resources={resources}
+                  setResources={setResources}
+                  spend={spend}
+                  setSpend={setSpend}
+                  totalInvoice={totalInvoice}
+                  setTotalInvoice={setTotalInvoice}
+                  invoiceNotRealized={invoiceNotRealized}
+                  setInvoiceNotRealized={setInvoiceNotRealized}
+                  sunkCosts={sunkCosts}
+                  setSunkCosts={setSunkCosts}
+                />
+              </Box></Box>
           </h3>
         );
       default:
