@@ -8,14 +8,14 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
     return (
         <Box sx={{ width: "100%", paddingX: 2 }}>
             {/* First Row */}
-            <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
+            <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px 0">
                 <NumberStepper placeholder="Total Revenue" counter={totalRevenue} setCounter={setTotalRevenue} width="350px" dollarSymbol={true} mandatory={true} />
                 <NumberStepper placeholder="Budget(Calc Value)" counter={budget} setCounter={setBudget} width="350px" dollarSymbol={true} mandatory={true} />
                 <NumberStepper placeholder="Total Spend" counter={totalSpend} setCounter={setTotalSpend} width="350px" dollarSymbol={true} mandatory={true} />
             </Stack>
 
             {/* Second Row */}
-            <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px">
+            <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px 0">
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px", marginTop: "20px" }}>
                     <Typography variant="subtitle1" sx={{ fontSize: 14, marginRight: "auto" }}>
                         GM% (RAG) <span style={{ color: "red" }}>*</span>
