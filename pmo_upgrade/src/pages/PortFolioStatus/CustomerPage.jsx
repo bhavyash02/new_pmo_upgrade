@@ -56,8 +56,8 @@ export default function CustomerPage({ csat,
 
                 {/* Feedback */}
                 <Box sx={{ flex: 1 }}>
-                    <Typography sx={{ fontSize: "14px", marginBottom: "5px", textAlign: "left", marginLeft: "6px" }}>Feedback<span style={{ color: "red" }}>*</span></Typography>
-                    <TextField sx={{ width: "340px", alignItems: "left", marginLeft: "-52px" }} placeholder="Enter Description" variant="outlined" onChange={(e) => setFeedBack(e.target.value)} />
+                    <Typography sx={{ fontSize: "14px", marginBottom: "5px", textAlign: "left", marginLeft: "40px" }}>Feedback<span style={{ color: "red" }}>*</span></Typography>
+                    <TextField sx={{ width: "340px", alignItems: "left", marginLeft: "20px" }} placeholder="Enter Description" variant="outlined" onChange={(e) => setFeedBack(e.target.value)} />
                 </Box>
                 <Box sx={{ flex: 1 }}>
                     <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1, marginLeft: "50px", width: "340px"}}>
@@ -73,7 +73,7 @@ export default function CustomerPage({ csat,
                     <NumberStepper placeholder="Apprecitions" counter={apprecition} setCounter={setApprecition} width="100px" />
                     <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "100%", marginTop: "28px" }} onChange={(e) => setApprecitionDescription(e.target.value)} />
                 </Box>
-                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", width: "310px" }}>
+                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, width: "310px" }}>
                     <Typography
                         variant="subtitle1"
                         sx={{
@@ -98,8 +98,8 @@ export default function CustomerPage({ csat,
                         </Box>
                     </Box>
                 </Box>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "350px" }}>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 500, marginRight: "auto" }}>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 1, width: "330px" }}>
+                    <Typography variant="subtitle1" sx={{ fontSize:"15px", marginRight: "auto" }}>
                         QBR<span style={{ color: "red" }}>*</span>
                     </Typography>
                     <RadioGroup
@@ -131,15 +131,15 @@ export default function CustomerPage({ csat,
                 </Box>
                 {/* Cross Sell Opportunity Field */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                    <Typography variant="subtitle1" sx={{ marginRight: "180px" }}>
+                    <Typography variant="subtitle1" sx={{fontSize:"14px", marginRight: "180px" }}>
                         Cross Sell Opportunity
                     </Typography>
-                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px" }} onChange={(e) => setCrossSellOpportunity(e.target.value)} />
+                    <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px"}} onChange={(e) => setCrossSellOpportunity(e.target.value)} />
                 </Box>
 
                 {/* Extra Text Field */}
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                    <Typography variant="subtitle1" sx={{ marginRight: "200px" }}>
+                    <Typography variant="subtitle1" sx={{fontSize:"14px", marginRight: "200px" }}>
                         Architecture/Advisory
                     </Typography>
                     <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px", marginLeft: "10px" }} onChange={(e) => setArchitechtureAdvisory(e.target.value)} />
