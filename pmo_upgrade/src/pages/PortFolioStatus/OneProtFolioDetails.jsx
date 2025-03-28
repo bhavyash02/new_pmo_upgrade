@@ -38,7 +38,7 @@ export default function OneProtFolioDetails({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px"
+          padding="20px 0"
         >
           <FormControl sx={{ width: "340px" }} error={portfolioStatusError}>
             <Dropdown
@@ -86,7 +86,7 @@ export default function OneProtFolioDetails({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px"
+          padding="20px 0"
         >
           <NumberStepper
             placeholder="New Projects"
@@ -115,7 +115,7 @@ export default function OneProtFolioDetails({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px"
+          padding="20px 0" 
         >
           <NumberStepper
             placeholder="Chrun"
