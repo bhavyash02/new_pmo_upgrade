@@ -204,7 +204,7 @@ export default function MultipleStepForm({
               height: "300px", // Ensure there is enough space to scroll
               overflowY: "auto",
               overflowX: "hidden",
-              padding: "50px",
+              padding: "20px",
               scrollbarWidth: "thin", // Firefox
               "&::-webkit-scrollbar": {
                 width: "8px", // Scrollbar width
@@ -252,7 +252,7 @@ export default function MultipleStepForm({
                 height: "300px", // Ensure there is enough space to scroll
                 overflowY: "auto",
                 overflowX: "hidden",
-                padding: "50px",
+                padding: "20px",
                 scrollbarWidth: "thin", // Firefox
                 "&::-webkit-scrollbar": {
                   width: "8px", // Scrollbar width
@@ -291,7 +291,7 @@ export default function MultipleStepForm({
               height: "300px", // Ensure there is enough space to scroll
               overflowY: "auto",
               overflowX: "hidden",
-              padding: "50px",
+              padding: "20px",
               scrollbarWidth: "thin", // Firefox
               "&::-webkit-scrollbar": {
                 width: "8px", // Scrollbar width
@@ -405,7 +405,7 @@ export default function MultipleStepForm({
                 height: "300px", // Ensure there is enough space to scroll
                 overflowY: "auto",
                 overflowX: "hidden",
-                padding: "50px",
+                padding: "20px",
                 scrollbarWidth: "thin", // Firefox
                 "&::-webkit-scrollbar": {
                   width: "8px", // Scrollbar width
@@ -472,7 +472,7 @@ export default function MultipleStepForm({
         {renderStepContent()}
       </Box>
 
-      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, padding: "50px", }}>
+      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, padding: "70px", }}>
         <Button
           onClick={handleNext}
           disabled={
