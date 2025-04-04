@@ -2,10 +2,11 @@ import * as React from 'react';
 import { Box, Typography, InputAdornment } from "@mui/material";
 import TextField from '@mui/material/TextField';
 
-export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 100, width, mandatory, dollarSymbol = false, disabled = false }) {
+export function NumberInput({ value, setValue, placeholder = '', min = 0, width, mandatory, dollarSymbol = false, disabled = false }) {
     const handleChange = (event) => {
         const newValue = event.target.value;
-        setValue(newValue ? Math.max(min, Math.min(max, Number(newValue))) : '');
+        // setValue(newValue ? Math.max(min, Math.min(max, Number(newValue))) : '');
+        setValue(newValue);
     };
     return (
         <Box sx={{
@@ -35,7 +36,7 @@ export function NumberInput({ value, setValue, placeholder = '', min = 0, max = 
                 onChange={handleChange}
                 inputProps={{
                     min,
-                    max,
+                    // max,
                 }}
                 sx={{
                     width: '340px',
