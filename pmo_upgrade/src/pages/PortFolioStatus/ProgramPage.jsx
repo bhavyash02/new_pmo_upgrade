@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-    Box, Stack, TextField, Typography, InputAdornment,
+    Box, Stack, TextField, Typography,
     FormControlLabel, RadioGroup, Radio, FormControl, FormHelperText
 } from "@mui/material";
 import NumberStepper from "../../components/molecules/NumberStepper";

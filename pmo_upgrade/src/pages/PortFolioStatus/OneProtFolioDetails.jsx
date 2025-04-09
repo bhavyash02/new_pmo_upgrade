@@ -26,9 +26,6 @@ export default function OneProtFolioDetails({
 }) {
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
   const [portfolioStatusError, setPortfolioStatusError] = React.useState(false);
-  const [inFlightError, setInFlightError] = React.useState(false);
-  const [projectsOnTrackError, setProjectsOnTrackError] = React.useState(false);
-  const [newProjectsError, setNewProjectsError] = React.useState(false);
 
   return (
     <>
