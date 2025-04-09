@@ -3,6 +3,7 @@ import {
   HomePage,
   PortFolioStatus,
   PageNotFound,
+  PortFolioHomePage,
 } from "../pages";
 
 export const appRoutes = [
@@ -13,6 +14,10 @@ export const appRoutes = [
   {
     path: "/portfolio-status",
     element: <PortFolioStatus />,
+  },
+  {
+    path: "/portfolio",
+    element: <PortFolioHomePage />,
   },
   {
     path: "*",

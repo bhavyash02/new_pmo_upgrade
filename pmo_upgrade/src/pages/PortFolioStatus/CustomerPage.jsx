@@ -78,7 +78,6 @@ export default function CustomerPage({ csat,
                         variant="subtitle1"
                         sx={{
                             fontWeight: "bold",
-                            marginRight: "auto",
                             marginRight: "20px",
                             position: "relative",
                             top: -35,

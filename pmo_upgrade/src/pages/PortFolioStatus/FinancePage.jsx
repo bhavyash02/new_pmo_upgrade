@@ -24,7 +24,7 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
                         <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px" }} onChange={(e) => setGm(e.target.value)} />
                     </Box>
                 </Box>
-                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginRight: "40px", marginTop: "20px", width: "308px", marginRight: "10px" }}>
+                <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginTop: "20px", width: "308px", marginRight: "10px" }}>
                     <Typography
                         variant="subtitle1"
                         sx={{
