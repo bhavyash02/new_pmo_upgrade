@@ -158,43 +158,43 @@ export default function MultipleStepForm({
       case 0:
         return (
           <Box
-          sx={{
-            flexGrow: 1,
-            height: "300px", // Ensure there is enough space to scroll
-            overflowY: "auto",
-            overflowX: "hidden",
-            padding: "20px",
-            scrollbarWidth: "thin", // Firefox
-            "&::-webkit-scrollbar": {
-              width: "8px", // Scrollbar width
-            },
-            "&::-webkit-scrollbar-thumb": {
-              backgroundColor: "#888",
-              borderRadius: "4px",
-            },
-            "&::-webkit-scrollbar-thumb:hover": {
-              backgroundColor: "#555",
-            },
-          }}
-        >
-          <Box sx={{ minHeight: "600px" }}>
-          <OneProtFolioDetails
-            protfolioStatus={protfolioStatus}
-            setProtfolioStatus={setProtfolioStatus}
-            inFlight={inFlight}
-            setInFlight={setInFlight}
-            projectsOnTrack={projectsOnTrack}
-            setProjectsOnTrack={setProjectsOnTrack}
-            newProjects={newProjects}
-            setNewProjects={setNewProjects}
-            projectAtRisk={projectAtRisk}
-            setProjectAtRisk={setProjectAtRisk}
-            rampDown={rampDown}
-            setRampDown={setRampDown}
-            chrun={chrun}
-            setChrun={setChrun}
-          />
-          </Box></Box>
+            sx={{
+              flexGrow: 1,
+              height: "300px", // Ensure there is enough space to scroll
+              // overflowY: "auto",
+              // overflowX: "hidden",
+              // padding: "20px",
+              // scrollbarWidth: "thin", // Firefox
+              // "&::-webkit-scrollbar": {
+              //   width: "8px", // Scrollbar width
+              // },
+              // "&::-webkit-scrollbar-thumb": {
+              //   backgroundColor: "#888",
+              //   borderRadius: "4px",
+              // },
+              // "&::-webkit-scrollbar-thumb:hover": {
+              //   backgroundColor: "#555",
+              // },
+            }}
+          >
+            <Box sx={{ minHeight: "600px" }}>
+              <OneProtFolioDetails
+                protfolioStatus={protfolioStatus}
+                setProtfolioStatus={setProtfolioStatus}
+                inFlight={inFlight}
+                setInFlight={setInFlight}
+                projectsOnTrack={projectsOnTrack}
+                setProjectsOnTrack={setProjectsOnTrack}
+                newProjects={newProjects}
+                setNewProjects={setNewProjects}
+                projectAtRisk={projectAtRisk}
+                setProjectAtRisk={setProjectAtRisk}
+                rampDown={rampDown}
+                setRampDown={setRampDown}
+                chrun={chrun}
+                setChrun={setChrun}
+              />
+            </Box></Box>
         );
       case 1:
         return (
@@ -202,20 +202,20 @@ export default function MultipleStepForm({
             sx={{
               flexGrow: 1,
               height: "300px", // Ensure there is enough space to scroll
-              overflowY: "auto",
-              overflowX: "hidden",
-              padding: "20px",
-              scrollbarWidth: "thin", // Firefox
-              "&::-webkit-scrollbar": {
-                width: "8px", // Scrollbar width
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "#888",
-                borderRadius: "4px",
-              },
-              "&::-webkit-scrollbar-thumb:hover": {
-                backgroundColor: "#555",
-              },
+              // overflowY: "auto",
+              // overflowX: "hidden",
+              // padding: "20px",
+              // scrollbarWidth: "thin", // Firefox
+              // "&::-webkit-scrollbar": {
+              //   width: "8px", // Scrollbar width
+              // },
+              // "&::-webkit-scrollbar-thumb": {
+              //   backgroundColor: "#888",
+              //   borderRadius: "4px",
+              // },
+              // "&::-webkit-scrollbar-thumb:hover": {
+              //   backgroundColor: "#555",
+              // },
             }}
           >
             <Box sx={{ minHeight: "700px" }}> {/* Force content to be taller than parent */}
@@ -250,20 +250,20 @@ export default function MultipleStepForm({
               sx={{
                 flexGrow: 1,
                 height: "300px", // Ensure there is enough space to scroll
-                overflowY: "auto",
-                overflowX: "hidden",
-                padding: "20px",
-                scrollbarWidth: "thin", // Firefox
-                "&::-webkit-scrollbar": {
-                  width: "8px", // Scrollbar width
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "#888",
-                  borderRadius: "4px",
-                },
-                "&::-webkit-scrollbar-thumb:hover": {
-                  backgroundColor: "#555",
-                },
+                // overflowY: "auto",
+                // overflowX: "hidden",
+                // padding: "20px",
+                // scrollbarWidth: "thin", // Firefox
+                // "&::-webkit-scrollbar": {
+                //   width: "8px", // Scrollbar width
+                // },
+                // "&::-webkit-scrollbar-thumb": {
+                //   backgroundColor: "#888",
+                //   borderRadius: "4px",
+                // },
+                // "&::-webkit-scrollbar-thumb:hover": {
+                //   backgroundColor: "#555",
+                // },
               }}
             >
               <Box sx={{ minHeight: "600px" }}>
@@ -289,20 +289,20 @@ export default function MultipleStepForm({
             sx={{
               flexGrow: 1,
               height: "300px", // Ensure there is enough space to scroll
-              overflowY: "auto",
-              overflowX: "hidden",
-              padding: "20px",
-              scrollbarWidth: "thin", // Firefox
-              "&::-webkit-scrollbar": {
-                width: "8px", // Scrollbar width
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "#888",
-                borderRadius: "4px",
-              },
-              "&::-webkit-scrollbar-thumb:hover": {
-                backgroundColor: "#555",
-              },
+              // overflowY: "auto",
+              // overflowX: "hidden",
+              // padding: "20px",
+              // scrollbarWidth: "thin", // Firefox
+              // "&::-webkit-scrollbar": {
+              //   width: "8px", // Scrollbar width
+              // },
+              // "&::-webkit-scrollbar-thumb": {
+              //   backgroundColor: "#888",
+              //   borderRadius: "4px",
+              // },
+              // "&::-webkit-scrollbar-thumb:hover": {
+              //   backgroundColor: "#555",
+              // },
             }}
           >
             <Box sx={{ minHeight: "600px" }}>
@@ -337,24 +337,24 @@ export default function MultipleStepForm({
         return (
           <h3>
             <Box
-              sx={{
-                flexGrow: 1,
-                height: "300px", // Ensure there is enough space to scroll
-                overflowY: "auto",
-                overflowX: "hidden",
-                padding: "20px",
-                scrollbarWidth: "thin", // Firefox
-                "&::-webkit-scrollbar": {
-                  width: "8px", // Scrollbar width
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "#888",
-                  borderRadius: "4px",
-                },
-                "&::-webkit-scrollbar-thumb:hover": {
-                  backgroundColor: "#555",
-                },
-              }}
+            // sx={{
+            //   flexGrow: 1,
+            //   height: "300px", // Ensure there is enough space to scroll
+            //   overflowY: "auto",
+            //   overflowX: "hidden",
+            //   padding: "20px",
+            //   scrollbarWidth: "thin", // Firefox
+            //   "&::-webkit-scrollbar": {
+            //     width: "8px", // Scrollbar width
+            //   },
+            //   "&::-webkit-scrollbar-thumb": {
+            //     backgroundColor: "#888",
+            //     borderRadius: "4px",
+            //   },
+            //   "&::-webkit-scrollbar-thumb:hover": {
+            //     backgroundColor: "#555",
+            //   },
+            // }}
             >
               <Box sx={{ minHeight: "600px" }}>
                 <CustomerPage
@@ -403,20 +403,20 @@ export default function MultipleStepForm({
               sx={{
                 flexGrow: 1,
                 height: "300px", // Ensure there is enough space to scroll
-                overflowY: "auto",
-                overflowX: "hidden",
-                padding: "20px",
-                scrollbarWidth: "thin", // Firefox
-                "&::-webkit-scrollbar": {
-                  width: "8px", // Scrollbar width
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "#888",
-                  borderRadius: "4px",
-                },
-                "&::-webkit-scrollbar-thumb:hover": {
-                  backgroundColor: "#555",
-                },
+                // overflowY: "auto",
+                // overflowX: "hidden",
+                // padding: "20px",
+                // scrollbarWidth: "thin", // Firefox
+                // "&::-webkit-scrollbar": {
+                //   width: "8px", // Scrollbar width
+                // },
+                // "&::-webkit-scrollbar-thumb": {
+                //   backgroundColor: "#888",
+                //   borderRadius: "4px",
+                // },
+                // "&::-webkit-scrollbar-thumb:hover": {
+                //   backgroundColor: "#555",
+                // },
               }}
             >
               <Box sx={{ minHeight: "700px" }}>
@@ -455,10 +455,10 @@ export default function MultipleStepForm({
         alternativeLabel
         sx={{
           backgroundColor: "#ecf1ff",
-          padding: "50px",
-          borderRadius: "20px",
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
+          padding: "40px",
+          // borderRadius: "20px",
+          // borderBottomLeftRadius: 0,
+          // borderBottomRightRadius: 0,
         }}
       >
         {stepLabels.map((label, index) => (
@@ -468,11 +468,11 @@ export default function MultipleStepForm({
         ))}
       </Stepper>
 
-      <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1, padding: "0 50px", }}>
+      <Box sx={{ mt: 2, textAlign: "center", flexGrow: 1, padding: "0 40px", }}>
         {renderStepContent()}
       </Box>
 
-      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, padding: "70px", }}>
+      <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, paddingTop: "150px", paddingBottom: "50px", paddingRight: "45px" }}>
         <Button
           onClick={handleNext}
           disabled={
