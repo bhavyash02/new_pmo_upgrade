@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import Dropdown from "../../components/molecules/Dropdown";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
-import { Box, Typography } from "@mui/material";
+import {
+  Box, Typography, Select,
+  MenuItem
+} from "@mui/material";
+import dayjs from "dayjs";
 
 function PortFolioStatus() {
+  const today = dayjs();
+
+  const [selectedMonth, setSelectedMonth] = useState(today.format("MMMM"));
+  const [selectedYear, setSelectedYear] = useState(today.year());
   const [buHead, setBuHead] = useState("");
   const [engagementDirector, setEngagementDirector] = useState("");
   const [deliveryDirector, setDeliveryDirector] = useState("");
@@ -81,14 +89,50 @@ function PortFolioStatus() {
 
   return (
     <Box sx={{ margin: "40px auto", maxWidth: "1400px", width: "100%" }}>
-      <Typography
-        variant="h4"
-        gutterBottom
-        sx={{ fontWeight: 600, marginBottom: 10, textAlign: "left" }}
-      >
-        Add Portfolio Status For March 2025
-      </Typography>
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", marginRight: "150px", marginBottom: "20px" }}>
+        <Typography
+          variant="h4"
+          gutterBottom
+          sx={{ fontWeight: 600, textAlign: "left" }}
+        >
+          Add Portfolio Status for {selectedMonth} {selectedYear}
+        </Typography>
 
+        <Box sx={{ display: "flex", gap: 1, marginBottom: "20px" }}>
+          <Box>
+            <Typography sx={{ marginRight: "200px" }}>Month<span style={{ color: "red" }}>*</span></Typography>
+            <Select sx={{ "width": "250px", marginRight: "20px" }}
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+              size="small"
+            >
+              {[
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+              ].map((month) => (
+                <MenuItem key={month} value={month}>
+                  {month}
+                </MenuItem>
+              ))}
+            </Select>
+          </Box>
+          <Box>
+            
+            <Typography sx={{ marginRight: "200px" }}>Year<span style={{ color: "red" }}>*</span></Typography>
+            <Select sx={{ "width": "250px" }}
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+              size="small"
+            >
+              {Array.from({ length: 9 }, (_, i) => dayjs().year() - i).map((year) => (
+                <MenuItem key={year} value={year}>
+                  {year}
+                </MenuItem>
+              ))}
+            </Select>
+          </Box>
+        </Box>
+      </Box>
       <Box sx={{ display: "flex", gap: 4 }}>
         {[
           { label: "BU Head", state: buHead, setState: setBuHead },
@@ -128,7 +172,6 @@ function PortFolioStatus() {
               input={dropdowns}
               handleOnSelect={(event, newValue) => {
                 setState(newValue);
-                console.log(newValue);
               }}
               selectedValues={state}
             />
@@ -143,7 +186,7 @@ function PortFolioStatus() {
           opacity: isStepFormEnabled ? 1 : 0.5, // Reduce visibility
           maxWidth: "1400px",
           width: "100%",
-          margin: "80px auto 0",
+          margin: "60px auto 0",
           border: "1px solid #D9D9D9",
           borderRadius: "20px",
         }}
