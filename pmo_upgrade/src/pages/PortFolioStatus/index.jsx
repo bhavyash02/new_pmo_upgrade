@@ -92,7 +92,7 @@ function PortFolioStatus() {
   const dropdown = ["engagement_director", "delivery_director", "delivery_manager", "bu_head", "portfolio_status"];
   useEffect(() => {
     const fetchData = async () => {
-      const a = await fetchPortfolioData(apiUrl, dropdown, setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus);
+      await fetchPortfolioData(apiUrl, dropdown, setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus);
     };
     fetchData();
   }, []);
