@@ -26,17 +26,17 @@ export function Dropdown({
         textAlign: "left"
       }}
     >
-        <Box>
-      <Typography variant="subtitle1" sx={{ fontSize: 14 }} gutterBottom>
-        {placeholder}{mandatory && <span style={{ color: "red" }}>*</span>}
-      </Typography></Box>
+      <Box>
+        <Typography variant="subtitle1" sx={{ fontSize: 14 }} gutterBottom>
+          {placeholder}{mandatory && <span style={{ color: "red" }}>*</span>}
+        </Typography></Box>
       <Autocomplete
         options={input}
         disabled={disabled}
         getOptionLabel={(option) => option.toString() || ""} // Ensure option has title
         onChange={handleOnSelect} // Pass the handler function
         value={selectedValues} // Selected values dynamically passed
-        sx={{ width: 340,  display: "block", }}
+        sx={{ width: 340, display: "block", }}
         renderInput={(params) => (
           <TextField
             {...params}
