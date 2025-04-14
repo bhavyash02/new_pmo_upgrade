@@ -9,6 +9,8 @@ import {
 import NumberStepper from "../../components/molecules/NumberStepper";
 
 export default function OneProtFolioDetails({
+  changePortfolioStatus,
+  setChangePortfolioStatus,
   protfolioStatus,
   setProtfolioStatus,
   inFlight,
@@ -39,12 +41,12 @@ export default function OneProtFolioDetails({
         >
           <FormControl sx={{ width: "340px" }} error={portfolioStatusError}>
             <Dropdown
-              input={dropdowns}
+              input={protfolioStatus}
               placeholder="Portfolio Status"
-              selectedValues={protfolioStatus}
+              selectedValues={changePortfolioStatus}
               mandatory={true}
               handleOnSelect={(event, newValue) => {
-                setProtfolioStatus(newValue);
+                setChangePortfolioStatus(newValue);
                 setPortfolioStatusError(false);
               }}
               onFocus={() => {
@@ -112,7 +114,7 @@ export default function OneProtFolioDetails({
           spacing={3}
           justifyContent="space-between"
           alignItems="flex-start"
-          padding="20px 0" 
+          padding="20px 0"
         >
           <NumberStepper
             placeholder="Chrun"

@@ -20,6 +20,8 @@ const stepLabels = [
 ];
 
 export default function MultipleStepForm({
+  changePortfolioStatus,
+  setChangePortfolioStatus,
   setProtfolioStatus,
   protfolioStatus,
   inFlight,
@@ -179,6 +181,8 @@ export default function MultipleStepForm({
           >
             <Box sx={{ minHeight: "600px" }}>
               <OneProtFolioDetails
+                changePortfolioStatus={changePortfolioStatus}
+                setChangePortfolioStatus={setChangePortfolioStatus}
                 protfolioStatus={protfolioStatus}
                 setProtfolioStatus={setProtfolioStatus}
                 inFlight={inFlight}

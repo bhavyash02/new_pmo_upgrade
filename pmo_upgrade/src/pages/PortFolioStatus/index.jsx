@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "../../components/molecules/Dropdown";
+import apiUrlConfig from "../../config/apiUrlConfig";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import {
   Box, Typography, Select,
   MenuItem
 } from "@mui/material";
 import dayjs from "dayjs";
+import { fetchPortfolioData } from "../../modules/ApiCalls";
 
 function PortFolioStatus() {
   const today = dayjs();
@@ -16,8 +18,13 @@ function PortFolioStatus() {
   const [engagementDirector, setEngagementDirector] = useState("");
   const [deliveryDirector, setDeliveryDirector] = useState("");
   const [deliveryManager, setDeliveryManager] = useState("");
+  const [selectedEngagementDirector, setSelectedEngagementDirector] = useState("");
+  const [selectedDeliveryDirector, setSelectedDeliveryDirector] = useState("");
+  const [selectedDeliveryManager, setSelectedDeliveryManager] = useState("");
+  const [selectedBuHead, setSelectedBuHead] = useState("");
   // section One
-  const [protfolioStatus, setProtfolioStatus] = useState(null);
+  const [protfolioStatus, setProtfolioStatus] = useState("");
+  const [changePortfolioStatus, setChangePortfolioStatus] = useState(null);
   const [inFlight, setInFlight] = useState(null);
   const [projectsOnTrack, setProjectsOnTrack] = useState(null);
   const [newProjects, setNewProjects] = useState(null);
@@ -81,11 +88,20 @@ function PortFolioStatus() {
   const [invoiceNotRealized, setInvoiceNotRealized] = useState(0);
   const [sunkCosts, setSunkCosts] = useState(0);
 
-
+  const { apiUrl } = apiUrlConfig;
+  const dropdown = ["engagement_director", "delivery_director", "delivery_manager", "bu_head", "portfolio_status"];
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchPortfolioData(apiUrl, dropdown, setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus);
+    };
+    fetchData();
+  }, []);
   const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
   // Check if both required fields are selected
-  const isStepFormEnabled = deliveryDirector && deliveryManager;
+  const isStepFormEnabled = selectedDeliveryDirector && selectedDeliveryManager;
+
+
 
   return (
     <Box sx={{ margin: "40px auto", maxWidth: "1400px", width: "100%" }}>
@@ -117,7 +133,7 @@ function PortFolioStatus() {
             </Select>
           </Box>
           <Box>
-            
+
             <Typography sx={{ marginRight: "200px" }}>Year<span style={{ color: "red" }}>*</span></Typography>
             <Select sx={{ "width": "250px" }}
               value={selectedYear}
@@ -135,25 +151,31 @@ function PortFolioStatus() {
       </Box>
       <Box sx={{ display: "flex", gap: 4 }}>
         {[
-          { label: "BU Head", state: buHead, setState: setBuHead },
+          { label: "BU Head", state: buHead, setState: setBuHead, changeState: selectedBuHead, setChangeState: setSelectedBuHead },
           {
             label: "Engagement Director",
             state: engagementDirector,
             setState: setEngagementDirector,
+            changeState: selectedEngagementDirector,
+            setChangeState: setSelectedEngagementDirector,
           },
           {
             label: "Delivery Director",
             state: deliveryDirector,
             setState: setDeliveryDirector,
+            changeState: selectedDeliveryDirector,
+            setChangeState: setSelectedDeliveryDirector,
             required: true,
           },
           {
             label: "Delivery Manager",
             state: deliveryManager,
             setState: setDeliveryManager,
+            changeState: selectedDeliveryManager,
+            setChangeState: setSelectedDeliveryManager,
             required: true,
           },
-        ].map(({ label, state, setState, required }) => (
+        ].map(({ label, state, setState, changeState, setChangeState, required }) => (
           <Box
             key={label}
             sx={{ display: "flex", flexDirection: "column", minWidth: 200 }}
@@ -169,11 +191,11 @@ function PortFolioStatus() {
               {label} {required && <span style={{ color: "red" }}>*</span>}
             </Typography>
             <Dropdown
-              input={dropdowns}
+              input={state}
               handleOnSelect={(event, newValue) => {
-                setState(newValue);
+                setChangeState(newValue);
               }}
-              selectedValues={state}
+              selectedValues={changeState}
             />
           </Box>
         ))}
@@ -192,6 +214,8 @@ function PortFolioStatus() {
         }}
       >
         <MultipleStepForm
+          changePortfolioStatus={changePortfolioStatus}
+          setChangePortfolioStatus={setChangePortfolioStatus}
           setProtfolioStatus={setProtfolioStatus}
           protfolioStatus={protfolioStatus}
           inFlight={inFlight}
