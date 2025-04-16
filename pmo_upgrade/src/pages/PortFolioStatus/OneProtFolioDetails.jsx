@@ -26,7 +26,7 @@ export default function OneProtFolioDetails({
   chrun,
   setChrun,
 }) {
-  const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+  // const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
   const [portfolioStatusError, setPortfolioStatusError] = React.useState(false);
 
   return (

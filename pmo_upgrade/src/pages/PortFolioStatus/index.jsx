@@ -96,7 +96,7 @@ function PortFolioStatus() {
     };
     fetchData();
   }, []);
-  const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+  // const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
   // Check if both required fields are selected
   const isStepFormEnabled = selectedDeliveryDirector && selectedDeliveryManager;
