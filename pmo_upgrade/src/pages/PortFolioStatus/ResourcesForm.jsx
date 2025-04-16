@@ -131,6 +131,9 @@ export default function ResourcesForm({
               sx={{ width: "340px" }}
               variant="outlined"
               placeholder="Current Team Size"
+              inputProps={{
+                pattern: "[0-9]*",
+              }}
               onChange={(e) => {
                 setTeamSize(e.target.value);
                 setTeamSizeError(false);
@@ -140,9 +143,15 @@ export default function ResourcesForm({
                   setTeamSizeError(true); // Show error when field is empty
                 }
               }}
+              onInput={(e) => {
+                const inputValue = e.target.value;
+                if (!/^[0-9]+$/.test(inputValue)) {
+                  e.target.value = inputValue.replace(/[^0-9]/g, "");
+                }
+              }}
             />
             {teamSizeError && (
-              <FormHelperText>Please add Current Team Size</FormHelperText>
+              <FormHelperText>Please add Current Team Size(only Integers)</FormHelperText>
             )}
           </FormControl>
         </Box>
@@ -229,6 +238,9 @@ export default function ResourcesForm({
               sx={{ width: "340px" }}
               variant="outlined"
               placeholder="Enter"
+              inputProps={{
+                pattern: "[0-9]*",
+              }}
               onChange={(e) => {
                 setEmployeeScore(e.target.value);
                 setEmployeeScoreError(false);
@@ -236,6 +248,14 @@ export default function ResourcesForm({
               onBlur={() => {
                 if (!employeeScore) {
                   setEmployeeScoreError(true); // Show error when field is empty
+                }
+              }}
+              onInput={(e) => {
+                const inputValue = e.target.value;
+                if (!/^[0-9]+$/.test(inputValue)) {
+                  e.target.value = inputValue.replace(/[^0-9]/g, "");
+                } else if (inputValue > 10) {
+                  e.target.value = 10;
                 }
               }}
             />

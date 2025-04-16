@@ -7,7 +7,7 @@ import {
   MenuItem
 } from "@mui/material";
 import dayjs from "dayjs";
-import { fetchPortfolioData } from "../../modules/ApiCalls";
+import { fetchPortfolioData, CreateUpdatePortFolioStatus } from "../../modules/ApiCalls";
 
 function PortFolioStatus() {
   const today = dayjs();
@@ -87,6 +87,7 @@ function PortFolioStatus() {
   const [totalInvoice, setTotalInvoice] = useState(0);
   const [invoiceNotRealized, setInvoiceNotRealized] = useState(0);
   const [sunkCosts, setSunkCosts] = useState(0);
+  const [onSubmit, setOnSubmit] = useState(false);
 
   const { apiUrl } = apiUrlConfig;
   const dropdown = ["engagement_director", "delivery_director", "delivery_manager", "bu_head", "portfolio_status"];
@@ -96,7 +97,77 @@ function PortFolioStatus() {
     };
     fetchData();
   }, []);
-  const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+
+  useEffect(() => {
+    if (onSubmit) {
+      const CreateUpdateData = async () => {
+        const a = await CreateUpdatePortFolioStatus(changePortfolioStatus, selectedMonth, selectedYear, apiUrl, selectedBuHead, selectedEngagementDirector, selectedDeliveryDirector, selectedDeliveryManager,
+          protfolioStatus,
+          inFlight,
+          projectsOnTrack,
+          newProjects,
+          projectAtRisk,
+          rampDown,
+          chrun,
+          newProspects,
+          newInitiatives,
+          avbPvbDetails,
+          valueAdds,
+          genAITech,
+          valueBoardEvaluation,
+          valueAddsStepper,
+          genAiStepper,
+          valueAddsDelivered,
+          closure,
+          costImpact,
+          writeOff,
+          unbilledResources,
+          growthImpact,
+          techinal,
+          product,
+          manager,
+          teamSize,
+          voluntary,
+          involuntary,
+          employeeScore,
+          learnings,
+          additions,
+          attritionRisk,
+          topPerformers,
+          topPerformersDesc,
+          csat,
+          feedback,
+          escalation,
+          escalationDescription,
+          apprecition,
+          apprecitionDescription,
+          critical,
+          nonCritical,
+          qbr,
+          capabilitiesPositioned,
+          capabilitiesDescription,
+          pocsInFlight,
+          pocsPlanned,
+          hackathons,
+          hackathonsDescribed,
+          crossSellOportunity,
+          architechtureAdvisory,
+          totalRevenue,
+          budget,
+          totalSpend,
+          gm,
+          resources,
+          spend,
+          totalInvoice,
+          invoiceNotRealized,
+          sunkCosts);
+        console.log(a, "A")
+      };
+      CreateUpdateData();
+
+    }
+  }, [onSubmit]);
+  // const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
   // Check if both required fields are selected
   const isStepFormEnabled = selectedDeliveryDirector && selectedDeliveryManager;
@@ -334,6 +405,7 @@ function PortFolioStatus() {
           setInvoiceNotRealized={setInvoiceNotRealized}
           sunkCosts={sunkCosts}
           setSunkCosts={setSunkCosts}
+          setOnSubmit={setOnSubmit}
         />
       </Box>
     </Box>

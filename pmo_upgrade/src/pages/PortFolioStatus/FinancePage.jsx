@@ -21,7 +21,14 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
                         GM% (RAG) <span style={{ color: "red" }}>*</span>
                     </Typography>
                     <Box sx={{ display: "flex", gap: 2 }}>
-                        <TextField placeholder="Enter Description" variant="outlined" sx={{ width: "340px" }} onChange={(e) => setGm(e.target.value)} />
+                        <TextField placeholder="Enter Description" inputProps={{
+                            pattern: "[0-9]*",
+                        }} onInput={(e) => {
+                            const inputValue = e.target.value;
+                            if (!/^[0-9]+$/.test(inputValue)) {
+                                e.target.value = inputValue.replace(/[^0-9]/g, "");
+                            }
+                        }} variant="outlined" sx={{ width: "340px" }} onChange={(e) => setGm(e.target.value)} />
                     </Box>
                 </Box>
                 <Box sx={{ border: "1px solid #ccc", padding: 2, borderRadius: 2, marginTop: "20px", width: "308px", marginRight: "10px" }}>
@@ -53,8 +60,8 @@ export default function FinancePage({ totalRevenue, setTotalRevenue, budget, set
                 </Box>
             </Stack>
             <Stack direction="row" justifyContent="space-between" alignItems="flex-start" padding="20px">
-                <Box sx={{display: "flex", flexDirection: "row",marginLeft: "-20px" }}>
-                <NumberStepper placeholder="Invoice not realized>30d" counter={invoiceNotRealized} setCounter={setInvoiceNotRealized} width="350px" dollarSymbol={true} mandatory={true} />
+                <Box sx={{ display: "flex", flexDirection: "row", marginLeft: "-20px" }}>
+                    <NumberStepper placeholder="Invoice not realized>30d" counter={invoiceNotRealized} setCounter={setInvoiceNotRealized} width="350px" dollarSymbol={true} mandatory={true} />
                 </Box>
                 <Box sx={{ display: "flex", flexDirection: "row", marginRight: "460px" }}>
                     <NumberStepper placeholder="Sunk Costs(Write-off and Unbilled Resources)" counter={sunkCosts} setCounter={setSunkCosts} width="350px" dollarSymbol={true} mandatory={true} />
