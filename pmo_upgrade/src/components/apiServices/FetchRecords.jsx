@@ -18,7 +18,7 @@ async function fetchRecords(endpoint, token, fetchAsTxt, fetchAsBlob) {
 
     // Check if the response is OK (status 200–299)
     if (!response.ok) {
-      return null
+      return "No Options Available";
     }
 
     // Handle the response based on the specified format

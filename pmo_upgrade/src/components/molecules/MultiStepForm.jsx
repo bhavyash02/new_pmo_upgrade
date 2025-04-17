@@ -140,10 +140,15 @@ export default function MultipleStepForm({
   setInvoiceNotRealized,
   sunkCosts,
   setSunkCosts,
+  setOnSubmit
 }) {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
+    if (activeStep === stepLabels.length - 1) {
+      setOnSubmit(true); // Trigger onSubmit when Finish is clicked
+      return;
+    }
     if (activeStep < stepLabels.length - 1) {
       setActiveStep((prevStep) => prevStep + 1);
     }
