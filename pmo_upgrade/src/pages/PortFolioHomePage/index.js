@@ -156,20 +156,20 @@ const PortFolioHomePage = () => {
             <Paper sx={{
                 width: '100%', borderRadius: '20px', 
                 '& .super-app.negative': {
-                    backgroundColor: 'red',
-                    height: '35px',
-                    width: '35px',
-                    borderRadius: '50%',
-                    color: '#1a3e72',
-                    fontWeight: '600',
+                    // backgroundColor: 'red',
+                    // height: '35px',
+                    // width: '35px',
+                    // borderRadius: '50%',
+                    // color: '#1a3e72',
+                    // fontWeight: '600',
                 },
                 '& .super-app.positive': {
-                    backgroundColor: 'green',
-                    height: '35px',
-                    width: '35px',
-                    borderRadius: '50%',
-                    color: '#1a3e72',
-                    fontWeight: '600',
+                    // backgroundColor: 'green',
+                    // height: '35px',
+                    // width: '35px',
+                    // borderRadius: '50%',
+                    // color: '#1a3e72',
+                    // fontWeight: '600',
                 },
             }}>
                 <DataGrid
