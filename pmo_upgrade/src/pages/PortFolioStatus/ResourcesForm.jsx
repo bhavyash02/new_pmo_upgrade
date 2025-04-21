@@ -179,7 +179,6 @@ export default function ResourcesForm({
             variant="subtitle1"
             sx={{
               fontWeight: "bold",
-              marginRight: "auto",
               marginRight: "40px",
               position: "absolute",
               top: -15,
