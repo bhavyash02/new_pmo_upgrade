@@ -31,9 +31,9 @@ export function Dropdown({
           {placeholder}{mandatory && <span style={{ color: "red" }}>*</span>}
         </Typography></Box>
       <Autocomplete
-        options={input}
+        options={Array.isArray(input) ? input : []}
         disabled={disabled}
-        getOptionLabel={(option) => option.toString() || ""} // Ensure option has title
+        getOptionLabel={(option) => option?.toString?.() || ""} // Ensure option has title
         onChange={handleOnSelect} // Pass the handler function
         value={selectedValues} // Selected values dynamically passed
         sx={{ width: 340, display: "block", }}
