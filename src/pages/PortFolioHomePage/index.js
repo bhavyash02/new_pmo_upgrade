@@ -41,6 +41,7 @@ const PAGE_SIZE = 10;
 
 const PortFolioHomePage = () => {
     const [tableData, setTableData] = useState({});
+    const [totalRecords, setTotalRecords] = useState()
     const columns = [
         { field: 'month_year', headerName: 'Date', width: 200, editable: false, },
         { field: 'delivery_director', headerName: 'Delivery Director', width: 180, editable: false, },
@@ -180,12 +181,12 @@ const PortFolioHomePage = () => {
             try {
                 const response = await createUpdateRecord(
                     null,
-                    // `fetch_merged_records/?page=${paginationModel.page}&page_size=${paginationModel.pageSize}`,
-                    `fetch_merged_records/?page=1&page_size=10`,
+                    `fetch_merged_records/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
                     null,
                     "GET"
                 );
 
+                setTotalRecords(response.total_records);
                 const rowsWithId = response.data.map((row, index) => ({
                     id: index,
                     ...row
@@ -216,14 +217,23 @@ const PortFolioHomePage = () => {
                     columns={columns}
                     isCellEditable={false}
                     paginationModel={paginationModel}
+                    rowCount={totalRecords}
+                    paginationMode="server"
                     onPaginationModelChange={setPaginationModel}
                     pageSizeOptions={[PAGE_SIZE]}
                     slots={{
                         pagination: CustomPagination,
                         toolbar: QuickSearchToolbar
                     }}
-                    initialState={{ pagination: { paginationModel } }}
+                    initialState={{ pagination: { paginationModel },
+                    filter: {
+                        filterModel: {
+                            items: [],
+                            quickFilterValues: [],
+                        }
+                    } }}
                     checkboxSelection
+                    filterMode="client"
                     sx={{ border: 0, borderRadius: '20px' }}
                 />
             </Paper>
