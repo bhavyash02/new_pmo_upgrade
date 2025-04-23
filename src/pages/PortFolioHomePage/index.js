@@ -112,7 +112,7 @@ const PortFolioHomePage = () => {
                             aria-label="edit"
                             onClick={() => {
                                 navigate("/portfolioStatusView", {
-                                    state: { row: i.row, onClick: true },
+                                    state: { row: i.row, onClick: true, viewProject: true },
                                 });
                             }}
                         >
