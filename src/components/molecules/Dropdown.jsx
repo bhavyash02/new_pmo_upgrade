@@ -12,6 +12,7 @@ export function Dropdown({
   onFocus,
   onBlur,
   disabled,
+  viewProject,
   ...rest
 }) {
   return (

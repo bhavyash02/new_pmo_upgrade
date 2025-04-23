@@ -168,6 +168,10 @@ export const CreateUpdatePortFolioStatus = async (changePortfolioStatus, selecte
                     "qbr": qbr,
                     "accathons": hackathons,
                     "accathons_desc": hackathonsDescribed,
+                    "pocs_in_flight": pocsInFlight,
+                    "pocs_planned": pocsPlanned,
+                    "cross_sell_opportunity": crossSellOportunity,
+                    "architecture_advisory": architechtureAdvisory,
                     "portfolio_id": 0
                 }
             ],

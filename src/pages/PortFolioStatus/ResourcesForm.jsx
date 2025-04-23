@@ -10,6 +10,7 @@ import {
 import NumberStepper from "../../components/molecules/NumberStepper";
 
 export default function ResourcesForm({
+  viewProject,
   techinal,
   setTechinal,
   product,
@@ -85,6 +86,7 @@ export default function ResourcesForm({
           >
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <NumberStepper
+                disabled={viewProject}
                 placeholder="Techinal"
                 counter={techinal}
                 setCounter={setTechinal}
@@ -94,6 +96,7 @@ export default function ResourcesForm({
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <NumberStepper
+                disabled={viewProject}
                 placeholder="Product"
                 counter={product}
                 setCounter={setProduct}
@@ -103,6 +106,7 @@ export default function ResourcesForm({
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <NumberStepper
+                disabled={viewProject}
                 placeholder="Lead/Manager"
                 counter={manager}
                 setCounter={setManager}
@@ -128,12 +132,14 @@ export default function ResourcesForm({
           </Typography>
           <FormControl sx={{ width: "340px" }} error={teamSizeError}>
             <TextField
+              disabled={viewProject}
               sx={{ width: "340px" }}
               variant="outlined"
               placeholder="Current Team Size"
               inputProps={{
                 pattern: "[0-9]*",
               }}
+              value={teamSize}
               onChange={(e) => {
                 setTeamSize(e.target.value);
                 setTeamSizeError(false);
@@ -199,6 +205,7 @@ export default function ResourcesForm({
           >
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <NumberStepper
+                disabled={viewProject}
                 placeholder="Voluntary"
                 counter={voluntary}
                 setCounter={setVoluntary}
@@ -208,6 +215,7 @@ export default function ResourcesForm({
             </Box>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
               <NumberStepper
+                disabled={viewProject}
                 placeholder="Involuntary"
                 counter={involuntary}
                 setCounter={setInvoluntary}
@@ -234,12 +242,14 @@ export default function ResourcesForm({
           </Typography>
           <FormControl sx={{ width: "340px" }} error={employeeScoreError}>
             <TextField
+              disabled={viewProject}
               sx={{ width: "340px" }}
               variant="outlined"
               placeholder="Enter"
               inputProps={{
                 pattern: "[0-9]*",
               }}
+              value={employeeScore}
               onChange={(e) => {
                 setEmployeeScore(e.target.value);
                 setEmployeeScoreError(false);
@@ -279,9 +289,11 @@ export default function ResourcesForm({
           </Typography>
           <FormControl sx={{ width: "340px" }} error={learningError}>
             <TextField
+              disabled={viewProject}
               sx={{ width: "340px" }}
               variant="outlined"
               placeholder="Learning/Certifications"
+              value={learnings}
               onChange={(e) => {
                 setLearnings(e.target.value);
                 setLearningError(false);
@@ -314,8 +326,10 @@ export default function ResourcesForm({
             New Additions<span style={{ color: "red" }}>*</span>
           </Typography>
           <TextField
+            disabled={viewProject}
             variant="outlined"
             placeholder="Enter Amount"
+            value={additions}
             onChange={(e) => {
               setAdditions(e.target.value);
               setAdditionsError(false); // Remove error when user starts typing
@@ -338,8 +352,10 @@ export default function ResourcesForm({
             Attrition Risk<span style={{ color: "red" }}>*</span>
           </Typography>
           <TextField
+            disabled={viewProject}
             variant="outlined"
             placeholder="Enter Amount"
+            value={attritionRisk}
             onChange={(e) => {
               setAttritionRisk(e.target.value);
               setAttritionsError(false); // Remove error when user starts typing
@@ -367,6 +383,7 @@ export default function ResourcesForm({
           <FormControl sx={{ width: "340px" }} error={performersError}>
             <Box sx={{ display: "flex", gap: 2 }}>
               <NumberStepper
+                disabled={viewProject}
                 placeholder="Top Performers"
                 counter={topPerformers}
                 setCounter={setTopPerformers}
@@ -374,9 +391,11 @@ export default function ResourcesForm({
                 mandatory={true}
               />
               <TextField
+                disabled={viewProject}
                 placeholder="Enter Description"
                 variant="outlined"
                 sx={{ width: "100%", marginTop: "30px" }}
+                value={topPerformersDesc}
                 onChange={(e) => {
                   settopPerformersDesc(e.target.value);
                   setPerformersError(false);
