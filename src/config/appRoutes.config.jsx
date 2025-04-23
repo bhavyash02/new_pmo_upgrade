@@ -16,6 +16,10 @@ export const appRoutes = [
     element: <PortFolioStatus />,
   },
   {
+    path: `/portfolio-status/edit/:id`,
+    element: <PortFolioStatus />,
+  },
+  {
     path: "/portfolio",
     element: <PortFolioHomePage />,
   },

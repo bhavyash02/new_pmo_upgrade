@@ -45,22 +45,63 @@ const PortFolioHomePage = () => {
         { field: 'month_year', headerName: 'Date', width: 200, editable: false, },
         { field: 'delivery_director', headerName: 'Delivery Director', width: 180, editable: false, },
         { field: 'delivery_manager', headerName: 'Delivery Manager', width: 180, editable: false },
-        { field: 'portfolio_status', editable: false, headerName: 'Portfolio Status', width: 180 },
+        {
+            field: 'portfolio_status', editable: false, headerName: 'Portfolio Status', width: 180, renderCell: (params) => (
+                <Box sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+
+                }}>
+                    <Box
+                        sx={{
+                            backgroundColor: '#1890FF',
+                            height: '10px',
+                            width: '10px',
+                            borderRadius: '50%',
+                            color: '#fff',
+                            fontWeight: 600,
+                            display: 'flex',
+                            marginRight: '10px'
+                        }}
+                    ></Box>{params.value}
+                </Box>
+            )
+        },
         { field: 'projects_on_track', editable: false, headerName: 'Projects On Track', type: 'number', width: 140, align: "center", headerAlign: 'center', },
         { field: 'GM', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 140, align: "center", headerAlign: 'center', },
         { field: 'escalations', editable: false, headerName: 'No of Escalations', type: 'number', width: 140, align: "center", headerAlign: 'center' },
         {
-            field: 'projects_at_high_risk', editable: false, headerName: 'Projects at High Risk', align: "center", width: 180, headerAlign: 'center',
-            cellClassName: (params) => {
-                if (params.value == null) {
-                    return '';
-                }
-
-                return clsx('super-app', {
-                    negative: params.value > 0,
-                    positive: params.value <= 0,
-                });
-            } //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
+            field: 'projects_at_high_risk', editable: false, headerName: 'Projects at High Risk', align: "center", headerAlign: 'center',
+            width: 180,
+            renderCell: (params) => (
+                <Box
+                    sx={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Box
+                        sx={{
+                            backgroundColor: params.value === 0 ? '#55BE97' : '#FF4D4F',
+                            height: '20px',
+                            width: '20px',
+                            borderRadius: '50%',
+                            color: '#fff',
+                            fontWeight: 600,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        {params.value}
+                    </Box>
+                </Box>),
+            //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
         },
         {
             field: 'title', editable: false, headerName: '', width: 180, renderCell: (i) => {
@@ -81,9 +122,10 @@ const PortFolioHomePage = () => {
                             sx={{ padding: 0, marginLeft: '30px', color: '#5A6FB5' }}
                             aria-label="edit"
                             onClick={() => {
-                                navigate("/portfolioStatusEdit", {
+                                navigate(`/portfolio-status/edit/${i.row.id}`, {
                                     state: { row: i.row, onClick: true },
                                 });
+                                console.log(i.row, 'row')
                             }}
                         >
                             <Edit />
@@ -138,7 +180,8 @@ const PortFolioHomePage = () => {
             try {
                 const response = await createUpdateRecord(
                     null,
-                    'fetch_merged_records/?page=1&page_size=10',
+                    // `fetch_merged_records/?page=${paginationModel.page}&page_size=${paginationModel.pageSize}`,
+                    `fetch_merged_records/?page=1&page_size=10`,
                     null,
                     "GET"
                 );
@@ -146,7 +189,7 @@ const PortFolioHomePage = () => {
                 const rowsWithId = response.data.map((row, index) => ({
                     id: index,
                     ...row
-                  }));
+                }));
                 setTableData(rowsWithId);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -154,10 +197,10 @@ const PortFolioHomePage = () => {
         }
 
         fetchTableData();
-    }, []);
+    }, [paginationModel]);
 
 
-    console.log(tableData, 'tableData')
+
     return (
         <Box sx={{ background: "#F8F6FD", padding: '40px', margin: '30px', borderRadius: '20px' }}>
             <Typography
@@ -167,25 +210,7 @@ const PortFolioHomePage = () => {
             >
                 Portfolio
             </Typography>
-            <Paper sx={{
-                width: '100%', borderRadius: '20px',
-                '& .super-app.negative': {
-                    // backgroundColor: 'red',
-                    // height: '35px',
-                    // width: '35px',
-                    // borderRadius: '50%',
-                    // color: '#1a3e72',
-                    // fontWeight: '600',
-                },
-                '& .super-app.positive': {
-                    // backgroundColor: 'green',
-                    // height: '35px',
-                    // width: '35px',
-                    // borderRadius: '50%',
-                    // color: '#1a3e72',
-                    // fontWeight: '600',
-                },
-            }}>
+            <Paper>
                 <DataGrid
                     rows={tableData}
                     columns={columns}
