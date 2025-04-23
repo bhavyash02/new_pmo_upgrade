@@ -147,6 +147,7 @@ export default function MultipleStepForm({
   const handleNext = () => {
     if (activeStep === stepLabels.length - 1) {
       setOnSubmit(true); // Trigger onSubmit when Finish is clicked
+      alert('123 final')
       return;
     }
     if (activeStep < stepLabels.length - 1) {

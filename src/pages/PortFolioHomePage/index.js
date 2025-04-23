@@ -122,9 +122,10 @@ const PortFolioHomePage = () => {
                             sx={{ padding: 0, marginLeft: '30px', color: '#5A6FB5' }}
                             aria-label="edit"
                             onClick={() => {
-                                navigate("/portfolioStatusEdit", {
+                                navigate(`/portfolio-status/edit/${i.row.id}`, {
                                     state: { row: i.row, onClick: true },
                                 });
+                                console.log(i.row, 'row')
                             }}
                         >
                             <Edit />
@@ -185,7 +186,6 @@ const PortFolioHomePage = () => {
                     "GET"
                 );
 
-                console.log(paginationModel, '222222')
                 const rowsWithId = response.data.map((row, index) => ({
                     id: index,
                     ...row
@@ -195,13 +195,12 @@ const PortFolioHomePage = () => {
                 console.error("Error fetching data:", error);
             }
         }
-        console.log(paginationModel, '11111')
 
         fetchTableData();
     }, [paginationModel]);
 
 
-    console.log(tableData, 'tableData')
+
     return (
         <Box sx={{ background: "#F8F6FD", padding: '40px', margin: '30px', borderRadius: '20px' }}>
             <Typography
