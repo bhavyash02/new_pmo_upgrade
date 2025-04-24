@@ -8,7 +8,6 @@ import {
     useGridSelector,
     GridToolbarQuickFilter
 } from '@mui/x-data-grid';
-import clsx from 'clsx';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
@@ -41,7 +40,7 @@ const PAGE_SIZE = 10;
 
 const PortFolioHomePage = () => {
     const [tableData, setTableData] = useState({});
-    const [totalRecords, setTotalRecords] = useState()
+    const [totalRecords, setTotalRecords] = useState();
     const columns = [
         { field: 'month_year', headerName: 'Date', width: 200, editable: false, },
         { field: 'delivery_director', headerName: 'Delivery Director', width: 180, editable: false, },
@@ -123,10 +122,9 @@ const PortFolioHomePage = () => {
                             sx={{ padding: 0, marginLeft: '30px', color: '#5A6FB5' }}
                             aria-label="edit"
                             onClick={() => {
-                                navigate(`/portfolio-status/edit/${i.row.id}`, {
-                                    state: { row: i.row, onClick: true },
+                                navigate(`/portfolio-status/edit/${i.row.portfolio_id}`, {
+                                    state: { row: i.row, onClick: true, editProject: true },
                                 });
-                                console.log(i.row, 'row')
                             }}
                         >
                             <Edit />
@@ -225,13 +223,15 @@ const PortFolioHomePage = () => {
                         pagination: CustomPagination,
                         toolbar: QuickSearchToolbar
                     }}
-                    initialState={{ pagination: { paginationModel },
-                    filter: {
-                        filterModel: {
-                            items: [],
-                            quickFilterValues: [],
+                    initialState={{
+                        pagination: { paginationModel },
+                        filter: {
+                            filterModel: {
+                                items: [],
+                                quickFilterValues: [],
+                            }
                         }
-                    } }}
+                    }}
                     checkboxSelection
                     filterMode="client"
                     sx={{ border: 0, borderRadius: '20px' }}

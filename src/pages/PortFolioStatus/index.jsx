@@ -5,17 +5,21 @@ import apiUrlConfig from "../../config/apiUrlConfig";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import {
   Box, Typography, Select,
-  MenuItem
+  MenuItem, Button, Stack
 } from "@mui/material";
 import dayjs from "dayjs";
 import { fetchPortfolioData, CreateUpdatePortFolioStatus } from "../../modules/ApiCalls";
+import Snackbar from '@mui/material/Snackbar';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useNavigate } from "react-router-dom";
 
 function PortFolioStatus() {
+  const navigate = useNavigate();
   const today = dayjs();
-
   const location = useLocation();
   const row = location.state?.row;
   const viewProject = location.state?.viewProject;
+  const editProject = location.state?.editProject;
 
   const [selectedMonth, setSelectedMonth] = useState(today.format("MMMM"));
   const [selectedYear, setSelectedYear] = useState(today.year());
@@ -94,6 +98,14 @@ function PortFolioStatus() {
   const [sunkCosts, setSunkCosts] = useState(0);
   const [onSubmit, setOnSubmit] = useState(false);
 
+
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  });
+  const { vertical, horizontal, open } = state;
+
   const { apiUrl } = apiUrlConfig;
   const dropdown = ["engagement_director", "delivery_director", "delivery_manager", "bu_head", "portfolio_status"];
   useEffect(() => {
@@ -102,9 +114,8 @@ function PortFolioStatus() {
     };
     fetchData();
   }, []);
-  console.log(row, "row")
   useEffect(() => {
-    if (viewProject) {
+    if (viewProject || editProject) {
       setSelectedMonth(row.month_year.split(" ")[0]);
       setSelectedYear(row.month_year.split(" ")[1]);
       setSelectedDeliveryDirector(row.delivery_director);
@@ -174,8 +185,9 @@ function PortFolioStatus() {
 
   useEffect(() => {
     if (onSubmit) {
+      setOnSubmit(false);
       const CreateUpdateData = async () => {
-        const a = await CreateUpdatePortFolioStatus(changePortfolioStatus, selectedMonth, selectedYear, apiUrl, selectedBuHead, selectedEngagementDirector, selectedDeliveryDirector, selectedDeliveryManager,
+        const a = await CreateUpdatePortFolioStatus(row, editProject, changePortfolioStatus, selectedMonth, selectedYear, apiUrl, selectedBuHead, selectedEngagementDirector, selectedDeliveryDirector, selectedDeliveryManager,
           protfolioStatus,
           inFlight,
           projectsOnTrack,
@@ -236,12 +248,19 @@ function PortFolioStatus() {
           invoiceNotRealized,
           sunkCosts);
         console.log(a, "A")
+        
+        if (a.portfolio_id || a.id) {
+          setState({ vertical: 'top', horizontal: 'right', open: true });
+          setTimeout(() => {
+            navigate('/portfolio')
+          }, 1000);
+        }
       };
       CreateUpdateData();
 
     }
   }, [onSubmit]);
-  // const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
+
 
   // Check if required fields are selected
   const isStepFormEnabled = selectedDeliveryDirector
@@ -486,6 +505,30 @@ function PortFolioStatus() {
           setOnSubmit={setOnSubmit}
         />
       </Box>
+      {<Box sx={{ width: 500 }}>
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={open}
+          ContentProps={{
+            sx: {
+              border: "1px solid #B7EB8F",
+              background: "#F6FFED",
+              borderRadius: "2px",
+              color: "black",
+              display: "flex",
+              alignItems: "center"
+            }
+          }}
+          autoHideDuration={1000}
+          message={
+            <Stack direction="row" spacing={1} alignItems="center">
+              <CheckCircleIcon sx={{ color: "#52c41a" }} />
+              <span>Portfolio saved successfully!</span>
+            </Stack>
+          }
+          key={vertical + horizontal}
+        />
+      </Box>}
     </Box>
   );
 }
