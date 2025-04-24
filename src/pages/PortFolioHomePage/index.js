@@ -56,7 +56,7 @@ const PortFolioHomePage = () => {
                 }}>
                     <Box
                         sx={{
-                            backgroundColor: '#1890FF',
+                            backgroundColor: params.value === 'Green' ? '#55BE97' : '#FF4D4F',
                             height: '10px',
                             width: '10px',
                             borderRadius: '50%',
@@ -69,8 +69,15 @@ const PortFolioHomePage = () => {
                 </Box>
             )
         },
-        { field: 'projects_on_track', editable: false, headerName: 'Projects On Track', type: 'number', width: 140, align: "center", headerAlign: 'center', },
-        { field: 'GM', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 140, align: "center", headerAlign: 'center', },
+        {
+            field: 'projects_on_track', editable: false, headerName: 'Projects On Track', type: 'number', width: 140, align: "center", headerAlign: 'center',
+            valueFormatter: (params) => (params.value !== null && params.value !== undefined) ? params.value : '-',
+        },
+        {
+            field: 'GM', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 140, align: "center", headerAlign: 'center',
+            valueFormatter: (params) =>
+                (params?.value !== null && params?.value !== undefined && params?.value !== '') ? params.value : '-',
+        },
         { field: 'escalations', editable: false, headerName: 'No of Escalations', type: 'number', width: 140, align: "center", headerAlign: 'center' },
         {
             field: 'projects_at_high_risk', editable: false, headerName: 'Projects at High Risk', align: "center", headerAlign: 'center',
@@ -101,10 +108,9 @@ const PortFolioHomePage = () => {
                         {params.value}
                     </Box>
                 </Box>),
-            //valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
         },
         {
-            field: 'title', editable: false, headerName: '', width: 180, renderCell: (i) => {
+            field: 'View/Edit', editable: false, headerName: '', width: 180, renderCell: (i) => {
                 return (
                     <>
                         <IconButton

@@ -104,7 +104,7 @@ export const CreateUpdatePortFolioStatus = async (row, editProject, changePortfo
                 "engagement_director": selectedEngagementDirector,
                 "delivery_director": selectedDeliveryDirector,
                 "delivery_manager": selectedDeliveryManager,
-                "portfolio_status": changePortfolioStatus === null ? 'grenn' : 'red',
+                "portfolio_status": changePortfolioStatus,
                 "new_projects_en": newProjects,
                 "in_flight_ee": inFlight,
                 "projects_on_track": projectsOnTrack,

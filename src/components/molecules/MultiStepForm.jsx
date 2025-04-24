@@ -9,6 +9,7 @@ import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
 import ResourcesForm from "../../pages/PortFolioStatus/ResourcesForm";
 import CustomerPage from "../../pages/PortFolioStatus/CustomerPage";
 import FinancePage from "../../pages/PortFolioStatus/FinancePage";
+import { useNavigate } from "react-router-dom";
 
 const stepLabels = [
   "Portfolio Details",
@@ -144,6 +145,7 @@ export default function MultipleStepForm({
   setOnSubmit
 }) {
   const [activeStep, setActiveStep] = useState(0);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (activeStep === stepLabels.length - 1) {
@@ -544,8 +546,7 @@ export default function MultipleStepForm({
           Previous
         </Button>
         <Button
-          onClick={handleBack}
-          //   disabled={activeStep === 0}
+          onClick={() => (navigate("/portfolio"))}
           variant="outlined"
           sx={{ width: "114px", height: "40px" }}
         >
