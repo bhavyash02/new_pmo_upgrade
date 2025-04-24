@@ -491,7 +491,7 @@ export default function MultipleStepForm({
       <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, paddingTop: "150px", paddingBottom: "50px", paddingRight: "45px" }}>
         <Button
           onClick={handleNext}
-          disabled={!viewProject &&
+          disabled={((viewProject && activeStep === stepLabels.length - 1) || !viewProject &&
             activeStep === 0 && (
               !protfolioStatus ||
               !inFlight ||
@@ -529,7 +529,7 @@ export default function MultipleStepForm({
               !totalInvoice ||
               !invoiceNotRealized ||
               !sunkCosts)
-          }
+          )}
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"
         >

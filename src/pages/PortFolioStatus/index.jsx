@@ -133,7 +133,7 @@ function PortFolioStatus() {
       setTechinal(row.open_technical)
       setProduct(row.open_product)
       setManager(row.open_manager)
-      setTeamSize(100)
+      setTeamSize(row.current_team_size)
       setVoluntary(row.voluntary_attrition)
       setInvoluntary(row.involuntary_attrition)
       setEmployeeScore(row.esat_score)
