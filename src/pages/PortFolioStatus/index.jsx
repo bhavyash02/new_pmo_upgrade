@@ -172,16 +172,15 @@ function PortFolioStatus() {
       setHackathonsDescribed(row.accathons_desc)
       setTotalRevenue(row.total_revenue)
       setBudget(row.budget_value)
-      setTotalSpend(row.total_spend)
       setGm(row.gm_percentage)
-      setResources(row.resource_status_id)
+      setResources(row.forecasting_accuracy_resources)
       setTotalSpend(row.total_spend)
       setTotalInvoice(row.invoice_total)
       setInvoiceNotRealized(row.invoice_not_realized_30d)
       setSunkCosts(row.sunk_costs)
+      setSpend(row.forecasting_accuracy_spend)
     }
   }, [viewProject]);
-
 
   useEffect(() => {
     if (onSubmit) {
@@ -248,7 +247,7 @@ function PortFolioStatus() {
           invoiceNotRealized,
           sunkCosts);
         console.log(a, "A")
-        
+
         if (a.portfolio_id || a.id) {
           setState({ vertical: 'top', horizontal: 'right', open: true });
           setTimeout(() => {

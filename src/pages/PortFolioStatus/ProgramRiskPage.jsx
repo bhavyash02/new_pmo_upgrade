@@ -11,7 +11,7 @@ export default function ProgramRiskPage({ viewProject,closure, setClosure, costI
             {/* First Row */}
             <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="flex-start" padding="20px">
                 <NumberStepper disabled={viewProject} placeholder="#Closing/Risk of Closure" counter={closure} setCounter={setClosure} width="350px" />
-                <NumberStepper placeholder="Potential Cost Impact" counter={costImpact} setCounter={setCostImpact} width="350px" mandatory={true} dollarSymbol={true} disabled={closure || !viewProject ? false : true} />
+                <NumberStepper placeholder="Potential Cost Impact" counter={costImpact} setCounter={setCostImpact} width="350px" mandatory={true} dollarSymbol={true} disabled={viewProject ||(!closure && !viewProject) ? true : false} />
                 <NumberStepper disabled={viewProject} placeholder="Write-Off(Delivery without SoW or Contract)" counter={writeOff} setCounter={setWriteOff} width="350px" dollarSymbol={true} />
             </Stack>
 
