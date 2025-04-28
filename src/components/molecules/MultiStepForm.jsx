@@ -9,6 +9,7 @@ import ProgramRiskPage from "../../pages/PortFolioStatus/ProgramRiskPage";
 import ResourcesForm from "../../pages/PortFolioStatus/ResourcesForm";
 import CustomerPage from "../../pages/PortFolioStatus/CustomerPage";
 import FinancePage from "../../pages/PortFolioStatus/FinancePage";
+import { useNavigate } from "react-router-dom";
 
 const stepLabels = [
   "Portfolio Details",
@@ -20,6 +21,7 @@ const stepLabels = [
 ];
 
 export default function MultipleStepForm({
+  viewProject,
   changePortfolioStatus,
   setChangePortfolioStatus,
   setProtfolioStatus,
@@ -143,11 +145,11 @@ export default function MultipleStepForm({
   setOnSubmit
 }) {
   const [activeStep, setActiveStep] = useState(0);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (activeStep === stepLabels.length - 1) {
       setOnSubmit(true); // Trigger onSubmit when Finish is clicked
-      alert('123 final')
       return;
     }
     if (activeStep < stepLabels.length - 1) {
@@ -187,6 +189,7 @@ export default function MultipleStepForm({
           >
             <Box sx={{ minHeight: "600px" }}>
               <OneProtFolioDetails
+                viewProject={viewProject}
                 changePortfolioStatus={changePortfolioStatus}
                 setChangePortfolioStatus={setChangePortfolioStatus}
                 protfolioStatus={protfolioStatus}
@@ -230,6 +233,7 @@ export default function MultipleStepForm({
           >
             <Box sx={{ minHeight: "700px" }}> {/* Force content to be taller than parent */}
               <ProgramPage
+                viewProject={viewProject}
                 newProspects={newProspects}
                 setNewProspects={setNewProspects}
                 newInitiatives={newInitiatives}
@@ -278,6 +282,7 @@ export default function MultipleStepForm({
             >
               <Box sx={{ minHeight: "600px" }}>
                 <ProgramRiskPage
+                  viewProject={viewProject}
                   closure={closure}
                   setClosure={setClosure}
                   costImpact={costImpact}
@@ -317,6 +322,7 @@ export default function MultipleStepForm({
           >
             <Box sx={{ minHeight: "600px" }}>
               <ResourcesForm
+                viewProject={viewProject}
                 techinal={techinal}
                 setTechinal={setTechinal}
                 product={product}
@@ -368,6 +374,7 @@ export default function MultipleStepForm({
             >
               <Box sx={{ minHeight: "600px" }}>
                 <CustomerPage
+                  viewProject={viewProject}
                   csat={csat}
                   setCsat={setCsat}
                   feedback={feedback}
@@ -431,6 +438,7 @@ export default function MultipleStepForm({
             >
               <Box sx={{ minHeight: "700px" }}>
                 <FinancePage
+                  viewProject={viewProject}
                   totalRevenue={totalRevenue}
                   setTotalRevenue={setTotalRevenue}
                   budget={budget}
@@ -485,49 +493,49 @@ export default function MultipleStepForm({
       <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, paddingTop: "150px", paddingBottom: "50px", paddingRight: "45px" }}>
         <Button
           onClick={handleNext}
-          disabled={
-            (activeStep === 0 &&
-              (!protfolioStatus ||
-                !inFlight ||
-                !projectsOnTrack ||
-                !projectsOnTrack ||
-                !newProjects)) ||
-            (activeStep === 1 &&
-              (!genAITech ||
-                !genAiStepper ||
-                !valueAdds ||
-                !avbPvbDetails ||
-                !valueBoardEvaluation)) ||
-            (activeStep === 2 &&
-              (!costImpact || !unbilledResources || !growthImpact)) ||
-            (activeStep === 3 &&
-              (!techinal ||
-                !product ||
-                !manager ||
-                !teamSize ||
-                !voluntary ||
-                !involuntary ||
-                !employeeScore ||
-                !learnings ||
-                !additions ||
-                !attritionRisk ||
-                !topPerformers ||
-                !topPerformersDesc)) ||
-            (activeStep === 4 &&
-              (!csat || !feedback || !critical || !nonCritical || !qbr)) ||
-            (activeStep === 5 &&
-              (!totalRevenue ||
-                !budget ||
-                !totalSpend ||
-                !gm ||
-                !totalInvoice ||
-                !invoiceNotRealized ||
-                !sunkCosts))
-          }
+          disabled={((viewProject && activeStep === stepLabels.length - 1) || !viewProject &&
+            activeStep === 0 && (
+              !protfolioStatus ||
+              !inFlight ||
+              !projectsOnTrack ||
+              !projectsOnTrack ||
+              !newProjects) ||
+            !viewProject && activeStep === 1 &&
+            (!genAITech ||
+              !genAiStepper ||
+              !valueAdds ||
+              !avbPvbDetails ||
+              !valueBoardEvaluation) ||
+            !viewProject && activeStep === 2 &&
+            (!costImpact || !unbilledResources || !growthImpact) ||
+            !viewProject && activeStep === 3 &&
+            (!techinal ||
+              !product ||
+              !manager ||
+              !teamSize ||
+              !voluntary ||
+              !involuntary ||
+              !employeeScore ||
+              !learnings ||
+              !additions ||
+              !attritionRisk ||
+              !topPerformers ||
+              !topPerformersDesc) ||
+            !viewProject && activeStep === 4 &&
+            (!csat || !feedback || !critical || !nonCritical || !qbr) ||
+            !viewProject && activeStep === 5 &&
+            (!totalRevenue ||
+              !budget ||
+              !totalSpend ||
+              !gm ||
+              !totalInvoice ||
+              !invoiceNotRealized ||
+              !sunkCosts)
+          )}
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"
         >
-          {activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
+          {!viewProject && activeStep === stepLabels.length - 1 ? "Finish" : "Next"}
         </Button>
         <Button
           onClick={handleBack}
@@ -538,8 +546,7 @@ export default function MultipleStepForm({
           Previous
         </Button>
         <Button
-          onClick={handleBack}
-          //   disabled={activeStep === 0}
+          onClick={() => (navigate("/portfolio"))}
           variant="outlined"
           sx={{ width: "114px", height: "40px" }}
         >

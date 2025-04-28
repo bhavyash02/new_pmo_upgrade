@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Dropdown from "../../components/molecules/Dropdown";
 import apiUrlConfig from "../../config/apiUrlConfig";
 import MultipleStepForm from "../../components/molecules/MultiStepForm";
 import {
   Box, Typography, Select,
-  MenuItem
+  MenuItem, Button, Stack
 } from "@mui/material";
 import dayjs from "dayjs";
 import { fetchPortfolioData, CreateUpdatePortFolioStatus } from "../../modules/ApiCalls";
+import Snackbar from '@mui/material/Snackbar';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useNavigate } from "react-router-dom";
 
 function PortFolioStatus() {
+  const navigate = useNavigate();
   const today = dayjs();
+  const location = useLocation();
+  const row = location.state?.row;
+  const viewProject = location.state?.viewProject;
+  const editProject = location.state?.editProject;
 
   const [selectedMonth, setSelectedMonth] = useState(today.format("MMMM"));
   const [selectedYear, setSelectedYear] = useState(today.year());
@@ -27,7 +36,7 @@ function PortFolioStatus() {
   const [changePortfolioStatus, setChangePortfolioStatus] = useState(null);
   const [inFlight, setInFlight] = useState(null);
   const [projectsOnTrack, setProjectsOnTrack] = useState(null);
-  const [newProjects, setNewProjects] = useState(null);
+  const [newProjects, setNewProjects] = useState();
   const [projectAtRisk, setProjectAtRisk] = useState(null);
   const [rampDown, setRampDown] = useState(null);
   const [chrun, setChrun] = useState(null);
@@ -89,6 +98,14 @@ function PortFolioStatus() {
   const [sunkCosts, setSunkCosts] = useState(0);
   const [onSubmit, setOnSubmit] = useState(false);
 
+
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  });
+  const { vertical, horizontal, open } = state;
+
   const { apiUrl } = apiUrlConfig;
   const dropdown = ["engagement_director", "delivery_director", "delivery_manager", "bu_head", "portfolio_status"];
   useEffect(() => {
@@ -97,11 +114,79 @@ function PortFolioStatus() {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+    if (viewProject || editProject) {
+      setSelectedMonth(row.month_year.split(" ")[0]);
+      setSelectedYear(row.month_year.split(" ")[1]);
+      setSelectedDeliveryDirector(row.delivery_director);
+      setSelectedDeliveryManager(row.delivery_manager);
+      setChangePortfolioStatus(row.portfolio_status);
+      setInFlight(row.in_flight_ee)
+      setProjectsOnTrack(row.projects_on_track)
+      setNewProjects(row.new_projects_en)
+      setProjectAtRisk(row.projects_at_high_risk)
+      setRampDown(row.ramp_down)
+      setChrun(row.churn)
+      setNewProspects(row.new_prospects)
+      setNewInitiatives(row.new_initiatives)
+      setValueAddsStepper(row.value_adds_delivered)
+      setValueAddsDelivered(row.value_adds_delivered_desc)
+      setValueAdds(row.value_adds_revenue)
+      setValueBoardEvaluation(row.value_board_done)
+      setAvbPvbDetails(row.avb_pvb_details)
+      setGenAiStepper(row.genai_initiatives)
+      setGenAITech(row.genai_desc)
+      setClosure(row.closing_risk)
+      setCostImpact(row.potential_cost_impact)
+      setWriteOff(row.write_off)
+      setUnbilledResources(row.unbilled_resources)
+      setGrowthImpact(row.potential_growth_impact)
+      setTechinal(row.open_technical)
+      setProduct(row.open_product)
+      setManager(row.open_manager)
+      setTeamSize(row.current_team_size)
+      setVoluntary(row.voluntary_attrition)
+      setInvoluntary(row.involuntary_attrition)
+      setEmployeeScore(row.esat_score)
+      setLearnings(row.learning_certifications)
+      setAdditions(row.new_additions)
+      setAttritionRisk(row.attrition_risk)
+      setTopPerformers(row.top_performers)
+      settopPerformersDesc(row.top_performers_desc)
+      setCsat(row.csat_score)
+      setFeedBack(row.feedback)
+      setEscalation(row.escalations)
+      setEscalationDescription(row.escalation_desc)
+      setApprecition(row.appreciations)
+      setApprecitionDescription(row.appreciations_desc)
+      setCritical(row.early_warning_critical)
+      setNonCritical(row.early_warning_non_critical)
+      setQbr(row.qbr)
+      setCapabilitiesPositioned(row.capabilities_positioned)
+      setCapabilitiesDescription(row.capabilities_desc)
+      setPocsInFlight(row.pocs_in_flight)
+      setPocsPlanned(row.pocs_planned)
+      setCrossSellOpportunity(row.cross_sell_opportunity)
+      setArchitechtureAdvisory(row.architecture_advisory)
+      setHackathons(row.accathons)
+      setHackathonsDescribed(row.accathons_desc)
+      setTotalRevenue(row.total_revenue)
+      setBudget(row.budget_value)
+      setGm(row.gm_percentage)
+      setResources(row.forecasting_accuracy_resources)
+      setTotalSpend(row.total_spend)
+      setTotalInvoice(row.invoice_total)
+      setInvoiceNotRealized(row.invoice_not_realized_30d)
+      setSunkCosts(row.sunk_costs)
+      setSpend(row.forecasting_accuracy_spend)
+    }
+  }, [viewProject]);
 
   useEffect(() => {
     if (onSubmit) {
+      setOnSubmit(false);
       const CreateUpdateData = async () => {
-        const a = await CreateUpdatePortFolioStatus(changePortfolioStatus, selectedMonth, selectedYear, apiUrl, selectedBuHead, selectedEngagementDirector, selectedDeliveryDirector, selectedDeliveryManager,
+        const a = await CreateUpdatePortFolioStatus(row, editProject, changePortfolioStatus, selectedMonth, selectedYear, apiUrl, selectedBuHead, selectedEngagementDirector, selectedDeliveryDirector, selectedDeliveryManager,
           protfolioStatus,
           inFlight,
           projectsOnTrack,
@@ -162,15 +247,22 @@ function PortFolioStatus() {
           invoiceNotRealized,
           sunkCosts);
         console.log(a, "A")
+
+        if (a.portfolio_id || a.id) {
+          setState({ vertical: 'top', horizontal: 'right', open: true });
+          setTimeout(() => {
+            navigate('/portfolio')
+          }, 1000);
+        }
       };
       CreateUpdateData();
 
     }
   }, [onSubmit]);
-  // const dropdowns = ["Ramesh", "Lee", "Tony", "Kinesh"];
 
-  // Check if both required fields are selected
-  const isStepFormEnabled = selectedDeliveryDirector && selectedDeliveryManager;
+
+  // Check if required fields are selected
+  const isStepFormEnabled = selectedDeliveryDirector
 
 
 
@@ -190,12 +282,13 @@ function PortFolioStatus() {
             <Typography sx={{ marginRight: "200px" }}>Month<span style={{ color: "red" }}>*</span></Typography>
             <Select sx={{ "width": "250px", marginRight: "20px" }}
               value={selectedMonth}
+              disabled={viewProject}
               onChange={(e) => setSelectedMonth(e.target.value)}
               size="small"
             >
               {[
-                "January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
               ].map((month) => (
                 <MenuItem key={month} value={month}>
                   {month}
@@ -208,6 +301,7 @@ function PortFolioStatus() {
             <Typography sx={{ marginRight: "200px" }}>Year<span style={{ color: "red" }}>*</span></Typography>
             <Select sx={{ "width": "250px" }}
               value={selectedYear}
+              disabled={viewProject}
               onChange={(e) => setSelectedYear(e.target.value)}
               size="small"
             >
@@ -262,6 +356,7 @@ function PortFolioStatus() {
               {label} {required && <span style={{ color: "red" }}>*</span>}
             </Typography>
             <Dropdown
+              disabled={viewProject}
               input={state}
               handleOnSelect={(event, newValue) => {
                 setChangeState(newValue);
@@ -285,6 +380,7 @@ function PortFolioStatus() {
         }}
       >
         <MultipleStepForm
+          viewProject={viewProject}
           changePortfolioStatus={changePortfolioStatus}
           setChangePortfolioStatus={setChangePortfolioStatus}
           setProtfolioStatus={setProtfolioStatus}
@@ -408,6 +504,30 @@ function PortFolioStatus() {
           setOnSubmit={setOnSubmit}
         />
       </Box>
+      {<Box sx={{ width: 500 }}>
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={open}
+          ContentProps={{
+            sx: {
+              border: "1px solid #B7EB8F",
+              background: "#F6FFED",
+              borderRadius: "2px",
+              color: "black",
+              display: "flex",
+              alignItems: "center"
+            }
+          }}
+          autoHideDuration={1000}
+          message={
+            <Stack direction="row" spacing={1} alignItems="center">
+              <CheckCircleIcon sx={{ color: "#52c41a" }} />
+              <span>Portfolio saved successfully!</span>
+            </Stack>
+          }
+          key={vertical + horizontal}
+        />
+      </Box>}
     </Box>
   );
 }

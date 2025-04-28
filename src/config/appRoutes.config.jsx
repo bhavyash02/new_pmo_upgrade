@@ -1,4 +1,4 @@
-// import PrivateRoute from "../modules/PrivateRoute";
+
 import {
   HomePage,
   PortFolioStatus,
@@ -13,6 +13,10 @@ export const appRoutes = [
   },
   {
     path: "/portfolio-status",
+    element: <PortFolioStatus />,
+  },
+  {
+    path: "/portfolioStatusView",
     element: <PortFolioStatus />,
   },
   {

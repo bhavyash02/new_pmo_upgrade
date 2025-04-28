@@ -9,6 +9,7 @@ import {
 import NumberStepper from "../../components/molecules/NumberStepper";
 
 export default function OneProtFolioDetails({
+  viewProject,
   changePortfolioStatus,
   setChangePortfolioStatus,
   protfolioStatus,
@@ -41,6 +42,7 @@ export default function OneProtFolioDetails({
         >
           <FormControl sx={{ width: "340px" }} error={portfolioStatusError}>
             <Dropdown
+              disabled={viewProject}
               input={protfolioStatus}
               placeholder="Portfolio Status"
               selectedValues={changePortfolioStatus}
@@ -63,6 +65,7 @@ export default function OneProtFolioDetails({
           </FormControl>
           <Box sx={{ display: "flex", gap: 2 }}>
             <NumberStepper
+              disabled={viewProject}
               placeholder="In Flight (EE)"
               mandatory={true}
               counter={inFlight}
@@ -71,6 +74,7 @@ export default function OneProtFolioDetails({
             />
           </Box>
           <NumberStepper
+            disabled={viewProject}
             placeholder="Projects on Track"
             mandatory={true}
             counter={projectsOnTrack}
@@ -88,6 +92,7 @@ export default function OneProtFolioDetails({
           padding="20px 0"
         >
           <NumberStepper
+            disabled={viewProject}
             placeholder="New Projects"
             mandatory={true}
             counter={newProjects}
@@ -95,12 +100,14 @@ export default function OneProtFolioDetails({
             width="340px"
           />
           <NumberStepper
+            disabled={viewProject}
             placeholder="Projects  at High Risk"
             counter={projectAtRisk}
             setCounter={setProjectAtRisk}
             width="340px"
           />
           <NumberStepper
+            disabled={viewProject}
             placeholder="Ramp Down"
             counter={rampDown}
             setCounter={setRampDown}
@@ -117,6 +124,7 @@ export default function OneProtFolioDetails({
           padding="20px 0"
         >
           <NumberStepper
+            disabled={viewProject}
             placeholder="Chrun"
             counter={chrun}
             setCounter={setChrun}
