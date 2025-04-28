@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/new_pmo_upgrade/static/css/main.f81f981a.css",
-    "main.js": "/new_pmo_upgrade/static/js/main.66b3c6af.js",
-    "static/js/453.efcfe148.chunk.js": "/new_pmo_upgrade/static/js/453.efcfe148.chunk.js",
-    "index.html": "/new_pmo_upgrade/index.html",
-    "main.f81f981a.css.map": "/new_pmo_upgrade/static/css/main.f81f981a.css.map",
-    "main.66b3c6af.js.map": "/new_pmo_upgrade/static/js/main.66b3c6af.js.map",
-    "453.efcfe148.chunk.js.map": "/new_pmo_upgrade/static/js/453.efcfe148.chunk.js.map"
+    "main.css": "/static/css/main.f81f981a.css",
+    "main.js": "/static/js/main.c70a5349.js",
+    "static/js/453.efcfe148.chunk.js": "/static/js/453.efcfe148.chunk.js",
+    "index.html": "/index.html",
+    "main.f81f981a.css.map": "/static/css/main.f81f981a.css.map",
+    "main.c70a5349.js.map": "/static/js/main.c70a5349.js.map",
+    "453.efcfe148.chunk.js.map": "/static/js/453.efcfe148.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f81f981a.css",
-    "static/js/main.66b3c6af.js"
+    "static/js/main.c70a5349.js"
   ]
 }
