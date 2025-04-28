@@ -2,6 +2,7 @@
   "name": "pmo_upgrade",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/pmo_portfolio",
   "start_url": "https://intranet.accionlabs.com/pmo_portfolio/portfolio-status",
   "dependencies": {
     "@base-ui-components/react": "^1.0.0-alpha.6",
