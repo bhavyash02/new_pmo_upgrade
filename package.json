@@ -2,7 +2,7 @@
   "name": "pmo_upgrade",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bhavyash02.github.io/new_pmo_upgrade",
+  "start_url": "https://intranet.accionlabs.com/pmo_portfolio/portfolio-status",
   "dependencies": {
     "@base-ui-components/react": "^1.0.0-alpha.6",
     "@emotion/react": "^11.14.0",
