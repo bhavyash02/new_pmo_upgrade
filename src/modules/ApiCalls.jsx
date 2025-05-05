@@ -1,6 +1,6 @@
 import { fetchRecords, createUpdateRecord } from "../components/apiServices";
 
-export const fetchPortfolioData = async (apiUrl, dropdown, setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus) => {
+export const fetchPortfolioData = async (apiUrl, dropdown= [], setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus) => {
 
     try {
         const promises = dropdown.map(async (name) => {
