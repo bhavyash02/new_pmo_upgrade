@@ -71,14 +71,17 @@ const PortFolioHomePage = () => {
         },
         {
             field: 'projects_on_track', editable: false, headerName: 'Projects On Track', type: 'number', width: 140, align: "center", headerAlign: 'center',
-            valueFormatter: (params) => (params.value !== null && params.value !== undefined) ? params.value : '-',
+            valueFormatter: (params) => (params.value !== null || params.value !== undefined) ? params.value : '-',
         },
         {
-            field: 'GM', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 140, align: "center", headerAlign: 'center',
+            field: 'gm_percentage', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 140, align: "center", headerAlign: 'center',
             valueFormatter: (params) =>
-                (params?.value !== null && params?.value !== undefined && params?.value !== '') ? params.value : '-',
+                (params?.value !== null || params?.value !== undefined || params?.value !== '') ? params.value : '-',
         },
-        { field: 'escalations', editable: false, headerName: 'No of Escalations', type: 'number', width: 140, align: "center", headerAlign: 'center' },
+        {
+            field: 'escalations', editable: false, headerName: 'No of Escalations', type: 'number', width: 140, align: "center", headerAlign: 'center', valueFormatter: (params) =>
+                (params?.value !== null || params?.value !== undefined) ? params.value : '-'
+        },
         {
             field: 'projects_at_high_risk', editable: false, headerName: 'Projects at High Risk', align: "center", headerAlign: 'center',
             width: 180,
