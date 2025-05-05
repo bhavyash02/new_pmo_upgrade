@@ -1,6 +1,6 @@
 import { fetchRecords, createUpdateRecord } from "../components/apiServices";
 
-export const fetchPortfolioData = async (apiUrl, dropdown = [], setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus) => {
+export const fetchPortfolioData = async (apiUrl, dropdown, setEngagementDirector, setDeliveryDirector, setDeliveryManager, setBuHead, setProtfolioStatus) => {
 
     try {
         const promises = dropdown.map(async (name) => {
@@ -96,7 +96,7 @@ export const CreateUpdatePortFolioStatus = async (row, editProject, changePortfo
     sunkCosts
 ) => {
     try {
-        const url = editProject ? `update/portfolio/${row.portfolio_id}` : `submit_all`;
+        const url = editProject ? `update/portfolio/${row.portfolio_id}` : `submit_all/`;
         const data = {
             "portfolio_data": {
                 "month_year": `${selectedMonth} ${selectedYear}`,

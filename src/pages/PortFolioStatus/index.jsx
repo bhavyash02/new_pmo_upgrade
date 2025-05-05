@@ -65,8 +65,8 @@ function PortFolioStatus() {
   const [involuntary, setInvoluntary] = useState(0);
   const [employeeScore, setEmployeeScore] = useState(0);
   const [learnings, setLearnings] = useState("");
-  const [additions, setAdditions] = useState(0);
-  const [attritionRisk, setAttritionRisk] = useState(0);
+  const [additions, setAdditions] = useState("");
+  const [attritionRisk, setAttritionRisk] = useState("");
   const [topPerformers, setTopPerformers] = useState(0);
   const [topPerformersDesc, settopPerformersDesc] = useState("");
   // section Five
@@ -80,11 +80,11 @@ function PortFolioStatus() {
   const [nonCritical, setNonCritical] = useState(0)
   const [qbr, setQbr] = useState("")
   const [capabilitiesPositioned, setCapabilitiesPositioned] = useState(0)
-  const [capabilitiesDescription, setCapabilitiesDescription] = useState(0)
+  const [capabilitiesDescription, setCapabilitiesDescription] = useState("")
   const [pocsInFlight, setPocsInFlight] = useState(0)
   const [pocsPlanned, setPocsPlanned] = useState(0)
   const [hackathons, setHackathons] = useState(0)
-  const [hackathonsDescribed, setHackathonsDescribed] = useState(0)
+  const [hackathonsDescribed, setHackathonsDescribed] = useState("")
   const [crossSellOportunity, setCrossSellOpportunity] = useState("")
   const [architechtureAdvisory, setArchitechtureAdvisory] = useState("")
   const [totalRevenue, setTotalRevenue] = useState(0);
@@ -381,6 +381,7 @@ function PortFolioStatus() {
       >
         <MultipleStepForm
           viewProject={viewProject}
+          editProject={editProject}
           changePortfolioStatus={changePortfolioStatus}
           setChangePortfolioStatus={setChangePortfolioStatus}
           setProtfolioStatus={setProtfolioStatus}
