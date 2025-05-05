@@ -22,6 +22,7 @@ const stepLabels = [
 
 export default function MultipleStepForm({
   viewProject,
+  editProject,
   changePortfolioStatus,
   setChangePortfolioStatus,
   setProtfolioStatus,
@@ -493,7 +494,7 @@ export default function MultipleStepForm({
       <Box sx={{ display: "flex", flexDirection: "row-reverse", mt: 3, paddingTop: "150px", paddingBottom: "50px", paddingRight: "45px" }}>
         <Button
           onClick={handleNext}
-          disabled={((viewProject && activeStep === stepLabels.length - 1) || !viewProject &&
+          disabled={(!editProject &&((viewProject && activeStep === stepLabels.length - 1) || !viewProject &&
             activeStep === 0 && (
               !protfolioStatus ||
               !inFlight ||
@@ -531,7 +532,7 @@ export default function MultipleStepForm({
               !totalInvoice ||
               !invoiceNotRealized ||
               !sunkCosts)
-          )}
+          ))}
           sx={{ marginLeft: "20px", width: "114px", height: "40px" }}
           variant="contained"
         >
