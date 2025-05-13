@@ -3,8 +3,8 @@ import {
   PortFolioStatus,
   PageNotFound,
   PortFolioHomePage,
-  LoginPage
 } from "../pages";
+import LoginPage from "../pages/Login";
 import { Navigate } from "react-router-dom";
 
 export const appRoutes = [
@@ -34,6 +34,6 @@ export const appRoutes = [
   },
   {
     path: "*",
-    element: <Navigate to="/login" replace />, // ✅ Correct JSX and redirect
+    element: <Navigate to="/login" replace />
   }
 ];
