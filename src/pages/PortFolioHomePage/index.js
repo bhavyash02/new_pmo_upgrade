@@ -188,7 +188,8 @@ const PortFolioHomePage = () => {
             try {
                 const response = await createUpdateRecord(
                     null,
-                    `fetch_merged_records/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
+                    // `fetch_merged_records/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
+                    `list_of_records_groupby_deliverydirector_and_monthyear/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
                     null,
                     "GET"
                 );
