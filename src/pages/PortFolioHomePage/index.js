@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Box, Typography, Button, IconButton, } from "@mui/material";
 import {
     DataGrid,
@@ -14,6 +14,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import { Add, Edit, Visibility } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import createUpdateRecord from "../../modules/CreateUpdateRecord";
+import { useStore } from "../../zustand"
 
 function CustomPagination() {
     const apiRef = useGridApiContext();
@@ -39,7 +40,7 @@ const PAGE_SIZE = 10;
 
 
 const PortFolioHomePage = () => {
-    const [tableData, setTableData] = useState({});
+    const { tableData, setTableData, setAllData, allData } = useStore();
     const [totalRecords, setTotalRecords] = useState();
     const columns = [
         { field: 'month_year', headerName: 'Date', width: 200, editable: false, },
@@ -208,7 +209,29 @@ const PortFolioHomePage = () => {
         fetchTableData();
     }, [paginationModel]);
 
+    const fetchAllTableData = useCallback(async () => {
+        try {
+            const response = await createUpdateRecord(
+                null,
+                `list_of_records_groupby_deliverydirector_and_monthyear/?page=${1}&page_size=${totalRecords}`,
+                null,
+                "GET"
+            );
 
+            const rowsWithId = response.data.map((row, index) => ({
+                id: index,
+                ...row
+            }));
+
+            setAllData(rowsWithId);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }, [totalRecords]);
+
+    useEffect(() => {
+        fetchAllTableData();
+    }, [fetchAllTableData]);
 
     return (
         <Box sx={{ background: "#F8F6FD", padding: '40px', margin: '30px', borderRadius: '20px' }}>
