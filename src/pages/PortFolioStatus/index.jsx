@@ -12,6 +12,7 @@ import { fetchPortfolioData, CreateUpdatePortFolioStatus } from "../../modules/A
 import Snackbar from '@mui/material/Snackbar';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../../zustand/index";
 
 function PortFolioStatus() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ function PortFolioStatus() {
   const row = location.state?.row;
   const viewProject = location.state?.viewProject;
   const editProject = location.state?.editProject;
+  const { allData } = useStore();
 
   const [selectedMonth, setSelectedMonth] = useState(today.format("MMMM"));
   const [selectedYear, setSelectedYear] = useState(today.year());
@@ -97,8 +99,7 @@ function PortFolioStatus() {
   const [invoiceNotRealized, setInvoiceNotRealized] = useState(0);
   const [sunkCosts, setSunkCosts] = useState(0);
   const [onSubmit, setOnSubmit] = useState(false);
-
-
+  const [dataAlreadyPresent, setDataAlreadyPresent] = useState(false);
   const [state, setState] = React.useState({
     open: false,
     vertical: 'top',
@@ -260,11 +261,23 @@ function PortFolioStatus() {
     }
   }, [onSubmit]);
 
+  console.log(allData, "Data")
+  console.log(selectedDeliveryDirector, "Delivery Director", `${selectedMonth} ${selectedYear}`, "Selected Month and Year")
+  useEffect(() => {
+    const filtered = allData.filter((item) => {
+      console.log(item.month_year, "Item Month Year")
+      console.log(item.delivery_director[0], "Item Delivery Director")
+      return (
+        item.delivery_director[0] === selectedDeliveryDirector &&
+        item.month_year[0] === `${selectedMonth} ${selectedYear}`
+      );
+    });
+    setDataAlreadyPresent(filtered.length > 0);
+
+  }, [selectedDeliveryDirector, selectedMonth, selectedYear]);
 
   // Check if required fields are selected
-  const isStepFormEnabled = selectedDeliveryDirector
-
-
+  const isStepFormEnabled = !dataAlreadyPresent
 
   return (
     <Box sx={{ margin: "40px auto", maxWidth: "1400px", width: "100%" }}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Box, Typography, Button, IconButton, } from "@mui/material";
 import {
     DataGrid,
@@ -14,6 +14,7 @@ import PaginationItem from '@mui/material/PaginationItem';
 import { Add, Edit, Visibility } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import createUpdateRecord from "../../modules/CreateUpdateRecord";
+import { useStore } from "../../zustand"
 
 function CustomPagination() {
     const apiRef = useGridApiContext();
@@ -39,14 +40,14 @@ const PAGE_SIZE = 10;
 
 
 const PortFolioHomePage = () => {
-    const [tableData, setTableData] = useState({});
+    const { tableData, setTableData, setAllData, allData } = useStore();
     const [totalRecords, setTotalRecords] = useState();
     const columns = [
         { field: 'month_year', headerName: 'Date', width: 200, editable: false, },
-        { field: 'delivery_director', headerName: 'Delivery Director', width: 180, editable: false, },
-        { field: 'delivery_manager', headerName: 'Delivery Manager', width: 180, editable: false },
+        { field: 'delivery_director', headerName: 'Delivery Director', width: 210, editable: false, },
+        // { field: 'delivery_manager', headerName: 'Delivery Manager', width: 180, editable: false },
         {
-            field: 'portfolio_status', editable: false, headerName: 'Portfolio Status', width: 180, renderCell: (params) => (
+            field: 'portfolio_status', editable: false, headerName: 'Portfolio Status', width: 210, renderCell: (params) => (
                 <Box sx={{
                     width: '100%',
                     height: '100%',
@@ -70,21 +71,22 @@ const PortFolioHomePage = () => {
             )
         },
         {
-            field: 'projects_on_track', editable: false, headerName: 'Projects On Track', type: 'number', width: 140, align: "center", headerAlign: 'center',
-            valueFormatter: (params) => (params.value !== null || params.value !== undefined) ? params.value : '-',
+            field: 'projects_on_track', editable: false, headerName: 'Projects On Track', type: 'number', width: 160, align: "center", headerAlign: 'center',
+            // valueFormatter: (params) => (params.value !== null || params.value !== undefined) ? params.value : '-',
         },
         {
-            field: 'gm_percentage', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 140, align: "center", headerAlign: 'center',
-            valueFormatter: (params) =>
-                (params?.value !== null || params?.value !== undefined || params?.value !== '') ? params.value : '-',
+            field: 'gm_percentage', editable: false, headerName: 'GM % (RAG)', type: 'number', width: 160, align: "center", headerAlign: 'center',
+            // valueFormatter: (params) =>
+            //     (params?.value !== null || params?.value !== undefined || params?.value !== '') ? params.value : '-',
         },
         {
-            field: 'escalations', editable: false, headerName: 'No of Escalations', type: 'number', width: 140, align: "center", headerAlign: 'center', valueFormatter: (params) =>
-                (params?.value !== null || params?.value !== undefined) ? params.value : '-'
+            field: 'escalations', editable: false, headerName: 'No of Escalations', type: 'number', width: 160, align: "center", headerAlign: 'center',
+            // valueFormatter: (params) =>
+            //     (params?.value !== null || params?.value !== undefined) ? params.value : '-'
         },
         {
             field: 'projects_at_high_risk', editable: false, headerName: 'Projects at High Risk', align: "center", headerAlign: 'center',
-            width: 180,
+            width: 210,
             renderCell: (params) => (
                 <Box
                     sx={{
@@ -113,7 +115,7 @@ const PortFolioHomePage = () => {
                 </Box>),
         },
         {
-            field: 'View/Edit', editable: false, headerName: '', width: 180, renderCell: (i) => {
+            field: 'View', editable: false, headerName: '', width: 210, renderCell: (i) => {
                 return (
                     <>
                         <IconButton
@@ -127,7 +129,7 @@ const PortFolioHomePage = () => {
                         >
                             <Visibility />
                         </IconButton>
-                        <IconButton
+                        {/* <IconButton
                             sx={{ padding: 0, marginLeft: '30px', color: '#5A6FB5' }}
                             aria-label="edit"
                             onClick={() => {
@@ -137,7 +139,7 @@ const PortFolioHomePage = () => {
                             }}
                         >
                             <Edit />
-                        </IconButton>
+                        </IconButton> */}
                     </>
                 );
             },
@@ -188,17 +190,59 @@ const PortFolioHomePage = () => {
             try {
                 const response = await createUpdateRecord(
                     null,
-                    `fetch_merged_records/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
+                    // `fetch_merged_records/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
+                    `list_of_records_groupby_deliverydirector_and_monthyear/?page=${paginationModel.page + 1}&page_size=${10}`,
                     null,
                     "GET"
                 );
 
-                setTotalRecords(response.total_records);
-                const rowsWithId = response.data.map((row, index) => ({
-                    id: index,
-                    ...row
+                // console.log(response.data, 'response')
+
+                const portfolio_status_result = response.data.map(el => { return el.portfolio_status.includes("Green") ? "Green" : "Red" })
+                // console.log(portfolio_status_result); // Output: Green
+
+                const porject_on_track_result = response.data.map(el => { return el.projects_on_track.reduce((a, b) => a + b, 0) })
+                // console.log(porject_on_track_result, 'porject_on_track_result')
+
+                const gm_result = response.data.map(el => { return el.gm_percentage.reduce((a, b) => a + b / el.gm_percentage.length, 0) })
+                // console.log(gm_result, 'gm_result')
+
+                const escalations_result = response.data.map(el => { return el.escalations.reduce((a, b) => a + b, 0) })
+                // console.log(escalations_result, 'escalations_result')
+
+                const projects_at_high_risk_result = response.data.map(el => { return el.projects_at_high_risk.reduce((a, b) => a + b, 0) })
+                // console.log(projects_at_high_risk_result, 'projects_at_high_risk_result')
+
+
+                const final_result = {
+                    portfolio_status_result,
+                    porject_on_track_result,
+                    gm_result,
+                    escalations_result,
+                    projects_at_high_risk_result,
+                    month_year: response.data.map(el => el.month_year),
+                    delivery_director: response.data.map(el => el.delivery_director)
+                }
+
+
+                // Transform data into rows
+                const tableData = final_result.portfolio_status_result.map((_, index) => ({
+                    id: index + 1, // Unique ID for DataGrid
+                    portfolio_status: final_result.portfolio_status_result[index],
+                    projects_on_track: final_result.porject_on_track_result[index],
+                    gm_percentage: final_result.gm_result[index],
+                    escalations: final_result.escalations_result[index],
+                    projects_at_high_risk: final_result.projects_at_high_risk_result[index],
+                    month_year: final_result.month_year[index][0], // Extract first element from array
+                    delivery_director: final_result.delivery_director[index][0] // Extract first element from array
                 }));
-                setTableData(rowsWithId);
+
+                // console.log(final_result, 'final_result');
+                // console.log(tableData, 'tableData');
+                // console.log(response.total_records, 'totalRecords');
+
+                setTotalRecords(response.total_records);
+                setTableData(tableData);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -207,7 +251,29 @@ const PortFolioHomePage = () => {
         fetchTableData();
     }, [paginationModel]);
 
+    const fetchAllTableData = useCallback(async () => {
+        try {
+            const response = await createUpdateRecord(
+                null,
+                `list_of_records_groupby_deliverydirector_and_monthyear/?page=${1}&page_size=${response.total_records}`,
+                null,
+                "GET"
+            );
 
+            const rowsWithId = response.data.map((row, index) => ({
+                id: index,
+                ...row
+            }));
+
+            setAllData(rowsWithId);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }, [totalRecords]);
+
+    useEffect(() => {
+        fetchAllTableData();
+    }, [fetchAllTableData]);
 
     return (
         <Box sx={{ background: "#F8F6FD", padding: '40px', margin: '30px', borderRadius: '20px' }}>
