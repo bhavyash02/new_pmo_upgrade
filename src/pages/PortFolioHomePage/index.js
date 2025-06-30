@@ -11,7 +11,7 @@ import {
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
-import { Add, Edit, Visibility } from "@mui/icons-material";
+import { Add, Visibility } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import createUpdateRecord from "../../modules/CreateUpdateRecord";
 import { useStore } from "../../zustand"
@@ -40,7 +40,7 @@ const PAGE_SIZE = 10;
 
 
 const PortFolioHomePage = () => {
-    const { tableData, setTableData, setAllData, allData } = useStore();
+    const { tableData, setTableData, setAllData } = useStore();
     const [totalRecords, setTotalRecords] = useState();
     const columns = [
         { field: 'month_year', headerName: 'Date', width: 200, editable: false, },
@@ -191,71 +191,29 @@ const PortFolioHomePage = () => {
                 const response = await createUpdateRecord(
                     null,
                     // `fetch_merged_records/?page=${paginationModel.page + 1}&page_size=${paginationModel.pageSize}`,
-                    `list_of_records_groupby_deliverydirector_and_monthyear/?page=${paginationModel.page + 1}&page_size=${10}`,
+                    // `list_of_records_groupby_deliverydirector_and_monthyear/?page=${paginationModel.page + 1}&page_size=${10}`,
+                    `list_of_group_records_by_deliverydirector_and_monthyear/?page=${paginationModel.page + 1}&page_size=${10}`,
                     null,
                     "GET"
                 );
 
-                // console.log(response.data, 'response')
-
-                const portfolio_status_result = response.data.map(el => { return el.portfolio_status.includes("Green") ? "Green" : "Red" })
-                // console.log(portfolio_status_result); // Output: Green
-
-                const porject_on_track_result = response.data.map(el => { return el.projects_on_track.reduce((a, b) => a + b, 0) })
-                // console.log(porject_on_track_result, 'porject_on_track_result')
-
-                const gm_result = response.data.map(el => { return el.gm_percentage.reduce((a, b) => a + b / el.gm_percentage.length, 0) })
-                // console.log(gm_result, 'gm_result')
-
-                const escalations_result = response.data.map(el => { return el.escalations.reduce((a, b) => a + b, 0) })
-                // console.log(escalations_result, 'escalations_result')
-
-                const projects_at_high_risk_result = response.data.map(el => { return el.projects_at_high_risk.reduce((a, b) => a + b, 0) })
-                // console.log(projects_at_high_risk_result, 'projects_at_high_risk_result')
-
-
-                const final_result = {
-                    portfolio_status_result,
-                    porject_on_track_result,
-                    gm_result,
-                    escalations_result,
-                    projects_at_high_risk_result,
-                    month_year: response.data.map(el => el.month_year),
-                    delivery_director: response.data.map(el => el.delivery_director)
-                }
-
-
-                // Transform data into rows
-                const tableData = final_result.portfolio_status_result.map((_, index) => ({
-                    id: index + 1, // Unique ID for DataGrid
-                    portfolio_status: final_result.portfolio_status_result[index],
-                    projects_on_track: final_result.porject_on_track_result[index],
-                    gm_percentage: final_result.gm_result[index],
-                    escalations: final_result.escalations_result[index],
-                    projects_at_high_risk: final_result.projects_at_high_risk_result[index],
-                    month_year: final_result.month_year[index][0], // Extract first element from array
-                    delivery_director: final_result.delivery_director[index][0] // Extract first element from array
-                }));
-
-                // console.log(final_result, 'final_result');
-                // console.log(tableData, 'tableData');
-                // console.log(response.total_records, 'totalRecords');
+                console.log(response, 'response')
 
                 setTotalRecords(response.total_records);
-                setTableData(tableData);
+                setTableData(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         }
 
         fetchTableData();
-    }, [paginationModel]);
+    }, [paginationModel, setTableData]);
 
     const fetchAllTableData = useCallback(async () => {
         try {
             const response = await createUpdateRecord(
                 null,
-                `list_of_records_groupby_deliverydirector_and_monthyear/?page=${1}&page_size=${response.total_records}`,
+                `list_of_group_records_by_deliverydirector_and_monthyear/?page=${1}&page_size=${totalRecords}`,
                 null,
                 "GET"
             );
@@ -269,7 +227,7 @@ const PortFolioHomePage = () => {
         } catch (error) {
             console.error("Error fetching data:", error);
         }
-    }, [totalRecords]);
+    }, [setAllData, totalRecords]);
 
     useEffect(() => {
         fetchAllTableData();
